@@ -202,7 +202,7 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 				if ( $depth > 0 ) {
 					$atts['class'] = 'dropdown-item';
 
-					if ($item->url === '#') {
+					if ( '#' === $item->url ) {
 						$atts['class'] = 'dropdown-toggle nav-link';
 						$atts['data-toggle']   = 'dropdown';
 						$atts['aria-haspopup'] = 'true';
