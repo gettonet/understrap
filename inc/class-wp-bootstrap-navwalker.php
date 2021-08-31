@@ -200,9 +200,17 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '#';
 				// Items in dropdowns use .dropdown-item instead of .nav-link.
 				if ( $depth > 0 ) {
-					$atts['class'] = 'dropdown-item';
+					$atts['class'] = 'dropdown-item order-'.$depth;
+
+					if ($item->url === '#') {
+						$atts['class'] = 'dropdown-toggle nav-link';
+						$atts['data-toggle']   = 'dropdown';
+						$atts['aria-haspopup'] = 'true';
+						$atts['aria-expanded'] = 'false';
+						$atts['href']          = '#';
+					}
 				} else {
-					$atts['class'] = 'nav-link';
+					$atts['class'] = 'nav-link order-'.$depth;
 				}
 			}
 
@@ -406,7 +414,7 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 		 *
 		 * @return array  $classes         a maybe modified array of classnames.
 		 */
-		private function seporate_linkmods_and_icons_from_classes( $classes, &$linkmod_classes, &$icon_classes, $depth ) {
+		private static function seporate_linkmods_and_icons_from_classes( $classes, &$linkmod_classes, &$icon_classes, $depth ) {
 			// Loop through $classes array to find linkmod or icon classes.
 			foreach ( $classes as $key => $class ) {
 				// If any special classes are found, store the class in it's
@@ -444,7 +452,7 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 		 *
 		 * @return string                empty for default, a linkmod type string otherwise.
 		 */
-		private function get_linkmod_type( $linkmod_classes = array() ) {
+		private static function get_linkmod_type( $linkmod_classes = array() ) {
 			$linkmod_type = '';
 			// Loop through array of linkmod classes to handle their $atts.
 			if ( ! empty( $linkmod_classes ) ) {
@@ -475,7 +483,7 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 		 *
 		 * @return array                 maybe updated array of attributes for item.
 		 */
-		private function update_atts_for_linkmod_type( $atts = array(), $linkmod_classes = array() ) {
+		private static function update_atts_for_linkmod_type( $atts = array(), $linkmod_classes = array() ) {
 			if ( ! empty( $linkmod_classes ) ) {
 				foreach ( $linkmod_classes as $link_class ) {
 					if ( ! empty( $link_class ) ) {
@@ -508,7 +516,7 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 		 * @param string $text the string of text to be wrapped in a screen reader class.
 		 * @return string      the string wrapped in a span with the class.
 		 */
-		private function wrap_for_screen_reader( $text = '' ) {
+		private static function wrap_for_screen_reader( $text = '' ) {
 			if ( $text ) {
 				$text = '<span class="sr-only">' . $text . '</span>';
 			}
@@ -525,7 +533,7 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 		 *
 		 * @return string              a string with the openign tag for the element with attribibutes added.
 		 */
-		private function linkmod_element_open( $linkmod_type, $attributes = '' ) {
+		private static function linkmod_element_open( $linkmod_type, $attributes = '' ) {
 			$output = '';
 			if ( 'dropdown-item-text' === $linkmod_type ) {
 				$output .= '<span class="dropdown-item-text"' . $attributes . '>';
@@ -549,7 +557,7 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 		 *
 		 * @return string              a string with the closing tag for this linkmod type.
 		 */
-		private function linkmod_element_close( $linkmod_type ) {
+		private static function linkmod_element_close( $linkmod_type ) {
 			$output = '';
 			if ( 'dropdown-header' === $linkmod_type || 'dropdown-item-text' === $linkmod_type ) {
 				// For a header use a span with the .h6 class instead of a real
