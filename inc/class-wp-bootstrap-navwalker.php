@@ -208,6 +208,7 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 						$atts['aria-haspopup'] = 'true';
 						$atts['aria-expanded'] = 'false';
 						$atts['href']          = '#';
+						$atts['id']            = 'menu-item-dropdown-' . $item->ID;
 					}
 				} else {
 					$atts['class'] = 'nav-link order-'.$depth;
