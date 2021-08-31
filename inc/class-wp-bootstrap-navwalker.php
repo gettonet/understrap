@@ -200,7 +200,7 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '#';
 				// Items in dropdowns use .dropdown-item instead of .nav-link.
 				if ( $depth > 0 ) {
-					$atts['class'] = 'dropdown-item order-'.$depth;
+					$atts['class'] = 'dropdown-item';
 
 					if ($item->url === '#') {
 						$atts['class'] = 'dropdown-toggle nav-link';
@@ -211,7 +211,7 @@ if ( ! class_exists( 'Understrap_WP_Bootstrap_Navwalker' ) ) {
 						$atts['id']            = 'menu-item-dropdown-' . $item->ID;
 					}
 				} else {
-					$atts['class'] = 'nav-link order-'.$depth;
+					$atts['class'] = 'nav-link';
 				}
 			}
 
