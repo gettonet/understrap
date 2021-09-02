@@ -9999,8 +9999,8 @@
             $parent.addClass('show');
             $el.next().addClass('show');
             $el.next().css({
-              "top": $el[0].offsetTop,
-              "left": $parent.outerWidth() - 4
+              "top": '-11px',
+              "left": $parent.outerWidth() - 0
             });
           }
 
