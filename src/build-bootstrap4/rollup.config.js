@@ -31,7 +31,7 @@ module.exports = {
     file: path.resolve(__dirname, `../../js/${fileDest}`),
     format: 'umd',
     globals,
-    name: 'understrap'
+    name: 'elixir'
   },
   external,
   plugins

@@ -2,7 +2,7 @@
 /**
  * Post rendering content according to caller of get_template_part
  *
- * @package Understrap
+ * @package Elixir
  */
 
 // Exit if accessed directly.
@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php if ( 'post' === get_post_type() ) : ?>
 
 			<div class="entry-meta">
-				<?php understrap_posted_on(); ?>
+				<?php elixir_posted_on(); ?>
 			</div><!-- .entry-meta -->
 
 		<?php endif; ?>
@@ -36,14 +36,14 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php
 		the_excerpt();
-		understrap_link_pages();
+		elixir_link_pages();
 		?>
 
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
 
-		<?php understrap_entry_footer(); ?>
+		<?php elixir_entry_footer(); ?>
 
 	</footer><!-- .entry-footer -->
 

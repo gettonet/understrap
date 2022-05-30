@@ -4,15 +4,15 @@
  *
  * @link https://jetpack.me/
  *
- * @package Understrap
+ * @package Elixir
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'after_setup_theme', 'understrap_components_jetpack_setup' );
+add_action( 'after_setup_theme', 'elixir_components_jetpack_setup' );
 
-if ( ! function_exists( 'understrap_components_jetpack_setup' ) ) {
+if ( ! function_exists( 'elixir_components_jetpack_setup' ) ) {
 	/**
 	 * Jetpack setup function.
 	 *
@@ -20,13 +20,13 @@ if ( ! function_exists( 'understrap_components_jetpack_setup' ) ) {
 	 * @link https://jetpack.me/support/responsive-videos/
 	 * @link https://jetpack.me/support/social-menu/
 	 */
-	function understrap_components_jetpack_setup() {
+	function elixir_components_jetpack_setup() {
 		// Add theme support for Infinite Scroll.
 		add_theme_support(
 			'infinite-scroll',
 			array(
 				'container' => 'main',
-				'render'    => 'understrap_components_infinite_scroll_render',
+				'render'    => 'elixir_components_infinite_scroll_render',
 				'footer'    => 'page',
 			)
 		);
@@ -40,11 +40,11 @@ if ( ! function_exists( 'understrap_components_jetpack_setup' ) ) {
 	}
 }
 
-if ( ! function_exists( 'understrap_components_infinite_scroll_render' ) ) {
+if ( ! function_exists( 'elixir_components_infinite_scroll_render' ) ) {
 	/**
 	 * Custom render function for Infinite Scroll.
 	 */
-	function understrap_components_infinite_scroll_render() {
+	function elixir_components_infinite_scroll_render() {
 		while ( have_posts() ) {
 			the_post();
 			if ( is_search() ) :
@@ -56,12 +56,12 @@ if ( ! function_exists( 'understrap_components_infinite_scroll_render' ) ) {
 	}
 }
 
-if ( ! function_exists( 'understrap_components_social_menu' ) ) {
+if ( ! function_exists( 'elixir_components_social_menu' ) ) {
 	/**
 	 * Display Jetpack's social menu if available.
 	 * Avoids fatal errors if Jetpack isn’t activated.
 	 */
-	function understrap_components_social_menu() {
+	function elixir_components_social_menu() {
 		if ( ! function_exists( 'jetpack_social_menu' ) ) {
 			// Return early if social menu is not available.
 			return;

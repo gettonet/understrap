@@ -2,7 +2,7 @@
 /**
  * Hero setup
  *
- * @package Understrap
+ * @package Elixir
  */
 
 // Exit if accessed directly.

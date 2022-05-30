@@ -4,21 +4,21 @@
  *
  * This file is centrally included from `wp-content/mu-plugins/wpcom-theme-compat.php`.
  *
- * @package Understrap
+ * @package Elixir
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'after_setup_theme', 'understrap_wpcom_setup' );
+add_action( 'after_setup_theme', 'elixir_wpcom_setup' );
 
-if ( ! function_exists( 'understrap_wpcom_setup' ) ) {
+if ( ! function_exists( 'elixir_wpcom_setup' ) ) {
 	/**
 	 * Adds support for wp.com-specific theme functions.
 	 *
 	 * @global array $themecolors
 	 */
-	function understrap_wpcom_setup() {
+	function elixir_wpcom_setup() {
 		global $themecolors;
 
 		// Set theme colors for third party services.
@@ -37,13 +37,13 @@ if ( ! function_exists( 'understrap_wpcom_setup' ) ) {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'understrap_wpcom_styles' );
+add_action( 'wp_enqueue_scripts', 'elixir_wpcom_styles' );
 
-if ( ! function_exists( 'understrap_wpcom_styles' ) ) {
+if ( ! function_exists( 'elixir_wpcom_styles' ) ) {
 	/**
 	 * WordPress.com-specific styles
 	 */
-	function understrap_wpcom_styles() {
-		wp_enqueue_style( 'understrap-wpcom', get_template_directory_uri() . '/inc/style-wpcom.css', array(), '20160411' );
+	function elixir_wpcom_styles() {
+		wp_enqueue_style( 'elixir-wpcom', get_template_directory_uri() . '/inc/style-wpcom.css', array(), '20160411' );
 	}
 }

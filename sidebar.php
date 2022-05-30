@@ -2,7 +2,7 @@
 /**
  * The sidebar containing the main widget area
  *
- * @package Understrap
+ * @package Elixir
  */
 
 // Exit if accessed directly.

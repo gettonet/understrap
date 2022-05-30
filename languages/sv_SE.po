@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: understrap\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/understrap\n"
+"Project-Id-Version: elixir\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/elixir\n"
 "POT-Creation-Date: 2021-08-20T00:31:53+00:00\n"
 "PO-Revision-Date: 2021-08-20 02:34+0200\n"
 "Last-Translator: Filip Wessman <filip@effektid.com>\n"
@@ -44,13 +44,13 @@ msgstr ""
 "X-Poedit-SearchPath-21: inc\n"
 
 #. Theme Name of the theme
-msgid "Understrap"
-msgstr "Understrap"
+msgid "Elixir"
+msgstr "Elixir"
 
 #. Theme URI of the theme
 #: inc/hooks.php:40
-msgid "https://understrap.com"
-msgstr "https://understrap.com"
+msgid "https://elixir.com"
+msgstr "https://elixir.com"
 
 #. Description of the theme
 msgid ""
@@ -60,16 +60,16 @@ msgid ""
 "support, built-in widget slider and much more you need for basic websites. "
 "IMPORTANT: All developer dependencies are not bundled with this install "
 "file. Just download the .zip, extract it and run \"npm install\" and \"gulp "
-"copy-assets\" inside the extracted /understrap folder."
+"copy-assets\" inside the extracted /elixir folder."
 msgstr ""
 
 #. Author of the theme
-msgid "the Understrap Authors"
+msgid "the Elixir Authors"
 msgstr ""
 
 #. Author URI of the theme
-msgid "https://github.com/understrap/understrap/graphs/contributors"
-msgstr "https://github.com/understrap/understrap/graphs/contributors"
+msgid "https://github.com/elixir/elixir/graphs/contributors"
+msgstr "https://github.com/elixir/elixir/graphs/contributors"
 
 #: 404.php:30
 msgid "Oops! That page can&rsquo;t be found."

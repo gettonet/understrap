@@ -2,7 +2,7 @@
 /**
  * Theme basic setup
  *
- * @package Understrap
+ * @package Elixir
  */
 
 // Exit if accessed directly.
@@ -13,9 +13,9 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 640; /* pixels */
 }
 
-add_action( 'after_setup_theme', 'understrap_setup' );
+add_action( 'after_setup_theme', 'elixir_setup' );
 
-if ( ! function_exists( 'understrap_setup' ) ) {
+if ( ! function_exists( 'elixir_setup' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -23,14 +23,14 @@ if ( ! function_exists( 'understrap_setup' ) ) {
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function understrap_setup() {
+	function elixir_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on understrap, use a find and replace
-		 * to change 'understrap' to the name of your theme in all the template files
+		 * If you're building a theme based on elixir, use a find and replace
+		 * to change 'elixir' to the name of your theme in all the template files
 		 */
-		load_theme_textdomain( 'understrap', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'elixir', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -46,7 +46,7 @@ if ( ! function_exists( 'understrap_setup' ) ) {
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'primary' => __( 'Primary Menu', 'understrap' ),
+				'primary' => __( 'Primary Menu', 'elixir' ),
 			)
 		);
 
@@ -96,7 +96,7 @@ if ( ! function_exists( 'understrap_setup' ) ) {
 		add_theme_support(
 			'custom-background',
 			apply_filters(
-				'understrap_custom_background_args',
+				'elixir_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
@@ -111,7 +111,7 @@ if ( ! function_exists( 'understrap_setup' ) ) {
 		add_theme_support( 'responsive-embeds' );
 
 		// Check and setup theme default settings.
-		understrap_setup_theme_default_settings();
+		elixir_setup_theme_default_settings();
 
 	}
 }

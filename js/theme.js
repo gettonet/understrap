@@ -1,12 +1,12 @@
 /*!
-  * Understrap v1.1.0 (https://understrap.com)
-  * Copyright 2013-2021 The UnderStrap Authors (https://github.com/understrap/understrap/graphs/contributors)
+  * Elixir v1.1.0 (https://elixir.com)
+  * Copyright 2013-2021 The Elixir Authors (https://github.com/elixir/elixir/graphs/contributors)
   * Licensed under GPL (http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
   */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.understrap = {}));
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.elixir = {}));
 })(this, (function (exports) { 'use strict';
 
 	var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};

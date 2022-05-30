@@ -4,7 +4,7 @@
  *
  * Template for displaying a blank page.
  *
- * @package Understrap
+ * @package Elixir
  */
 
 // Exit if accessed directly.

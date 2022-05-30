@@ -2,7 +2,7 @@
 /**
  * Single post partial template
  *
- * @package Understrap
+ * @package Elixir
  */
 
 // Exit if accessed directly.
@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="entry-meta">
 
-			<?php understrap_posted_on(); ?>
+			<?php elixir_posted_on(); ?>
 
 		</div><!-- .entry-meta -->
 
@@ -29,14 +29,14 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php
 		the_content();
-		understrap_link_pages();
+		elixir_link_pages();
 		?>
 
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
 
-		<?php understrap_entry_footer(); ?>
+		<?php elixir_entry_footer(); ?>
 
 	</footer><!-- .entry-footer -->
 

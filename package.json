@@ -1,5 +1,5 @@
 {
-  "name": "understrap",
+  "name": "elixir",
   "version": "1.1.0",
   "description": "WordPress Theme framework",
   "main": "index.js",
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/understrap/understrap.git"
+    "url": "https://github.com/elixir/elixir.git"
   },
   "keywords": [
     "wordpress",
@@ -42,12 +42,12 @@
     "bootstrap",
     "underscores"
   ],
-  "author": "The UnderStrap Authors (https://github.com/understrap/understrap/graphs/contributors)",
+  "author": "The Elixir Authors (https://github.com/elixir/elixir/graphs/contributors)",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/understrap/understrap/issues"
+    "url": "https://github.com/elixir/elixir/issues"
   },
-  "homepage": "https://understrap.com",
+  "homepage": "https://elixir.com",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.16.0",

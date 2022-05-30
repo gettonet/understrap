@@ -1,4 +1,4 @@
-=== Understrap ===
+=== Elixir ===
 Contributors: howarddc
 Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-background, custom-logo, custom-menu, featured-images, footer-widgets, full-width-template, theme-options, translation-ready
 Requires at least: 5.0
@@ -11,16 +11,16 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 The renowned WordPress starter theme framework that combines Underscores and Bootstrap. Trusted by more than 100,000 developers for building handcrafted, custom WordPress sites.
 
-Website: [https://understrap.com](https://understrap.com)
+Website: [https://elixir.com](https://elixir.com)
 
-Child Theme Project: [https://github.com/understrap/understrap-child](https://github.com/understrap/understrap-child)
+Child Theme Project: [https://github.com/elixir/elixir-child](https://github.com/elixir/elixir-child)
 
 == Installation ==
 
 1. In your admin panel, go to Appearance -> Themes and click the 'Add New' button.
-2. Type in Understrap in the search form and press the 'Enter' key on your keyboard.
+2. Type in Elixir in the search form and press the 'Enter' key on your keyboard.
 3. Click on the 'Activate' button to use your new theme right away.
-4. Do not edit the theme files directly. We recommend creating a child theme for custom development. Full developer documentation: [https://docs.understrap.com/](https://docs.understrap.com/)
+4. Do not edit the theme files directly. We recommend creating a child theme for custom development. Full developer documentation: [https://docs.elixir.com/](https://docs.elixir.com/)
 
 == Privacy ==
 
@@ -30,8 +30,8 @@ Child Theme Project: [https://github.com/understrap/understrap-child](https://gi
 
 == Copyright ==
 
-Understrap WordPress Theme, 2021 Howard Development & Consulting, LLC
-Understrap is distributed under the terms of the GNU GPL.
+Elixir WordPress Theme, 2021 Howard Development & Consulting, LLC
+Elixir is distributed under the terms of the GNU GPL.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

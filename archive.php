@@ -4,7 +4,7 @@
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package Understrap
+ * @package Elixir
  */
 
 // Exit if accessed directly.
@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-$container = get_theme_mod( 'understrap_container_type' );
+$container = get_theme_mod( 'elixir_container_type' );
 ?>
 
 <div class="wrapper" id="archive-wrapper">
@@ -56,7 +56,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 			<?php
 			// Display the pagination component.
-			understrap_pagination();
+			elixir_pagination();
 			// Do the right sidebar check.
 			get_template_part( 'global-templates/right-sidebar-check' );
 			?>

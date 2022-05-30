@@ -1,14 +1,45 @@
-@import "theme/theme_variables";  // <-------- Add your variables into this file. Also add variables to overwrite Bootstrap or Understrap variables here
+@import "theme/theme_variables";  // <-------- Add your variables into this file. Also add variables to overwrite Bootstrap or Parallel variables here
+/**************************************************/
+@import "assets/bootstrap5/functions"; // Required
+@import "assets/bootstrap5/variables";
+
+$theme-colors: map-merge($theme-colors, $custom-colors );
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+
+$utilities-text: map-merge($theme-colors, $utilities-text);
+$utilities-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text");
+
+$utilities-bg: map-merge($theme-colors, $utilities-bg);
+$utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg");
+/**************************************************/
+
 @import "assets/bootstrap5/bootstrap";      // <-------- Loads Bootstrap4
-@import "theme/understrap";  // <-------- Loads the Understrap defaults. Just a few classes to incorporate BS in WP
+@import "theme/parallel";  // <-------- Loads the Parallel defaults. Just a few classes to incorporate BS in WP
 @import "theme/colors";           // <-------- This creates the necessary bootstrap color classes.
 @import "theme/blocks";           // <-------- This adds Bootstrap styles to blocks.
 @import "theme/contact-form7";    // <-------- Contact Form 7 - Bootstrap 4 support
-@import "theme/woocommerce"; // <-------- Loads WooCommerce style fixes. Comment out if you aren't using WooCommerce
+//@import "theme/woocommerce"; // <-------- Loads WooCommerce style fixes. Comment out if you aren't using WooCommerce
 
 // Optional files - If you dont use the corresponding scripts/fonts comment em out
-@import "assets/fontawesome/font-awesome";    // <-------- Font Awesome Icon font
+@import "assets/fonts";    
+@import "assets/flickity";    
 
 // Any additional imported files //
 @import "theme/theme";            // <-------- That's where you can add your own design. Thats your part!
 
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+		@each $prop,
+		$abbrev in (width: w, height: h) {
+
+			@each $size,
+			$length in $sizes {
+				.#{$abbrev}#{$infix}-#{$size} {
+					#{$prop}: $length !important;
+				}
+			}
+		}
+	}
+}

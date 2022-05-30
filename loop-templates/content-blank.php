@@ -2,7 +2,7 @@
 /**
  * Blank content partial template
  *
- * @package Understrap
+ * @package Elixir
  */
 
 // Exit if accessed directly.

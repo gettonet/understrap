@@ -2,19 +2,19 @@
 /**
  * Header Navbar (bootstrap4)
  *
- * @package Understrap
+ * @package Elixir
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-$container = get_theme_mod( 'understrap_container_type' );
+$container = get_theme_mod( 'elixir_container_type' );
 ?>
 
 <nav id="main-nav" class="navbar navbar-expand-md navbar-dark bg-primary" aria-labelledby="main-nav-label">
 
 	<h2 id="main-nav-label" class="screen-reader-text">
-		<?php esc_html_e( 'Main Navigation', 'understrap' ); ?>
+		<?php esc_html_e( 'Main Navigation', 'elixir' ); ?>
 	</h2>
 
 
@@ -42,7 +42,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		?>
 		<!-- end custom logo -->
 
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'understrap' ); ?>">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'elixir' ); ?>">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
@@ -57,7 +57,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				'fallback_cb'     => '',
 				'menu_id'         => 'main-menu',
 				'depth'           => 2,
-				'walker'          => new Understrap_WP_Bootstrap_Navwalker(),
+				'walker'          => new Elixir_WP_Bootstrap_Navwalker(),
 			)
 		);
 		?>
