@@ -29,8 +29,15 @@ $navbar_type       = get_theme_mod( 'elixir_navbar_type', 'collapse' );
 	<!-- ******************* The Navbar Area ******************* -->
 	<header id="wrapper-navbar">
 
-		<a class="skip-link sr-only sr-only-focusable" href="#content"><?php esc_html_e( 'Skip to content', 'elixir' ); ?></a>
+	<a class="skip-link sr-only visually-hidden sr-only-focusable" href="#content"><?php esc_html_e( 'Skip to content', 'elixir' ); ?></a>
+		<?php
+                wp_nav_menu(
+                    array(
+                        'theme_location'  => 'primary',
+                    )
+                );
+                ?>
 
-		<?php get_template_part( 'global-templates/navbar', $navbar_type . '-' . $bootstrap_version ); ?>
+		<?php //get_template_part( 'global-templates/navbar', $navbar_type . '-' . $bootstrap_version ); ?>
 
 	</header><!-- #wrapper-navbar end -->

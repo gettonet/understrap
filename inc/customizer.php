@@ -192,31 +192,6 @@ if ( ! function_exists( 'elixir_theme_customize_register' ) ) {
 			)
 		);
 
-		$wp_customize->add_setting(
-			'elixir_site_info_override',
-			array(
-				'default'           => '',
-				'type'              => 'theme_mod',
-				'sanitize_callback' => 'wp_kses_post',
-				'capability'        => 'edit_theme_options',
-			)
-		);
-
-		$wp_customize->add_control(
-			new WP_Customize_Control(
-				$wp_customize,
-				'elixir_site_info_override',
-				array(
-					'label'       => __( 'Footer Site Info', 'elixir' ),
-					'description' => __( 'Override Elixir\'s site info located at the footer of the page.', 'elixir' ),
-					'section'     => 'elixir_theme_layout_options',
-					'settings'    => 'elixir_site_info_override',
-					'type'        => 'textarea',
-					'priority'    => 20,
-				)
-			)
-		);
-
 	}
 } // End of if function_exists( 'elixir_theme_customize_register' ).
 add_action( 'customize_register', 'elixir_theme_customize_register' );

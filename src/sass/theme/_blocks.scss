@@ -1,97 +1,256 @@
   // Tables
-.wp-block-table table {
-	@extend .table;
-	@extend .table-bordered;
-}
+  .wp-block-table {
+  	@extend .table-responsive;
 
-// Block Quotes
-.wp-block-quote {
-	@extend .blockquote;
-	cite {
-		@extend .blockquote-footer;
-	}
-}
+  	table {
+  		@extend .table;
+  	}
 
-// Image captions
-figure.wp-block-image {
-	@extend .figure;
-	display: block;
-	img {
-		@extend .figure-img;
-	}
-	figcaption {
-		@extend .figure-caption;
-	}
-}
+  	&.table-striped table {
+  		@extend .table-striped;
+  	}
 
-// Alternate/classic editor image captions.
-.wp-block-image > figure{
-	@extend .figure;
-	display: block;
-	img {
-		@extend .figure-img;
-	}
-	figcaption {
-		@extend .figure-caption;
-	}
-}
+  	&.table-hover table {
+  		@extend .table-hover;
+  	}
+
+  }
+
+  // Block Quotes
+  .wp-block-quote {
+  	@extend .blockquote;
+
+  	cite {
+  		@extend .blockquote-footer;
+  	}
+  }
+
+  // Image captions
+  figure.wp-block-image {
+  	@extend .figure;
+  	display: block;
+
+  	img {
+  		@extend .figure-img;
+  	}
+
+  	figcaption {
+  		@extend .figure-caption;
+  	}
+  }
+
+  // Alternate/classic editor image captions.
+  .wp-block-image>figure {
+  	@extend .figure;
+  	display: block;
+
+  	img {
+  		@extend .figure-img;
+  	}
+
+  	figcaption {
+  		@extend .figure-caption;
+  	}
+  }
 
 
-// Wide alignments and covers.
-body.elixir-no-sidebar{
-	.alignwide,
-	.alignfull,
-	.wp-block-cover.alignwide,
-	.wp-block-cover.alignfull {
-		margin: 0px calc(50% - 50vw);
-		max-width: 100vw;
-		width: 100vw;
+  // Wide alignments and covers.
+  body.elixir-no-sidebar {
 
-		.wp-block-cover__inner-container {
-			@include make-container();
-			@each $breakpoint, $container-max-width in $container-max-widths {
-				@include media-breakpoint-up($breakpoint, $grid-breakpoints) {
-					max-width: $container-max-width;
-				}
+  	.alignwide,
+  	.alignfull,
+  	.wp-block-cover.alignwide,
+  	.wp-block-cover.alignfull {
+  		margin: 0px calc(50% - 50vw);
+  		max-width: 100vw;
+  		width: 100vw;
+
+  		.wp-block-cover__inner-container {
+  			@include make-container();
+
+  			@each $breakpoint,
+  			$container-max-width in $container-max-widths {
+  				@include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+  					max-width: $container-max-width;
+  				}
+  			}
+  		}
+  	}
+
+  	.alignwide,
+  	.wp-block-cover.alignwide {
+  		margin: 0px calc(50% - 45vw);
+  		max-width: 90vw;
+  		width: 100vw;
+
+  		.wp-block-cover__inner-container {
+  			@include make-container();
+
+  			@each $breakpoint,
+  			$container-max-width in $container-max-widths {
+  				@include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+  					max-width: $container-max-width;
+  				}
+  			}
+  		}
+  	}
+
+
+  	@media (max-width: 920px) {
+
+  		.alignwide,
+  		.wp-block-cover.alignwide {
+  			margin: 0px calc(50% - 48vw);
+  			max-width: 96vw;
+  			width: 100vw;
+  		}
+  	}
+  }
+
+  // Buttons
+  .wp-block-buttons {
+  	.wp-block-button {
+  		.wp-block-button__link {
+  			@include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
+  		}
+
+  		&:not(.is-style-outline) .wp-block-button__link {
+  			border: $btn-border-width solid transparent;
+  		}
+  	}
+  }
+
+
+  .elixir-spacer {
+  	min-height: var(--minh);
+  }
+
+
+  @include media-breakpoint-up(sm) {
+  	.elixir-spacer {
+  		min-height: var(--minh-sm)
+  	}
+  }
+
+  @include media-breakpoint-up(md) {
+  	.elixir-spacer {
+  		min-height: var(--minh-md)
+  	}
+  }
+
+
+  @include media-breakpoint-up(lg) {
+  	.elixir-spacer {
+  		min-height: var(--minh-lg)
+  	}
+  }
+
+
+  @include media-breakpoint-up(xl) {
+  	.elixir-spacer {
+  		min-height: var(--minh-xl)
+  	}
+  }
+
+
+  @include media-breakpoint-up(xxl) {
+  	.elixir-spacer {
+  		min-height: var(--minh-xxl)
+  	}
+  }
+
+  /* Hide Title */
+
+  body {
+
+  	&.elixir-title-hidden:not(.is-iceberg) {
+
+  		.editor-post-title__input {
+  			opacity: 0.5;
+  		}
+  	}
+
+  }
+
+  .elixir-countup {
+  	font-size: 2.75rem;
+  	font-weight: 700;
+  	font-family: $headings-font-family;
+  }
+
+  .elixir-tabs nav {
+  	font-family: $headings-font-family;
+  }
+
+  .elixir-element {
+  	width: 100px;
+  	height: 100px;
+  	border-radius: 50%;
+  	border-top-left-radius: 50%;
+  	border-top-left-radius: 5px;
+  	background: $primary;
+  	color: #fff;
+
+  	span {
+  		display: block;
+  		font-size: 2.5rem;
+  		line-height: 1.5rem;
+  		font-weight: 700;
+  		text-align: center;
+
+  		&:first-child {
+  			font-weight: 400;
+  			font-size: large;
+  			text-align: left;
+  			margin: 3px 0 8px 5px;
+  		}
+
+  		&:last-child {
+  			font-size: .65rem;
+  			text-transform: uppercase;
+  			margin-top: .5rem;
+  		}
+  	}
+
+  }
+
+  .elixir-collapse {
+  	a[data-bs-toggle="collapse"] {
+  		.icon-elixir-collapse {
+  			@extend .icon-up-open;
+  		}
+
+  		&.collapsed {
+  			.icon-elixir-collapse {
+  				@extend .icon-down-open;
+  			}
+  		}
+  	}
+  }
+
+
+  blockquote {
+  	&.is-style-plain {
+		padding: .25rem 0 .25rem 2.5rem;
+		border-left: 1px solid $light;
+		position: relative;
+  		p {
+			font-weight: 600;
+			&::before, &::after {
+				color: $primary;
+				font-family: 'elixir';
 			}
-		}
-	}
-
-	.alignwide,
-	.wp-block-cover.alignwide{
-		margin: 0px calc(50% - 45vw);
-		max-width: 90vw;
-		width: 100vw;
-
-		.wp-block-cover__inner-container {
-			@include make-container();
-			@each $breakpoint, $container-max-width in $container-max-widths {
-				@include media-breakpoint-up($breakpoint, $grid-breakpoints) {
-					max-width: $container-max-width;
-				}
+  			&::before {
+  				content: '\e810';  				
+  				display: block;
+  				position: absolute;
+				top: 0;
+				left:.75rem;
+  			}
+			&::after {
+				content: '\e811';
+				margin-left: .75rem;
 			}
-		}
-	}
-
-
-	@media (max-width: 920px) {
-		.alignwide,
-		.wp-block-cover.alignwide {
-			margin: 0px calc(50% - 48vw);
-			max-width: 96vw;
-			width: 100vw;
-		}
-	}
-}
-
-// Buttons
-.wp-block-buttons {
-	.wp-block-button {
-		.wp-block-button__link {
-			@include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
-		}
-		&:not(.is-style-outline) .wp-block-button__link {
-			border: $btn-border-width solid transparent;
-		}
-	}
-}
+  		}
+  	}
+  }

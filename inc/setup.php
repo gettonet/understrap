@@ -47,6 +47,11 @@ if ( ! function_exists( 'elixir_setup' ) ) {
 		register_nav_menus(
 			array(
 				'primary' => __( 'Primary Menu', 'elixir' ),
+				'footer-1' => __( 'Footer (1)', 'elixir' ),
+				'footer-2' => __( 'Footer (2)', 'elixir' ),
+				'footer-3' => __( 'Footer (3)', 'elixir' ),
+				'footer-4' => __( 'Footer (4)', 'elixir' ),
+				'footer-5' => __( 'Footer (5)', 'elixir' ),
 			)
 		);
 
@@ -71,7 +76,7 @@ if ( ! function_exists( 'elixir_setup' ) ) {
 		 * Adding Thumbnail basic support
 		 */
 		add_theme_support( 'post-thumbnails' );
-
+		add_image_size( 'xlarge', 1296, 9999 );
 		/*
 		 * Adding support for Widget edit icons in customizer
 		 */

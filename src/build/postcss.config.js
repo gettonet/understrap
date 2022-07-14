@@ -13,19 +13,14 @@ module.exports = ctx => {
       },
 	  "postcss-understrap-palette-generator" : {
 		colors: [
-			"--bs-blue",
-			"--bs-indigo",
-			"--bs-purple",
-			"--bs-pink",
-			"--bs-red",
-			"--bs-orange",
-			"--bs-yellow",
-			"--bs-green",
-			"--bs-teal",
-			"--bs-cyan",
-			"--bs-white",
-			"--bs-gray",
-			"--bs-gray-dark"
+			"--elixir-primary",
+			"--elixir-secondary",
+			"--elixir-e1",
+			"--elixir-e2",
+			"--elixir-e3",
+      "--elixir-white",
+      "--elixir-lgrey",
+      "--elixir-light"
 		]
 	  }
     }

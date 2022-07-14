@@ -32,10 +32,18 @@ $container = get_theme_mod( 'elixir_container_type' );
 					<header class="page-header">
 						<?php
 						the_archive_title( '<h1 class="page-title">', '</h1>' );
-						the_archive_description( '<div class="taxonomy-description">', '</div>' );
+						//the_archive_description( '<div class="taxonomy-description">', '</div>' );
 						?>
 					</header><!-- .page-header -->
 					<?php
+					 $vesti = get_term_by( 'slug', 'vesti', 'category' );
+					 if (is_category( 'vesti' ) || cat_is_ancestor_of( $vesti->term_id, $cat )): ?>
+					 <div class="alignfull pb-5">
+						<?php echo elixir_latest_posts_slider(); ?>
+						</div>
+					 <?php 
+					 endif;
+		 
 					// Start the loop.
 					while ( have_posts() ) {
 						the_post();
@@ -45,7 +53,9 @@ $container = get_theme_mod( 'elixir_container_type' );
 						 * If you want to override this in a child theme, then include a file
 						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 						 */
-						get_template_part( 'loop-templates/content', get_post_format() );
+						get_template_part( 'loop-templates/content', get_post_format(), array(
+							'layout' => 'rows'
+						) );
 					}
 				} else {
 					get_template_part( 'loop-templates/content', 'none' );

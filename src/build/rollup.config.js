@@ -7,6 +7,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import multi from '@rollup/plugin-multi-entry'
 const replace = require('@rollup/plugin-replace')
 const banner = require('./banner.js')
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 let fileDest = 'theme.js'
 const external = ['jquery']
@@ -15,7 +16,9 @@ const plugins = [
     // Only transpile our source code
     exclude: 'node_modules/**',
     // Include the helpers in the bundle, at most one copy of each
-    babelHelpers: 'bundled'
+    babelHelpers: 'bundled',
+    "presets": ["@babel/preset-react"],
+    extensions,
   }),
   replace({
       'process.env.NODE_ENV': '"production"',
@@ -30,8 +33,13 @@ const globals = {
 }
 
 
-module.exports = {
-  input: [path.resolve(__dirname, '../js/bootstrap.js'), path.resolve(__dirname, '../js/skip-link-focus-fix.js'), path.resolve(__dirname, '../js/custom-javascript.js'), path.resolve(__dirname, '../js/themejs/*.js')],
+module.exports = [
+  {
+    input: [
+    path.resolve(__dirname, '../js/bootstrap.js'), 
+    path.resolve(__dirname, '../js/skip-link-focus-fix.js'), 
+    path.resolve(__dirname, '../js/custom-javascript.js')
+  ],
   output: {
     banner,
     file: path.resolve(__dirname, `../../js/${fileDest}`),
@@ -40,5 +48,13 @@ module.exports = {
     name: 'elixir'
   },
   external,
+  plugins}, 
+  {input: [
+    path.resolve(__dirname, '../extend-blocks/blocks.js')], 
+  output: {
+    file: path.resolve(__dirname, `../../js/elixir.admin.js`),
+    format: 'cjs',
+  },
   plugins
 }
+];

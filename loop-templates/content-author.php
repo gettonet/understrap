@@ -39,9 +39,6 @@ defined( 'ABSPATH' ) || exit;
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
-
-		<?php elixir_entry_footer(); ?>
-
 	</footer><!-- .entry-footer -->
 
 </article><!-- #post-## -->

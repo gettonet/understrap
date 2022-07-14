@@ -1,9 +1,9 @@
-@import "theme/theme_variables";  // <-------- Add your variables into this file. Also add variables to overwrite Bootstrap or Parallel variables here
+@import "theme/theme_variables"; // <-------- Add your variables into this file. Also add variables to overwrite Bootstrap or Parallel variables here
 /**************************************************/
 @import "assets/bootstrap5/functions"; // Required
 @import "assets/bootstrap5/variables";
 
-$theme-colors: map-merge($theme-colors, $custom-colors );
+$theme-colors: map-merge($theme-colors, $custom-colors);
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
 
 $utilities-text: map-merge($theme-colors, $utilities-text);
@@ -13,19 +13,22 @@ $utilities-bg: map-merge($theme-colors, $utilities-bg);
 $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg");
 /**************************************************/
 
-@import "assets/bootstrap5/bootstrap";      // <-------- Loads Bootstrap4
-@import "theme/parallel";  // <-------- Loads the Parallel defaults. Just a few classes to incorporate BS in WP
-@import "theme/colors";           // <-------- This creates the necessary bootstrap color classes.
-@import "theme/blocks";           // <-------- This adds Bootstrap styles to blocks.
-@import "theme/contact-form7";    // <-------- Contact Form 7 - Bootstrap 4 support
+@import "assets/bootstrap5/bootstrap"; // <-------- Loads Bootstrap4
+@import "theme/elixir"; // <-------- Loads the Parallel defaults. Just a few classes to incorporate BS in WP
+@import "theme/colors"; // <-------- This creates the necessary bootstrap color classes.
+@import "theme/blocks"; // <-------- This adds Bootstrap styles to blocks.
+@import "theme/contact-form7"; // <-------- Contact Form 7 - Bootstrap 4 support
 //@import "theme/woocommerce"; // <-------- Loads WooCommerce style fixes. Comment out if you aren't using WooCommerce
 
 // Optional files - If you dont use the corresponding scripts/fonts comment em out
-@import "assets/fonts";    
+@import "assets/fonts";
+@import "assets/aos/aos";
 @import "assets/flickity";    
+@import "assets/fancybox";
+
 
 // Any additional imported files //
-@import "theme/theme";            // <-------- That's where you can add your own design. Thats your part!
+@import "theme/theme"; // <-------- That's where you can add your own design. Thats your part!
 
 @each $breakpoint in map-keys($grid-breakpoints) {
 	@include media-breakpoint-up($breakpoint) {
@@ -42,4 +45,42 @@ $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg");
 			}
 		}
 	}
+}
+
+
+
+$s: 1;
+@each $breakpoint,
+$container-max-width in $container-max-widths {
+	$width: calc((100vw - $container-max-width)/2);
+	$bp: ('sm', 'md', 'lg', 'xl', 'xxl');
+	@include media-breakpoint-up($breakpoint) {
+		.vw-col-right {
+			margin-right: calc($width*(-1));
+		}
+
+		.vw-col-left {
+			margin-left: calc($width*(-1));
+		}
+
+		.hero-image {
+			width: calc(100% - (100% - $container-max-width) / 2);
+		}
+
+		@for $n from 1 through 5 {
+			@if($n <=$s) {
+				@for $i from 1 through $grid-columns {
+					$percentage: percentage(divide($i, $grid-columns));				
+					.col-#{nth($bp, $n)}-#{$i} {
+						&.vw-col-right,
+						&.vw-col-left {
+							width: calc($percentage + $width);
+							max-width: calc($percentage + $width);
+						}
+					}
+				}
+			}
+		}
+	}
+	$s: $s+1;
 }

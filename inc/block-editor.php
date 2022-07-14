@@ -5,6 +5,9 @@
  * @package Elixir
  */
 
+if (!defined('ABSPATH')) {
+	exit;
+}
 
 add_action( 'after_setup_theme', 'elixir_block_editor_setup' );
 
@@ -44,7 +47,7 @@ if ( ! function_exists( 'elixir_generate_color_palette' ) ) {
 		if ( $color_palette_json ) {
 			$color_palette_json = json_decode( $color_palette_json, true );
 			foreach ( $color_palette_json as $key => $value ) {
-				$key             = str_replace( array( '--bs-', '--' ), '', $key );
+				$key             = str_replace( array( '--bs-', '--elixir-', '--' ), '', $key );
 				$color_palette[] = array(
 					'name'  => $key,
 					'slug'  => $key,
@@ -61,3 +64,7 @@ if ( ! function_exists( 'elixir_generate_color_palette' ) ) {
 		return apply_filters( 'elixir_theme_editor_color_palette', $color_palette );
 	}
 }
+
+add_action('after_setup_theme', function() {
+	remove_theme_support('core-block-patterns');
+});

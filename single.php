@@ -7,12 +7,16 @@
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
+$fluid_container_post_types = array(
+	'proizvodi',
+	'preporuka_djubrenja'
+);
 
 get_header();
-$container = get_theme_mod( 'elixir_container_type' );
+$container = in_array(get_post_type(), $fluid_container_post_types)  ? 'container-fluid px-0' : get_theme_mod( 'elixir_container_type' );
 ?>
 
-<div class="wrapper" id="single-wrapper">
+<div id="single-wrapper">
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
@@ -23,18 +27,27 @@ $container = get_theme_mod( 'elixir_container_type' );
 
 			<main class="site-main" id="main">
 
-				<?php
-				while ( have_posts() ) {
-					the_post();
-					get_template_part( 'loop-templates/content', 'single' );
-					elixir_post_nav();
+			<?php /*if ( has_post_format( 'video' )) {
 
-					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) {
-						comments_template();
-					}
-				}
-				?>
+			get_template_part( 'loop-templates/content', 'single-video' );
+
+			}*/
+			
+			if ( 'proizvodi' === get_post_type() ) {
+
+			get_template_part( 'loop-templates/content', 'single-proizvod' ); 
+
+			} else if ( 'preporuka_djubrenja' === get_post_type() ) {
+
+			get_template_part( 'loop-templates/content', 'single-preporuka-djubrenja' );
+
+			} else { 
+
+			get_template_part( 'loop-templates/content', 'single' );
+
+			//elixir_post_nav();
+
+			} ?>
 
 			</main><!-- #main -->
 
