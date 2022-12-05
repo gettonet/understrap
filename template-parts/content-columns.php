@@ -26,11 +26,12 @@ $class = isset($args['class']) ? $args['class'] : 'col-md-6 col-lg-4 mb-4';
 $custom_title = isset($args['custom-title']) ? $args['custom-title'] : false;
 $custom_image = isset($args['custom-image']) ? $args['custom-image'] : false;
 $custom_excerpt = isset($args['custom-excerpt']) ? $args['custom-excerpt'] : false;
+$custom_url = isset($args['custom-url']) ? $args['custom-url'] : false;
 ?>
 
 <article <?php post_class($class); ?> id="post-<?php the_ID(); ?>">
 <?php if ($img_style != 'full-h') : ?>
-	<div class="article-inner shadow rounded-top rounded-start overflow-hidden h-100 pb-3 pb-lg-4 d-flex flex-column">
+	<div class="article-inner bg-white shadow rounded-top rounded-start overflow-hidden h-100 pb-3 pb-lg-4 d-flex flex-column">
 			<header class="entry-header">
 				<?php if ($img_style != 'none' && $img_style != 'full-h') : ?>
 					<div class="ratio ratio-<?php echo $img_style; ?>">
@@ -46,6 +47,7 @@ $custom_excerpt = isset($args['custom-excerpt']) ? $args['custom-excerpt'] : fal
 						else : ?>
 							<img src="<?php echo get_template_directory_uri() . '/img/thumbnail-default.svg'; ?>" class="w-100 h-100 fit-cover">
 						<?php endif; ?>
+						<a href="<?php echo esc_url(get_permalink()); ?>" rel="bookmark" class="stretched-link"></a>
 					</div>
 				<?php endif; ?>
 				<div class="p-3 p-lg-4">
@@ -71,7 +73,17 @@ $custom_excerpt = isset($args['custom-excerpt']) ? $args['custom-excerpt'] : fal
 			</header><!-- .entry-header -->
 			<div class="entry-content h-100 px-3 px-lg-4 d-flex flex-column justify-content-between">
 				<div>
-					<?php if ($custom_excerpt) {
+					<?php if(isset($args['job-details'])){
+						echo '<div class="mb-4">';
+						$l = array();
+						foreach(carbon_get_post_meta(get_the_id(), 'lokacija') as $loc){
+							$l[] = elixir_lokacija($loc);
+						}
+						echo carbon_get_post_meta(get_the_id(), 'clanica') ? get_company_logo(carbon_get_post_meta(get_the_id(), 'clanica'), '150px', false, 'mb-2') : '';
+						echo carbon_get_post_meta(get_the_id(), 'lokacija') ? '<p class="mb-0">Lokacija: <span class="text-primary">'.implode(', ', $l).'</span></span></p>' : '';
+						echo '</div>';
+					}
+						if ($custom_excerpt) {
 						echo apply_filters('the_excerpt', $custom_excerpt);
 					} else {
 						the_excerpt();

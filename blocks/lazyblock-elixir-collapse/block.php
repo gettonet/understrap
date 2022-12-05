@@ -9,7 +9,7 @@ $size = $attributes['icon-size'];
 <ul class="elixir-collapse list-group list-group-flush<?php echo $attributes['className'] ? ' ' . $attributes['className'] : ''; ?>" id="<?php echo $unique_id; ?>">
     <?php foreach ($attributes['item'] as $item) : ?>
 
-        <?php $id = slugify($item['heading']);
+        <?php $id = sanitize_title($item['heading']);
         $icon = isset($item['custom-icon']['id']) ? wp_get_attachment_image($item['custom-icon']['id'], array($size, $size), '', array('class' => 'elixir-collapse-icon me-3')) : false;
         if (!$icon && isset($item['icon'])) {
             $icon = $item['icon'] ? '<i class="icon-' . $item['icon'] . ' text-' . $item['icon-color'] . ' d-inline-block lh-1 me-3" style="font-size:' . $size . 'px"></i>' : false;

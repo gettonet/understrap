@@ -14,7 +14,7 @@ function elixir_cpt_tabs()
         'public'              => false,
         'show_ui'             => true,
         'show_in_menu'        => true,
-        'menu_position'       => 8,
+        'menu_position'       => 9,
         'menu_icon'           => 'data:image/svg+xml;base64,' . base64_encode('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 124"><defs><style>.cls-1{fill:none;stroke:#333;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="General_-_Tabs" data-name="General - Tabs"><g id="General_-_Tabs-2" data-name="General - Tabs"><path class="cls-1" d="M50.49 3H111a12 12 0 0 1 12 12v5"/><path d="M2 81.88V14A12 12 0 0 1 14 2h31.1l3.36 20H110a12 12 0 0 1 12 12v76a12 12 0 0 1-12 12H14a12 12 0 0 1-12-12V99" style="stroke-width:4px;fill:none;stroke:#333;stroke-linecap:round;stroke-linejoin:round"/><circle cx="2" cy="89" r="2" style="fill:#333"/><path class="cls-1" d="M27 77h70M27 91h50M27 63h70M27 49h70"/></g></g></g></svg>'),
         'show_in_admin_bar'   => true,
         'show_in_nav_menus'   => false,
@@ -146,7 +146,7 @@ function elixir_cpt_block_patterns()
                 'menu_name'             => __('Block Patterns', 'elixir'),
             ],
             'public'        => false,
-            'menu_position' => 9,
+            'menu_position' => 10,
             'show_ui'       => true,
             'show_in_menu'  => true,
             'capabilities'  => [
@@ -169,9 +169,51 @@ function elixir_cpt_block_patterns()
     );
 }
 
+function elixir_cpt_posao()
+{
+
+    $labels = array(
+
+        'name'                  => _x('Oglasi za posao', 'Oglasi za posao', 'elixir'),
+        'singular_name'         => _x('Oglas za posao', 'Oglasi za posao Singular Name', 'elixir'),
+        'menu_name'             => __('Oglasi za posao', 'elixir'),
+        'name_admin_bar'        => __('Oglasi za posao', 'elixir'),
+        'archives'              => __('Oglasi za posao - arhiva', 'elixir'),
+
+    );
+
+    $args = array(
+
+        'label'                 => __('Oglasi za posao', 'elixir'),
+        'description'           => __('Oglasi za posao CPT', 'elixir'),
+        'labels'                => $labels,
+        'supports'              => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
+        //'taxonomies'   => array('category'),
+        'show_in_rest' => true,
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_position'         => 8,
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => false,
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'post',
+        'menu_icon'   => 'dashicons-portfolio',
+        'rewrite' => array('slug' => _x('oglasi-za-posao', 'elixir'), 'with_front' => false),
+
+    );
+
+    register_post_type('oglas_za_posao', $args);
+}
+
 add_action('init', 'elixir_cpt_tabs', 5);
 add_action('init', 'elixir_cpt_proizvodi', 10);
 add_action('init', 'elixir_cpt_preporuka_djubrenja', 10);
+add_action('init', 'elixir_cpt_posao', 10);
 add_action('init', 'elixir_cpt_block_patterns', 10);
 
 
@@ -193,7 +235,7 @@ function namespace_add_custom_types($query)
 
         $query->set('post_type', array(
 
-            'page', 'post', 'preporuka_djubrenja', 'proizvodi', 'strucni_saveti'
+            'page', 'post', 'preporuka_djubrenja', 'proizvodi', 'strucni_saveti', 'oglas_za_posao'
 
         ));
     }

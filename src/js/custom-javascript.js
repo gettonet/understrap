@@ -1,10 +1,12 @@
 import AOS from 'aos';
-import {
+/*import {
 	Fancybox,
 	Carousel,
 	Panzoom
-} from "@fancyapps/ui";
+} from "@fancyapps/ui"; */
+import {Fancybox} from "@fancyapps/ui";
 import Flickity from "flickity";
+import "flickity-fade";
 import Masonry from "masonry-layout";
 import mixitup from 'mixitup';
 
@@ -51,17 +53,60 @@ jQuery(function ($) {
 	  });*/
 
 	if ($('#preporuke-djubrenja-nav').length) {
+		var flkty = Flickity.data('.preporuke-djubrenja-slider', {
+			on: {
+			  ready: function() {
+				console.log('Flickity ready');
+				$('.preporuke-djubrenja-slider article').addClass('h-100');
+			  }
+			}
+		  });
 		var pdj_tab = document.querySelector('#preporuke-djubrenja-nav');
-		pdj_tab.addEventListener('shown.bs.tab', function (event) {
+			pdj_tab.addEventListener('shown.bs.tab', function (event) {
 			var flkty = Flickity.data('.preporuke-djubrenja-slider');
 			flkty.resize();
+			$('.preporuke-djubrenja-slider article').addClass('h-100');
 			console.log('Resized');
+			
 		});
 
 	}
 
 	if ($('#preporuke-djubrenja-mix').length) {
-		var mixer = mixitup('#preporuke-djubrenja-mix');
+		var pdj_mixer = mixitup('#preporuke-djubrenja-mix');
+	}
+
+	if ($('#oglasi-za-posao-mix').length) {
+		var op_mixer = mixitup('#oglasi-za-posao-mix', {
+			callbacks: {
+				onMixStart: function(state, futureState){
+					$('#no-jobs-found').hide();
+				},
+				onMixFail: function(state){
+				  $('#no-jobs-found').fadeIn();
+				}
+			  }
+		});
+		$(document).on('change', '#jobs-company, #jobs-location', function(){
+			var c = '',
+			l = '';
+			if($('#jobs-company').val()) {
+				c = '.company-'+$('#jobs-company').val();
+			}
+			if($('#jobs-location').val()) {
+				l = '.location-'+$('#jobs-location').val();
+			}
+			if((c+l).length){
+				op_mixer.filter(c+l);
+			} else {
+				op_mixer.show()
+			}
+		});
+		$('#reset-job-mix').on('click', function(){
+			$('#jobs-company').prop('selectedIndex',0);
+			$('#jobs-location').prop('selectedIndex',0);
+			op_mixer.show();
+		});		
 	}
 
 

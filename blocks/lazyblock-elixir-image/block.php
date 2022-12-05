@@ -44,11 +44,11 @@ $wrapper_classes = array_filter($wrapper_classes);
 $img_classes = array_filter($img_classes);
 
 if($wrapper_classes){
-  if(!strpos($attributes['className'], 'mb-' ) && !strpos($attributes['className'], 'my-')){
+  if(strpos($attributes['className'], 'mb-') === false && strpos($attributes['className'], 'my-') === false){
     $wrapper_classes[] = 'mb-4';
   }
 } else {
-  if(!strpos($attributes['img-class'], 'mb-' ) && !strpos($attributes['img-class'], 'my-')){
+  if(strpos($attributes['img-class'], 'mb-') === false && strpos($attributes['img-class'], 'my-') === false){
     $img_classes[] = 'mb-4';
   }
 }
@@ -64,6 +64,10 @@ if ($attributes['open-in-lightbox']) {
   $img_atts['data-src'] = esc_url($attributes['image']['url']);
   $img_atts['data-fancybox'] = $attributes['part-of-gallery'];
   $img_atts['role'] = 'button';
+}
+
+if($attributes['title-attribute']) {
+  $img_atts['title'] = $attributes['title-attribute'];
 }
 
 echo $w_class || $w_style || $animation || $caption ? '<div' . $w_class . $w_style . $animation . '>' : '';

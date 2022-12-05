@@ -65,4 +65,5 @@ if ($bgstyles) {
 }
 ?>
 
-<?php echo $bgclasses ? ' <div' . $bgclass . $bgstyle . '></div>' : ''; ?>
+<?php echo array_filter($classes) ? ' <section' . $class . $style . '></section>' : ''; ?>
+<?php echo array_filter($bgclasses) ? ' <div' . $bgclass . $bgstyle . '></div>' : ''; ?>

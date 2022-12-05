@@ -15,12 +15,16 @@ module.exports = ctx => {
 		colors: [
 			"--elixir-primary",
 			"--elixir-secondary",
-			"--elixir-e1",
-			"--elixir-e2",
-			"--elixir-e3",
+      "--elixir-deep-blue",
+      "--elixir-blue",
+      "--elixir-light-blue",
+      "--elixir-dark-blue",
+      "--elixir-purple",
+      "--elixir-black",
       "--elixir-white",
       "--elixir-lgrey",
-      "--elixir-light"
+      "--elixir-light",
+      "--elixir-fluor"
 		]
 	  }
     }

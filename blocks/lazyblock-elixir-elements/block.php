@@ -41,14 +41,14 @@ switch ($attributes['element']) {
         $atomic_number = 26;
         $element_name = __('Iron', 'elixir');
         break;
-    case 'cn':
+    case 'zn':
         $atomic_number = 20;
         $element_name = __('Zinc', 'elixir');
         break;
 }
 
 ?>
-<div class="elixir-element">
+<div class="elixir-element<?php echo $attributes['className'] ? ' '.$attributes['className'] : ''; ?> ">
     <span><?php echo $atomic_number; ?></span>
     <span><?php echo ucfirst($attributes['element']); ?></span>
     <span><?php echo $element_name; ?></span>

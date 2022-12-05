@@ -67,11 +67,21 @@
     label {
       width: 100%;
     }
+
+    .wpcf7-response-output {
+      margin: 0;
+    }
+
+    .wpcf7-checkbox .wpcf7-list-item.first {
+      margin-left: 0;
+    }
+
   }
 
   // not valid tip for each control
   .wpcf7-not-valid-tip {
     color: theme-color("danger");
+    font-size: small;
   }
 
   // validation errors ourput bottom of form
@@ -79,5 +89,9 @@
     @extend .form-control;
     color: theme-color("danger");
     border: 1px solid $gray-200;
+  }
+
+  .wpcf7-spinner {
+    display: none !important;
   }
 }

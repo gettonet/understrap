@@ -5,12 +5,28 @@ $e1 : #C6D420;
 $e2 : #C7D29C;
 $e3 : #C0D0C2;
 $light: #EBECEB;
+$elixir-deep-blue : #32508d;
+$elixir-blue : #007EC3;
+$elixir-light-blue : #00B0BE;
+$elixir-dark-blue : #003B5E;
+$elixir-purple : #562b99;
+$elixir-black: #3D3936;
+$elixir-fluor: #3cb4e5;
 
 
 $custom-colors: (
 	"e1": $e1,
 	"e2": $e2,
 	"e3": $e3,
+	"dark-green" : $secondary,
+	"light-green" : $e1,
+	"deep-blue" : $elixir-deep-blue,
+	"blue" : $elixir-blue,
+	"light-blue" : $elixir-light-blue,
+	"dark-blue" : $elixir-dark-blue,
+	"purple" : $elixir-purple,
+	"fluor" : $elixir-fluor,
+	"elixir-black" : $elixir-black,
 	"lgrey": #F6F6F6
 );
 
@@ -61,23 +77,22 @@ $font-sizes: (
 
 $enable-negative-margins: true;
 $body-color: #5D5D5D;
-$link-color: #ADA8A8;
+$link-color: $primary;
 
 $font-weight-bolder: 700;
 $link-decoration: none;
 $link-hover-decoration: none;
 
 $input-btn-focus-width: .125rem !default;
-$input-btn-focus-color: $e2;
 $input-btn-padding-x-lg: 2rem;
 $input-btn-padding-x: 1.75rem;
 $input-btn-padding-x-sm: 1.5rem;
+$input-btn-padding-y-lg: .75rem;
+$input-btn-padding-y: .625rem;
+$input-btn-padding-y-sm: .5rem;
 
 $btn-font-weight: 500;
-$btn-border-width: 2px;
-$btn-padding-y-lg: .75rem;
-$btn-padding-y: .625rem;
-$btn-padding-y-sm: .5rem;
+
 $btn-border-radius-sm: 1.5rem;
 $btn-border-radius: 1.5rem;
 $btn-border-radius-lg: 2rem;
@@ -85,11 +100,11 @@ $btn-border-radius-lg: 2rem;
 $input-padding-y-lg: .8125rem;
 $input-padding-y: .6875rem;
 $input-padding-y-sm: .5625rem;
-$input-border-radius-sm: 1.5rem;
-$input-border-radius: 1.5rem;
+$input-border-radius-sm: .25rem;
+$input-border-radius: .5rem;
 $input-border-radius-lg: 2rem;
 
-$border-radius: 1.875rem;
+$border-radius: 1.5rem;
 $border-radius-sm: 1rem !default;
 $border-radius-lg: 2.25rem !default;
 
@@ -150,5 +165,6 @@ $aspect-ratios: (
 );
 
 $blockquote-font-size: $font-size-base;
+$modal-content-border-radius: $border-radius $border-radius 0 $border-radius;
 
 $variable-prefix: elixir-;

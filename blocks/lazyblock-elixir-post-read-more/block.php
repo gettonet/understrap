@@ -25,10 +25,11 @@ $params = array(
     'button-text-style' => $attributes['button-text-style'],
     'show-category' => isset($attributes['show-post-category']),
     'show-date' => isset($attributes['show-post-date']),
-    'class' => 'h-100',
+    'class' => 'h-100 '.$attributes['className'],
     'custom-image' => isset($attributes['custom-image']['id']) ? $attributes['custom-image']['id'] : false,
     'custom-excerpt' => $attributes['custom-excerpt'] ?: false,
-    'custom-title' => $attributes['custom-title'] ?: false
+    'custom-title' => $attributes['custom-title'] ?: false,
+    'custom-url' => $attributes['custom-url'] ?: false
 );
 
 $the_query = new WP_Query( $args );
@@ -46,7 +47,7 @@ if ( $the_query->have_posts() ) {
 wp_reset_postdata();
 } else {
     $title = $attributes['custom-title'] ?: 'Lorem Ipsum';
-    $url = $attributes['custom-url'] ?: '#';
+    $url = $attributes['custom-url'] ?: false;
     $excerpt = $attributes['custom-excerpt'] ? apply_filters('the_excerpt', $attributes['custom-excerpt']) : '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit euismod in pellentesque massa placerat duis ultricies.</p>';
     $btn = $attributes['outline'] ? 'outline-'. $attributes['button'] : $attributes['button'];
     $btn_text = $attributes['button-text'] ?: 'Lorem Ipsum';
@@ -75,7 +76,9 @@ wp_reset_postdata();
 			<?php endif; ?>
 			<div class="p-3 p-lg-4 bg-white">
 				<?php
-				echo '<h2 class="entry-title h4 fw-500 mb-0"><a href="'.$url.'" rel="bookmark" class="text-dark">'.$title.'</a></h2>';
+				echo '<h2 class="entry-title h4 fw-500 mb-0">';
+                echo $url ? '<a href="'.$url.'" rel="bookmark" class="text-dark">'.$title.'</a>' : $title;
+                echo '</h2>';
 				?>
 			</div>
 		</header><!-- .entry-header -->
@@ -85,9 +88,10 @@ wp_reset_postdata();
                 <?php echo $excerpt; ?>
             </div>
         <?php                        
-			if ($attributes['button'] != 'none') {
+			if ($attributes['button'] != 'none' ) {
+                $url = $url ?: '#';
 				echo sprintf(
-					'<a href="%1$s" rel="bookmark" class="%2$s">%3$s</a>',
+					'<div><a href="%1$s" rel="bookmark" class="%2$s">%3$s</a></div>',
 					$url,
 					'btn btn-' . $btn,
 					$btn_text

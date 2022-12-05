@@ -27,7 +27,7 @@
     foreach ($attributes['images'] as $image){
         echo '<div class="w-100 w-lg-75 w-xl-60 w-xxl-50 p-2">';
         echo '<div class="ratio ratio-'.$ratio.' rounded-top rounded-start overflow-hidden">';
-        echo wp_get_attachment_image($image['id'], 'large', '', array('class' => 'w-100 h-100 fit-cover'));
+        echo wp_get_attachment_image($image['id'], 'xlarge', '', array('class' => 'w-100 h-100 fit-cover'));
         echo '</div></div>';
     }
     echo '</div>';

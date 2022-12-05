@@ -50,7 +50,9 @@ module.exports = [
   external,
   plugins}, 
   {input: [
-    path.resolve(__dirname, '../extend-blocks/blocks.js')], 
+    path.resolve(__dirname, '../extend-blocks/blocks.js'),
+    path.resolve(__dirname, '../extend-blocks/lazyblocks.js'),
+    ], 
   output: {
     file: path.resolve(__dirname, `../../js/elixir.admin.js`),
     format: 'cjs',

@@ -287,76 +287,81 @@
 }
 
 @font-face {
-  font-family: 'elixir';
-  src: url('../fonts/elixir.eot?98621625');
-  src: url('../fonts/elixir.eot?98621625#iefix') format('embedded-opentype'),
-       url('../fonts/elixir.woff2?98621625') format('woff2'),
-       url('../fonts/elixir.woff?98621625') format('woff'),
-       url('../fonts/elixir.ttf?98621625') format('truetype'),
-       url('../fonts/elixir.svg?98621625#elixir') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'elixir';
-    src: url('../font/elixir.svg?98621625#elixir') format('svg');
+	font-family: 'elixir';
+	src: url('../fonts/elixir.eot?88623150');
+	src: url('../fonts/elixir.eot?88623150#iefix') format('embedded-opentype'),
+		 url('../fonts/elixir.woff2?88623150') format('woff2'),
+		 url('../fonts/elixir.woff?88623150') format('woff'),
+		 url('../fonts/elixir.ttf?88623150') format('truetype'),
+		 url('../fonts/elixir.svg?88623150#elixir') format('svg');
+	font-weight: normal;
+	font-style: normal;
   }
-}
-*/
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "elixir";
-  font-style: normal;
-  font-weight: normal;
-  speak: never;
-
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  /* opacity: .8; */
-
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
-
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-
-  /* Font smoothing. That was taken from TWBS */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-}
-
-.icon-environment:before { content: '\e800'; } /* '' */
-.icon-right:before { content: '\e801'; } /* '' */
-.icon-chemistry:before { content: '\e802'; } /* '' */
-.icon-molecule:before { content: '\e803'; } /* '' */
-.icon-construction:before { content: '\e804'; } /* '' */
-.icon-recycle:before { content: '\e805'; } /* '' */
-.icon-bricks:before { content: '\e806'; } /* '' */
-.icon-tools:before { content: '\e807'; } /* '' */
-.icon-ig-rounded:before { content: '\e808'; } /* '' */
-.icon-fb-rounded:before { content: '\e809'; } /* '' */
-.icon-yt-rounded:before { content: '\e80a'; } /* '' */
-.icon-lin-rounded:before { content: '\e80b'; } /* '' */
-.icon-down-open:before { content: '\e80c'; } /* '' */
-.icon-left-open:before { content: '\e80d'; } /* '' */
-.icon-right-open:before { content: '\e80e'; } /* '' */
-.icon-up-open:before { content: '\e80f'; } /* '' */
-.icon-open-quote:before { content: '\e810'; } /* '' */
-.icon-close-quote:before { content: '\e811'; } /* '' */
+  /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+  /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+  /*
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+	@font-face {
+	  font-family: 'elixir';
+	  src: url('../font/elixir.svg?88623150#elixir') format('svg');
+	}
+  }
+  */
+  [class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: "elixir";
+	font-style: normal;
+	font-weight: normal;
+	speak: never;
+  
+	display: inline-block;
+	text-decoration: inherit;
+	width: 1em;
+	margin-right: .2em;
+	text-align: center;
+	/* opacity: .8; */
+  
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+  
+	/* fix buttons height, for twitter bootstrap */
+	line-height: 1em;
+  
+	/* Animation center compensation - margins should be symmetric */
+	/* remove if not needed */
+	margin-left: .2em;
+  
+	/* you can be more comfortable with increased icons size */
+	/* font-size: 120%; */
+  
+	/* Font smoothing. That was taken from TWBS */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  
+	/* Uncomment for 3D effect */
+	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+  }
+  
+  .icon-environment:before { content: '\e800'; } /* '' */
+  .icon-right:before { content: '\e801'; } /* '' */
+  .icon-chemistry:before { content: '\e802'; } /* '' */
+  .icon-molecule:before { content: '\e803'; } /* '' */
+  .icon-construction:before { content: '\e804'; } /* '' */
+  .icon-recycle:before { content: '\e805'; } /* '' */
+  .icon-bricks:before { content: '\e806'; } /* '' */
+  .icon-tools:before { content: '\e807'; } /* '' */
+  .icon-ig-rounded:before { content: '\e808'; } /* '' */
+  .icon-fb-rounded:before { content: '\e809'; } /* '' */
+  .icon-yt-rounded:before { content: '\e80a'; } /* '' */
+  .icon-lin-rounded:before { content: '\e80b'; } /* '' */
+  .icon-down-open:before { content: '\e80c'; } /* '' */
+  .icon-left-open:before { content: '\e80d'; } /* '' */
+  .icon-right-open:before { content: '\e80e'; } /* '' */
+  .icon-up-open:before { content: '\e80f'; } /* '' */
+  .icon-open-quote:before { content: '\e810'; } /* '' */
+  .icon-close-quote:before { content: '\e811'; } /* '' */
+  .icon-ok:before { content: '\e812'; } /* '' */
+  .icon-email:before { content: '\e813'; } /* '' */
+  .icon-location:before { content: '\e814'; } /* '' */
+  .icon-link:before { content: '\e815'; } /* '' */
+  .icon-phone:before { content: '\e816'; } /* '' */

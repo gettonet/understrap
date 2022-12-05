@@ -31,9 +31,23 @@ $navbar_type       = get_theme_mod( 'elixir_navbar_type', 'collapse' );
 
 	<a class="skip-link sr-only visually-hidden sr-only-focusable" href="#content"><?php esc_html_e( 'Skip to content', 'elixir' ); ?></a>
 		<?php
+		$menu = 'primary';
+		if(is_page('elixir-zorka')){
+			$menu = 'elixirZorka';
+		} else if(is_page('elixir-prahovo')){
+			$menu = 'elixirPrahovo';
+		} else if(is_page('elixir-agrar')){
+			$menu = 'elixirAgrar';
+		} else if(is_page('elixir-craft')){
+			$menu = 'elixirCraft';
+		} else if(is_page('elixir-feed')){
+			$menu = 'elixirFeed';
+		} else if(is_page('elixir-fondacija')){
+			$menu = 'elixirFondacija';
+		}
                 wp_nav_menu(
                     array(
-                        'theme_location'  => 'primary',
+                        'theme_location'  => $menu,
                     )
                 );
                 ?>

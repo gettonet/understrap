@@ -36,7 +36,7 @@ foreach ($tabs as $k => $v){
             $content .= '<div class="col-md-6 col-lg-4 mb-4">';
             $content .= '<div class="shadow rounded-top rounded-start overflow-hidden h-100 d-flex flex-column">';
             $content .= '<div class="ratio ratio-16x9" data-src="https://www.youtube.com/watch?v='. $match[1] .'" data-fancybox="" data-width="1600" data-height="900" role="button"><div>';
-            $content .= '<span class="elixir-video-icon "><img src="/wp-content/themes/elixir/img/v.svg"  data-aos="zoom-in" data-aos-once="false" data-aos-mirror="true"></span>';
+            $content .= '<span class="elixir-video-icon "><img src="/wp-content/themes/elixir/img/v.svg"></span>';
             if(isset($video['thumbnail']['id'])){
                 $content .= wp_get_attachment_image( $video['thumbnail']['id'], 'medium', '', array('class' => 'img-fluid w-100 h-100 fit-cover'));
             } else {
@@ -45,7 +45,7 @@ foreach ($tabs as $k => $v){
             $content .= '</span></div></div>';
             $content .= '<div class="h-100 p-3 p-lg-4 bg-white">';
             $content .= '<h2 class="entry-title h4 fw-500">'.$video['title'].'</h2>';
-            $content .= apply_filters('the_content', $video['description']);
+            $content .= isset($video['description']) ? apply_filters('the_content', $video['description']) : '';
             $content .= '</div></div></div>';
             }
             $content .= '</div>';

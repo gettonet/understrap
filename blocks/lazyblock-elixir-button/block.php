@@ -1,10 +1,10 @@
 <?php
-$classes = $wrapper_classes = array();
+$classes = $wrapper_classes = $link_atts= array();
 $url = $attributes['url'] ?: '#';
 $url = isset($attributes['link-to-file']['url']) ? $attributes['link-to-file']['url'] : $url;
 $content = '';
 $animation = isset($attributes['aos_animation']) ? elixir_generate_data_aos($attributes) : NULL;
-$link_atts = array();
+
 
 $classes[] = $attributes['size'];
 
@@ -52,10 +52,12 @@ switch ($attributes['target']) {
     case '_parent':
     case '_blank':    
         $link_atts[] = 'target="'.$attributes['target'].'"';
+        $link_atts[] = 'href="'.$url.'"';
         $element = 'a';
         break;
     case 'lightbox':
         $link_atts[] = 'data-fancybox';
+        $link_atts[] = 'href="'.$url.'"';
         $element = 'a';
         break;
     case '_df_custom':
@@ -100,6 +102,7 @@ $btn_class = implode (' ', array_unique(array_filter($classes)));
 
 echo $wrapper_classes ? '<div class="' . implode(' ', array_unique($wrapper_classes)) . '"'.$animation.'>' : '';
 echo '<' . $element;
+echo ' '.implode(' ', $link_atts);
 echo $btn_class ? ' class="' . $btn_class . '"' : '';
 echo $wrapper_classes ? '>' : $animation . '>';
 echo $content;

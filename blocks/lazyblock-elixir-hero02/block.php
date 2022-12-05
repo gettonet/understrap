@@ -5,14 +5,14 @@ $img_atts = array(
 );
 ?>
 <?php if (!isset($attributes['bg-image']['id'])) : ?>
-    <section id="elixir-hero" class="bg-elixir-gradient" data-aos="fade">
+    <section id="elixir-hero" class="bg-elixir-<?php echo $attributes['gradient-color']; ?>-gradient<?php echo $attributes['className'] ? ' '.$attributes['className'] : ''; ?>" data-aos="fade">
         <div class="container">
             <?php echo $attributes['content']; ?>
         </div>
     </section>
 <?php else : ?>
-    <section id="elixir-hero" class="position-relative" data-aos="fade">
-        <div class="bg-elixir-gradient w-100 h-90 h-md-80 h-lg-75 position-absolute top-0 left-0 z-0"></div>
+    <section id="elixir-hero" class="position-relative<?php echo $attributes['className'] ? ' '.$attributes['className'] : ''; ?>" data-aos="fade">
+        <div class="bg-elixir-<?php echo $attributes['gradient-color']; ?>-gradient w-100 h-90 h-md-80 h-lg-75 position-absolute top-0 left-0 z-0"></div>
         <div class="position-relative z-1">
             <div class="container">
                 <?php echo $attributes['content']; ?>

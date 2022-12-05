@@ -10,78 +10,81 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-.wp-block{
+
+.wp-block {
 	max-width: 100%;
-	&:not([class*="w-"]){
-		width: 100%;		
+
+	&:not([class*="w-"]) {
+		width: 100%;
 	}
-	&:not([class*="ms-"]){
+
+	&:not([class*="ms-"]) {
 		margin-left: unset !important;
 	}
-	&:not([class*="mr-"]){
+
+	&:not([class*="mr-"]) {
 		margin-right: unset !important;
 	}
 
 	.block-library-rich-text__tinymce {
 		color: initial;
-	  }
-	  
-	.lazyblock {
-		padding: 5px;
-		background-color: transparent;
-		box-shadow: 0 0 0 1px #e6e6e6;
-		position: relative;
+	}
 
-		.lzb-content-title, .lzb-content-controls .components-base-control__label {
-			display: none;
+}
+
+.lazyblock {
+	padding: 5px;
+	background-color: transparent;
+	box-shadow: 0 0 0 1px #e6e6e6;
+	position: relative;
+
+	.lzb-content-title,
+	.lzb-content-controls .components-base-control__label {
+		display: none;
+	}
+
+	&.wp-block-lazyblock-elixir-section,
+	&.wp-block-lazyblock-elixir-block-group {
+
+		min-height: 100px;
+
+		>.lzb-content-controls {
+			position: relative;
+			z-index: 1;
+			margin: 0
 		}
 
-		&.wp-block-lazyblock-elixir-section, &.wp-block-lazyblock-elixir-block-group {
-			
-			min-height: 100px;
-			>.lzb-content-controls {
-				position: relative;
-				z-index: 1;
-				margin:0
-			}
+		>.lzb-preview-server {
+			position: absolute;
+			z-index: 0;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			margin-top: 0;
 
-			>.lzb-preview-server {
-				position: absolute;
-				z-index: 0;
-				top: 0;
-				left: 0;
-				bottom: 0;
-				right: 0;
-				margin-top: 0;
+			>div {
+				width: 100%;
+				height: 100%;
 
-				>div {
+				>section {
 					width: 100%;
 					height: 100%;
-
-					>section {
-						width: 100%;
-						height: 100%;
-					}
 				}
 			}
 		}
-		&.wp-block-lazyblock-elixir-hero02 {
-			min-height: 100px;
-			background: rgb(198,212,32);
-			background: linear-gradient(-45deg, rgba(198,212,32,1) 0%, rgba(186,207,47,1) 40%, rgba(129,152,37,1) 100%);
-		}
-		&.wp-block-lazyblock-elixir-product-resource-center {
-			.lzb-content-controls .components-base-control__label {
-				display: block;
-			}
-		}
-
-		
 	}
-	
-	&:hover .lazyblock,
-	&.is-selected .lazyblock {
-		box-shadow: 0 0 0 1px #c5c5c5;
+
+	&.wp-block-lazyblock-elixir-hero02 {
+		min-height: 100px;
+		background: rgb(198, 212, 32);
+		background: linear-gradient(-45deg, rgba(198, 212, 32, 1) 0%, rgba(186, 207, 47, 1) 40%, rgba(129, 152, 37, 1) 100%);
+	}
+
+	&.wp-block-lazyblock-elixir-product-resource-center {
+		.lzb-content-controls .components-base-control__label {
+			display: block;
+		}
 	}
 
 

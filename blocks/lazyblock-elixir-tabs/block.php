@@ -19,17 +19,17 @@ $i = 1;
 foreach ($attributes['tab'] as $tab){
   $title = get_the_title( $tab['tab-id'] );
   if(isset($tab['tab-title'])){
-    $title = !empty($tab['tab-title']) ?: $title;
+    $title = !empty($tab['tab-title']) ? $tab['tab-title'] : $title;
   }
   $btn_class = 'nav-link';
   $btn_class .= $i === 1 ? ' active' : '';
   $btn_class .= $attributes['capitalize-titles'] ? ' text-uppercase' : '';
   $btn_class .= $attributes['nav-font-size'] ? ' '.$attributes['nav-font-size'] : '';
-  $slug = slugify($title);
-  $nav.= '<span class="'.$btn_class.'" id="'.$slug.'-tab" data-bs-toggle="tab" data-bs-target="#nav-'.$slug.'" type="button" role="tab">'.$title.'</span>';
+  $slug = sanitize_title($title);
+  $nav.= '<span class="'.$btn_class.'" id="'.$slug.'-nav" data-bs-toggle="tab" data-bs-target="#tab-'.$slug.'" type="button" role="tab">'.$title.'</span>';
   
   $content_class = $i === 1 ? 'tab-pane fade show active' : 'tab-pane fade';
-  $content .= '<div class="'.$content_class.'" id="nav-'.$slug.'" role="tabpanel">';
+  $content .= '<div class="'.$content_class.'" id="tab-'.$slug.'" role="tabpanel">';
   $content .= apply_filters( 'the_content', get_post_field( 'post_content', $tab['tab-id'] ) );
   $content .= '</div>';
   $i++;

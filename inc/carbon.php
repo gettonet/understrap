@@ -14,6 +14,39 @@ Container::make('theme_options', __('Theme Options', 'elixir'))
     ))
     ->add_tab('GTM', array(
         Field::make('text', 'gtm_id', 'GTM ID')
+    ))
+    ->add_tab('Social Links', array(
+        Field::make('html', 'egroup_social_desc')
+            ->set_html('<h3>Elixir Group</h3>'),
+        Field::make('text', 'fb_url', 'Facebook')
+            ->set_attribute('type', 'url'),
+        Field::make('text', 'yt_url', 'YouTube')
+            ->set_attribute('type', 'url'),
+        Field::make('text', 'ig_url', 'Instagram')
+            ->set_attribute('type', 'url'),
+        Field::make('text', 'lin_url', 'LinkedIn')
+            ->set_attribute('type', 'url'),
+        Field::make('html', 'ezorka_social_desc')
+            ->set_html('<h3>Elixir Zorka</h3>'),
+        Field::make('text', 'zorka_fb_url', 'Facebook')
+            ->set_attribute('type', 'url'),
+        Field::make('text', 'zorka_yt_url', 'YouTube')
+            ->set_attribute('type', 'url'),
+        Field::make('text', 'zorka_ig_url', 'Instagram')
+            ->set_attribute('type', 'url'),
+        Field::make('text', 'zorka_lin_url', 'LinkedIn')
+            ->set_attribute('type', 'url'),
+    ))
+    ->add_tab('Izveštaji', array(
+        Field::make('html', 'egroup_reports')
+            ->set_html('<p>Izveštaji o poslovanju, društvenom uticaju i očuvanju okruženja.<br>Pozivaju se uz pomoć shortcode [elixir-reports]</p>'),
+        Field::make('complex', 'elixir_reports', __('Izveštaji'))
+            ->add_fields(array(
+                Field::make('file', 'report')
+                    ->set_type('application/pdf'),
+                Field::make('text', 'title', __('Title')),
+            ))
+
     ));
 
 Container::make('post_meta', 'Povezani proizvodi')
@@ -54,3 +87,43 @@ Container::make('post_meta', __('Header Image'))
             ->set_default_value(50)
 
     ));
+
+Container::make('post_meta', __('Job data'))
+    ->where('post_type', '=', 'oglas_za_posao')
+    ->set_context('side')
+    ->add_fields(array(
+        Field::make('multiselect', 'lokacija', __('Lokacija'))
+            ->set_options(array(
+                'ph' => 'Prahovo',
+                'sb' => 'Šabac',
+                'bg' => 'Beograd',
+                'ns' => 'Novi Sad',
+            )),
+        Field::make('select', 'clanica', __('Članica'))
+            ->set_options(array(
+                'ElixirPrahovo' => 'Elixir Prahovo',
+                'ElixirZorka' => 'Elixir Zorka',
+                'ElixirAgrar' => 'Elixir Agrar',
+                'ElixirFeed' => 'Elixir Feed',
+                'ElixirCraft' => 'Elixir Craft',
+                'ElixirFondacija' => 'Elixir Fondacija'
+            ))
+    ));
+
+    Container::make('post_meta', __('More options'))
+    ->where('post_type', '=', 'page')
+    ->set_context('side')
+    ->add_fields(array(
+        Field::make( 'select', 'color_palette', __( 'Color Palette' ) )
+	->set_options( array(
+		'' => 'Default',
+        'dark-green' => 'Dark Green',
+		'light-green' => 'Light Green',
+		'deep-blue' => 'Deep Blue',
+		'blue' => 'Blue',
+		'light-blue' => 'Light Blue',
+        'dark-blue' => 'Dark Blue',
+        'purple' => 'Purple'
+
+	) )
+    ));    

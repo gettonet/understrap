@@ -52,6 +52,15 @@ if ( ! function_exists( 'elixir_setup' ) ) {
 				'footer-3' => __( 'Footer (3)', 'elixir' ),
 				'footer-4' => __( 'Footer (4)', 'elixir' ),
 				'footer-5' => __( 'Footer (5)', 'elixir' ),
+				'footer-6' => __( 'Footer (6)', 'elixir' ),
+				'footer-legal' => __( 'Footer (legal)', 'elixir' ),
+				'elixirZorka' => __( 'Elixir Zorka', 'elixir' ),
+				'elixirPrahovo' => __( 'Elixir Prahovo', 'elixir' ),
+				'elixirAgrar' => __( 'Elixir Agrar', 'elixir' ),
+				'elixirCraft' => __( 'Elixir Craft', 'elixir' ),
+				'elixirFeed' => __( 'Elixir Feed', 'elixir' ),
+				'elixirFondacija' => __( 'Elixir Fondacija', 'elixir' ),
+
 			)
 		);
 
@@ -114,6 +123,10 @@ if ( ! function_exists( 'elixir_setup' ) ) {
 
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
+
+
+		// Add support for page excerpts.	
+		add_post_type_support( 'page', 'excerpt' );
 
 		// Check and setup theme default settings.
 		elixir_setup_theme_default_settings();

@@ -49,12 +49,14 @@ $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg");
 
 
 
+
 $s: 1;
 @each $breakpoint,
 $container-max-width in $container-max-widths {
 	$width: calc((100vw - $container-max-width)/2);
 	$bp: ('sm', 'md', 'lg', 'xl', 'xxl');
 	@include media-breakpoint-up($breakpoint) {
+
 		.vw-col-right {
 			margin-right: calc($width*(-1));
 		}
@@ -69,8 +71,22 @@ $container-max-width in $container-max-widths {
 
 		@for $n from 1 through 5 {
 			@if($n <=$s) {
-				@for $i from 1 through $grid-columns {
-					$percentage: percentage(divide($i, $grid-columns));				
+				@for $i from 1 through $grid-columns {					
+					$percentage: percentage(divide($i, $grid-columns));									
+					.col-#{$i} {
+						&.vw-col-right,
+						&.vw-col-left {
+							width: calc($percentage + $width);
+							max-width: calc($percentage + $width);
+						}
+					}			
+				}
+			}
+		}
+		@for $n from 1 through 5 {
+			@if($n <=$s) {
+				@for $i from 1 through $grid-columns {					
+					$percentage: percentage(divide($i, $grid-columns));									
 					.col-#{nth($bp, $n)}-#{$i} {
 						&.vw-col-right,
 						&.vw-col-left {
@@ -78,6 +94,7 @@ $container-max-width in $container-max-widths {
 							max-width: calc($percentage + $width);
 						}
 					}
+					
 				}
 			}
 		}
