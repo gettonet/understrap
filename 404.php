@@ -6,85 +6,20 @@
  */
 
 // Exit if accessed directly.
+// Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
 get_header();
+	
+	require_once ABSPATH . 'wp-admin/includes/post.php';
+	$page404 = post_exists( '404','','','page');
 
-$container = get_theme_mod( 'elixir_container_type' );
-?>
+	if ( $page404 ) {
+		$page404post = get_post($page404);
+		echo apply_filters('the_content' , $page404post -> post_content ); 
+	}
+	else {
+		echo "Match not found dude";
+	}
 
-<div class="wrapper" id="error-404-wrapper">
-
-	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
-
-		<div class="row">
-
-			<div class="col-md-12 content-area" id="primary">
-
-				<main class="site-main" id="main">
-
-					<section class="error-404 not-found">
-
-						<header class="page-header">
-
-							<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'elixir' ); ?></h1>
-
-						</header><!-- .page-header -->
-
-						<div class="page-content">
-
-							<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'elixir' ); ?></p>
-
-							<?php get_search_form(); ?>
-
-							<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
-
-							<?php if ( elixir_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
-
-								<div class="widget widget_categories">
-
-									<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'elixir' ); ?></h2>
-
-									<ul>
-										<?php
-										wp_list_categories(
-											array(
-												'orderby'  => 'count',
-												'order'    => 'DESC',
-												'show_count' => 1,
-												'title_li' => '',
-												'number'   => 10,
-											)
-										);
-										?>
-									</ul>
-
-								</div><!-- .widget -->
-
-							<?php endif; ?>
-
-							<?php
-
-							/* translators: %1$s: smiley */
-							$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'elixir' ), convert_smilies( ':)' ) ) . '</p>';
-							the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-
-							the_widget( 'WP_Widget_Tag_Cloud' );
-							?>
-
-						</div><!-- .page-content -->
-
-					</section><!-- .error-404 -->
-
-				</main><!-- #main -->
-
-			</div><!-- #primary -->
-
-		</div><!-- .row -->
-
-	</div><!-- #content -->
-
-</div><!-- #error-404-wrapper -->
-
-<?php
 get_footer();

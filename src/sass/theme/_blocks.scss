@@ -122,42 +122,13 @@
 
 
   .elixir-spacer {
-  	min-height: var(--minh);
-  }
-
-
-  @include media-breakpoint-up(sm) {
-  	.elixir-spacer {
-  		min-height: var(--minh-sm)
-  	}
-  }
-
-  @include media-breakpoint-up(md) {
-  	.elixir-spacer {
-  		min-height: var(--minh-md)
-  	}
-  }
-
-
-  @include media-breakpoint-up(lg) {
-  	.elixir-spacer {
-  		min-height: var(--minh-lg)
-  	}
-  }
-
-
-  @include media-breakpoint-up(xl) {
-  	.elixir-spacer {
-  		min-height: var(--minh-xl)
-  	}
-  }
-
-
-  @include media-breakpoint-up(xxl) {
-  	.elixir-spacer {
-  		min-height: var(--minh-xxl)
-  	}
-  }
+	min-height: var(--minh);
+	@each $breakpoint in map-keys($grid-breakpoints) {
+		@include media-breakpoint-up($breakpoint) {
+			min-height: var(--minh-#{$breakpoint})
+		}
+	}
+}
 
   /* Hide Title */
 

@@ -35,24 +35,41 @@ foreach ($blocks as $block) {
         <?php if ($videoblock) :
             $attributes = $videoblock['attrs'];
             $poster_quality = isset($attributes['youtube-poster-quality']) ? $attributes['youtube-poster-quality'] : 'maxres';
-            if ($v = $attributes['youtube-video-url']) {
+            $custom_poster = json_decode(urldecode($attributes['poster-image']), true);
+            if ($v = $attributes['youtube-video-url']) :
                 preg_match('%(?:youtube(?:-nocookie)?.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu.be/)([^"&?/ ]{11})%i', $v, $match);
-            }
+
         ?>
-            <div class="ratio ratio-16x9">
-                <div>
-                    <div class="position-relative pointer w-100 h-100" data-src="https://www.youtube.com/watch?v=<?php echo $match[1]; ?>" data-fancybox="" data-width="1600" data-height="900" href="">
-                        <span class="elixir-video-icon"><img src="/wp-content/themes/elixir/img/v.svg" data-aos="zoom-in"></span>
-                        <?php if (isset($attributes['poster-image']['id'])) {
-                            echo wp_get_attachment_image($attributes['poster-image']['id'], $attributes['poster-size'], '', array(
-                                'class' => 'w-100 h-100 fit-cover'
-                            ));
-                        } else { ?>
-                            <img src="https://img.youtube.com/vi/<?php echo $match[1] . '/' . $poster_quality; ?>default.jpg" class="w-100 h-100 fit-cover">
+                <div class="ratio ratio-16x9">
+                    <div>
+                        <div class="position-relative pointer w-100 h-100" data-src="https://www.youtube.com/watch?v=<?php echo $match[1]; ?>" data-fancybox="" data-width="1600" data-height="900" href="">
+                            <span class="elixir-video-icon"><img src="/wp-content/themes/elixir/img/v.svg" data-aos="zoom-in"></span>
+                            <?php if (isset($custom_poster['id'])) {
+                                echo wp_get_attachment_image($custom_poster['id'], 'medium', '', array(
+                                    'class' => 'w-100 h-100 fit-cover'
+                                ));
+                            } else { ?>
+                                <img src="https://img.youtube.com/vi/<?php echo $match[1] . '/' . $poster_quality; ?>default.jpg" class="w-100 h-100 fit-cover">
                         </div>
-                <?php } ?>
+                    <?php } ?>
+                    </div>
                 </div>
-            </div>
+            <?php else : ?>
+                <div class="ratio ratio-16x9">
+                    <div>
+                        <span class="position-relative">
+                            <span class="elixir-video-icon"><img src="/wp-content/themes/elixir/img/v.svg" data-aos="zoom-in" data-aos-once="false" data-aos-mirror="true" class="aos-init aos-animate"></span>
+                            <?php if (isset($custom_poster['id'])) {
+                                echo wp_get_attachment_image($custom_poster['id'], 'medium', '', array(
+                                    'class' => 'img-fluid rounded-top rounded-start fit-cover'
+                                ));
+                            } else { ?>
+                                <div class="bg-lgrey rounded-top rounded-start fit-cover"></div>
+                        </span>
+                    <?php } ?>
+                    </div>
+                </div>
+            <?php endif; ?>
         <?php else : ?>
             <div class="ratio ratio-16x9">
                 <div class="rounded-top rounded-start bg-lgrey">

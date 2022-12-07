@@ -16,4 +16,20 @@ preg_match('%(?:youtube(?:-nocookie)?.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v
             <?php } ?>
     </div>
 </div>
-<?php endif; ?>
+<?php else: ?>
+    <div class="ratio ratio-16x9">
+    <div>
+        <span class="position-relative">
+            <span class="elixir-video-icon"><img src="/wp-content/themes/elixir/img/v.svg" data-aos="zoom-in" data-aos-once="false" data-aos-mirror="true" class="aos-init aos-animate"></span>
+            <?php if (isset($attributes['poster-image']['id'])){
+                echo wp_get_attachment_image($attributes['poster-image']['id'], $attributes['poster-size'], '', array(
+                    'class' => 'img-fluid rounded-top rounded-start fit-cover'
+                ));
+                } else { ?>
+            <div class="bg-lgrey rounded-top rounded-start fit-cover"></div>
+        </span>
+            <?php } ?>
+    </div>
+</div>
+
+ <?php endif; ?>

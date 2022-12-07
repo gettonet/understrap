@@ -21065,6 +21065,15 @@ h6,
   background: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.3) 60%);
 }
 
+.ratio-elixir-news {
+  --elixir-aspect-ratio: 150%;
+}
+@media (min-width: 768px) {
+  .ratio-elixir-news {
+    --elixir-aspect-ratio: 56.25%;
+  }
+}
+
 .alumofluor-logistics-map {
   margin-top: -50%;
 }

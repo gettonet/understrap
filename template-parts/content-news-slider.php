@@ -10,7 +10,7 @@
 defined('ABSPATH') || exit;
 
 //defaults.
-$img_style = isset($args['image']) ? $args['image'] : '16x9';
+$img_style = isset($args['image']) ? $args['image'] : 'elixir-news';
 $btn = isset($args['button']) ? $args['button'] : 'outline-light';
 $btn_text = isset($args['button-text']) ? $args['button-text'] ?: __('Read More', 'elixir') : __('Read More', 'elixir');
 $btn_text_style = isset($args['button-text-style']) ? $args['button-text-style'] : 'arrow';

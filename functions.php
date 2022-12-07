@@ -153,6 +153,12 @@ function elixir_footer()
 add_action('wp_head', 'elixir_header');
 add_action('wp_footer', 'elixir_footer');
 
+function elixir_body_open(){
+        echo carbon_get_theme_option('body_open') ?: '';
+}
+add_action('wp_body_open', 'elixir_body_open', 5);
+
+
 function elixir_gtm_noscript()
 {
     if (carbon_get_theme_option('gtm_id')) {
@@ -162,7 +168,7 @@ function elixir_gtm_noscript()
     <!-- End Google Tag Manager (noscript) -->';
     }
 }
-add_action('wp_body_open', 'elixir_gtm_noscript');
+add_action('wp_body_open', 'elixir_gtm_noscript', 10);
 
 function remove_classes_from_wp_bootstrap_blocks($classes)
 {

@@ -34,7 +34,12 @@ if (isset($attributes['align'])) {
 }
 
 if($attributes['additional-button-class']) {
-    $class[] = $attributes['additional-button-class'];
+    $classes[] = $attributes['additional-button-class'];
+    if(!str_contains('mb-', $attributes['additional-button-class']) &&  !str_contains('my-', $attributes['additional-button-class'])) {
+        $classes[] = 'mb-3';
+    }
+} else {
+    $classes[] = 'mb-3';
 }
 
 if($attributes['className']) {

@@ -1,13 +1,13 @@
-/*wp.hooks.addAction( 'lzb.components.PreviewServerCallback.onBeforeChange', 'elixir', function ( props ) {
+/*wp.hooks.addAction( 'lzb.components.PreviewServerCallback.onBeforeChange', 'buildcayman', function ( props ) {
     console.log( props );
 } );*/
-wp.hooks.addAction( 'lzb.components.PreviewServerCallback.onChange', 'elixir', function ( props ) {
+/*wp.hooks.addAction( 'lzb.components.PreviewServerCallback.onChange', 'buildcayman', function ( props ) {
 
-//    console.log( props );
-        if(props['attributes']['hide-from-website'] === true) {
-            jQuery('.'+props['attributes']['blockUniqueClass']).css('opacity','50%');
+    console.log( props );
+    if(props['attributes']['hide-from-website'] === true) {
+            document.getElementsByClassName(props['attributes']['blockUniqueClass'])[0].style.opacity = "50%";
         } else {
-            jQuery('.'+props['attributes']['blockUniqueClass']).css('opacity','100%');
+            document.getElementsByClassName(props['attributes']['blockUniqueClass'])[0].style.opacity = "100%";
         }
 
-} );
+} );*/
