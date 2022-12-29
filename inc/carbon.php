@@ -48,6 +48,17 @@ Container::make('theme_options', __('Theme Options', 'elixir'))
                 Field::make('text', 'title', __('Title')),
             ))
 
+    ))
+    ->add_tab('Oglasi', array(
+        Field::make('html', 'egroup_oglasi')
+            ->set_html('<h3>Opisi kod oglasa za posao</h3>'),
+        Field::make( 'rich_text', 'egroup_zaposlenje', __( 'Elixir Group' ) ),
+        Field::make( 'rich_text', 'ezorka_zaposlenje', __( 'Elixir Zorka' ) ),
+        Field::make( 'rich_text', 'eprahovo_zaposlenje', __( 'Elixir Prahovo' ) ),
+        Field::make( 'rich_text', 'eagrar_zaposlenje', __( 'Elixir Agrar' ) ),
+        Field::make( 'rich_text', 'ecraft_zaposlenje', __( 'Elixir Craft' ) ),
+        Field::make( 'rich_text', 'efeed_zaposlenje', __( 'Elixir Feed' ) ),
+        Field::make( 'rich_text', 'eengineering_zaposlenje', __( 'Elixir Engineering' ) ),
     ));
 
 Container::make('post_meta', 'Povezani proizvodi')
@@ -107,8 +118,9 @@ Container::make('post_meta', __('Job data'))
                 'ElixirAgrar' => 'Elixir Agrar',
                 'ElixirFeed' => 'Elixir Feed',
                 'ElixirCraft' => 'Elixir Craft',
-                'ElixirFondacija' => 'Elixir Fondacija'
-            ))
+                'ElixirFondacija' => 'Elixir Fondacija',
+                'ElixirEngineering' => 'Elixir Engineering',
+                'ElixirGroup' => 'Elixir Group'            ))
     ));
 
     Container::make('post_meta', __('More options'))

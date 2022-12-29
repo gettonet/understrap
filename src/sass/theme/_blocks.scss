@@ -122,7 +122,7 @@
 
 
   .elixir-spacer {
-	min-height: var(--minh);
+/*	min-height: var(--minh);*/
 	@each $breakpoint in map-keys($grid-breakpoints) {
 		@include media-breakpoint-up($breakpoint) {
 			min-height: var(--minh-#{$breakpoint})

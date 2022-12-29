@@ -318,12 +318,13 @@ h6,
 }
 
 .ratio-elixir-news {
-		--#{$variable-prefix}aspect-ratio: 150%; 
+	--#{$variable-prefix}aspect-ratio: 150%;
+
 	@include media-breakpoint-up(md) {
-	  --#{$variable-prefix}aspect-ratio: 56.25%; 
+		--#{$variable-prefix}aspect-ratio: 56.25%;
 	}
-  }
-  
+}
+
 
 .alumofluor-logistics-map {
 	margin-top: -50%;
@@ -476,5 +477,6 @@ table.elixir.inner-centered tr td:first-child {
 	width: 50%;
 }
 
-
-
+.grecaptcha-badge {
+	visibility: hidden;
+}

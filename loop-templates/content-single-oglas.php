@@ -18,26 +18,30 @@ foreach ($location as $loc) {
 switch ($company) {
 	case 'ElixirPrahovo':
 		$c = 'Elixir Prahovo';
-		$desc = '<p>Proizvodi <strong>Elixir Prahovo</strong> izvoze se u više od 80 zemalja celog sveta. Aktuelni investicioni projekti su među najvećim u regionu. Prahovo je jedna od 6 fabrika u Evropi koja proizvodi izuzetno traženu fosfornu kiselinu i prepoznat je kao pokretač razvoja cele Istočne Srbije.</p>';
+		$desc = carbon_get_theme_option('eprahovo_zaposlenje');
 		break;
 	case 'ElixirZorka':
 		$c = 'Elixir Zorka';
-		break;
-	case 'ElixirZorka':
-		$c = 'Elixir Prahovo';
+		$desc = carbon_get_theme_option('ezorka_zaposlenje');
 		break;
 	case 'ElixirAgrar':
 		$c = 'Elixir Agrar';
+		$desc = carbon_get_theme_option('eagrar_zaposlenje');
 		break;
 	case 'ElixirFeed':
 		$c = 'Elixir Feed';
+		$desc = carbon_get_theme_option('efeed_zaposlenje');
 		break;
 	case 'ElixirCraft':
 		$c = 'Elixir Craft';
+		$desc = carbon_get_theme_option('ecraft_zaposlenje');
 		break;
-	case 'ElixirFondacija':
-		$c = 'Elixir Fondacija';
-		break;
+	case 'ElixirGroup':
+		$c = 'Elixir Group';
+		$desc = carbon_get_theme_option('egroup_zaposlenje');
+	case 'ElixirEngineering':
+		$c = 'Elixir Engineering';
+		$desc = carbon_get_theme_option('eengineering_zaposlenje');
 }
 
 
@@ -47,18 +51,18 @@ switch ($company) {
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 	<section id="elixir-hero" class="bg-elixir-gradient aos-init aos-animate" data-aos="fade">
 		<div class="container">
-			<div class="elixir-spacer" style="--minh:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;">
+			<div class="elixir-spacer" style="--minh-xs:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;">
 			</div>
 			<h1 class="has-white-color has-text-color"><?php echo get_the_title(); ?></h1>
-			<p class="text-white fs-large"><strong>Elixir Group</strong> je globalno uspešna kompanija u hemijskoj industriji.</p>
-			<p class="text-white">Vodeći proizvođač mineralnih đubriva i hemikalija, sa dva proizvodna kompleksa u Šapcu i Prahovu. Više od dve decenije rada, primena najbolje tehnologije, inovativnih i održivih rešenja i modela cirkularne ekonomije. Odgovornost potvrđujemo i podrškom projektima koji unapređuju kvalitet života u lokalnoj zajednici.</p>
-			<div class="elixir-spacer" style="--minh:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;">
+			<p class="text-white fs-large"><strong>Elixir Group</strong> je poslovni sistem koji se kontinuirano razvija u oblasti hemijske industrije i agrobiznisa, kroz brojne projekte posvećene održivom razvoju, primeni modela cirkularne ekonomije i unapređenju resursne efikasnosti. <strong>Elixir Group</strong> je lider u hemijskoj industriji Jugoistočne Evrope sa ukupnom proizvodnjom od preko 1 milion tona u dva proizvodna kompleksa u &Scaron;apcu i Prahovu, od čega 70% izvozimo u preko 80 država na svim kontinentima. </p>
+			<p class="text-white">Na&scaron; investicioni portfolio čini preko 50 aktuelnih projekata ukupne vrednosti preko 300M eur, na čijem razvoju radi tim iskusnih eksperata različitih profila koji čine <strong>Tehnički centar Elixir Group</strong> koji ostvaruje saradnju sa brojnim renomiranim partnerima u zemlji i inostranstvu.</p>
+			<div class="elixir-spacer" style="--minh-xs:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;">
 			</div>
 		</div>
 	</section>
 	<section>
 		<div class="container">
-			<div class="elixir-spacer" style="--minh:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;"></div>
+			<div class="elixir-spacer" style="--minh-xs:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;"></div>
 			<div class="row mb-5 align-items-center">
 				<div class="col-lg-6 mb-5 mb-lg-0">
 					<p class="text-muted mb-n1 font-heading">POZICIJA</p>
@@ -70,7 +74,7 @@ switch ($company) {
 				<div class="col-lg-6">
 					<div class="bg-white shadow p-4 rounded-start rounded-top border">
 						<?php get_company_logo($company, '200px', false, 'mb-4'); ?>
-						<?php echo $desc; ?>
+						<?php echo apply_filters('the_content', $desc); ?>
 					</div>
 				</div>
 
@@ -82,11 +86,11 @@ switch ($company) {
 	?>
 	<section id="prijava" class="bg-lgrey">
 		<div class="container">
-			<div class="elixir-spacer" style="--minh:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;"></div>
+			<div class="elixir-spacer" style="--minh-xs:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;"></div>
 			<h2 class="text-center">Prijavite se</h2>
 			<p class="text-center mb-5">Biće kontaktirani kandidati koji uđu u uži izbor selekcije.</p>
 			<?php echo do_shortcode('[contact-form-7 id="7009" title="Prijava za poziciju"]'); ?>
-			<div class="elixir-spacer" style="--minh:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;"></div>
+			<div class="elixir-spacer" style="--minh-xs:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;"></div>
 		</div>
 	</section>
 	<?php
