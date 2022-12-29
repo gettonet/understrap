@@ -69,10 +69,22 @@ function elixir_oglasi_za_posao()
 
     $the_query = new WP_Query($args);
 
+    
+
+
     ob_start();
     ?>
 
-    <div class="row mb-5 justify-content-center" >
+    
+<?php
+    // The Loop
+    if ($the_query->have_posts()) {
+        $oglasi = $the_query->get_posts();
+            foreach( $oglasi as $oglas ) { 
+                $
+            }
+        ?>
+        <div class="row mb-5 justify-content-center" >
         <div class="col-md-4 col-lg-3">
         <label for="jobs-company" class="form-label">Kompanija članica</label>
             <select class="form-select" id="jobs-company" autocomplete="off">
@@ -95,10 +107,9 @@ function elixir_oglasi_za_posao()
                 <option value="ns">Novi Sad</option>
             </select>
         </div>
-</div>
-<?php
-    // The Loop
-    if ($the_query->have_posts()) {
+        </div>
+
+        <?php
         echo '<div class="row" id="oglasi-za-posao-mix" style="min-height: 230px;">';
         while ($the_query->have_posts()) {
             $the_query->the_post();
@@ -107,7 +118,7 @@ function elixir_oglasi_za_posao()
         echo '<div id="no-jobs-found" class="col-md-8 col-lg-6 mx-auto pb-100 pt-5 text-center" style="display: none;"><p class="text-muted font-heading fw-700">NEMA REZULTATA PO TRAŽENIM KRITERIJUMIMA</p><button id="reset-job-mix" class="btn btn-outline-primary btn-sm" role="button">PRIKAŽI SVE OTVORENE POZICIJE</button></div>';
         echo '</div>';
     } else {
-        echo '<p>No posts found.</p>';
+        echo '<p>Trenutno nema aktivnih pozicija.</p>';
     }
     /* Restore original Post Data */
     wp_reset_postdata();
