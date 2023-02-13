@@ -26,9 +26,12 @@ $class = isset($args['class']) ? $args['class'] : 'col-md-6 col-lg-4 mb-4';
 $custom_title = isset($args['custom-title']) ? $args['custom-title'] : false;
 $custom_image = isset($args['custom-image']) ? $args['custom-image'] : false;
 $custom_excerpt = isset($args['custom-excerpt']) ? $args['custom-excerpt'] : false;
-$custom_url = isset($args['custom-url']) ? $args['custom-url'] : false;
-?>
+$link = esc_url(get_permalink());
+if(isset($args['custom-url'])) {
+	$link = $args['custom-url'] ?: esc_url(get_permalink());
+}
 
+?>
 <article <?php post_class($class); ?> id="post-<?php the_ID(); ?>">
 <?php if ($img_style != 'full-h') : ?>
 	<div class="article-inner bg-white shadow rounded-top rounded-start overflow-hidden h-100 pb-3 pb-lg-4 d-flex flex-column">
@@ -47,7 +50,7 @@ $custom_url = isset($args['custom-url']) ? $args['custom-url'] : false;
 						else : ?>
 							<img src="<?php echo get_template_directory_uri() . '/img/thumbnail-default.svg'; ?>" class="w-100 h-100 fit-cover">
 						<?php endif; ?>
-						<a href="<?php echo esc_url(get_permalink()); ?>" rel="bookmark" class="stretched-link"></a>
+						<a href="<?php echo $link; ?>" rel="bookmark" class="stretched-link"></a>
 					</div>
 				<?php endif; ?>
 				<div class="p-3 p-lg-4">
@@ -61,10 +64,10 @@ $custom_url = isset($args['custom-url']) ? $args['custom-url'] : false;
 					<?php endif; ?>
 					<?php
 					if ($custom_title) {
-						echo '<h2 class="entry-title h4 fw-500 mb-0"><a href="' . esc_url(get_permalink()) . '" rel="bookmark" class="text-dark">' . $custom_title . '</a></h2>';
+						echo '<h2 class="entry-title h4 fw-500 mb-0"><a href="' . $link . '" rel="bookmark" class="text-dark">' . $custom_title . '</a></h2>';
 					} else {
 						the_title(
-							sprintf('<h2 class="entry-title h4 fw-500 mb-0"><a href="%s" rel="bookmark" class="text-dark">', esc_url(get_permalink())),
+							sprintf('<h2 class="entry-title h4 fw-500 mb-0"><a href="%s" rel="bookmark" class="text-dark">', $link),
 							'</a></h2>'
 						);
 					}
@@ -93,7 +96,7 @@ $custom_url = isset($args['custom-url']) ? $args['custom-url'] : false;
 				if ($btn != 'none') {
 					echo sprintf(
 						'<div><a href="%1$s" rel="bookmark" class="%2$s">%3$s</a></div>',
-						esc_url(get_permalink()),
+						$link,
 						'btn btn-' . $btn,
 						$btn_text
 					);
@@ -106,10 +109,10 @@ $custom_url = isset($args['custom-url']) ? $args['custom-url'] : false;
 	<div class="entry-content bg-gradient-primary-up h-100 p-3 p-lg-4 z-1 d-flex flex-column justify-content-center">
 		<?php
 			if ($custom_title) {
-				echo '<h2 class="entry-title h4 mb-4"><a href="' . esc_url(get_permalink()) . '" rel="bookmark" class="text-white">' . $custom_title . '</a></h2>';
+				echo '<h2 class="entry-title h4 mb-4"><a href="' . $link . '" rel="bookmark" class="text-white">' . $custom_title . '</a></h2>';
 			} else {
 				the_title(
-					sprintf('<h2 class="entry-title h4 mb-4"><a href="%s" rel="bookmark" class="text-white">', esc_url(get_permalink())),
+					sprintf('<h2 class="entry-title h4 mb-4"><a href="%s" rel="bookmark" class="text-white">', $link),
 					'</a></h2>'
 				);
 			}
@@ -132,7 +135,7 @@ $custom_url = isset($args['custom-url']) ? $args['custom-url'] : false;
 			if ($btn != 'none') {
 				echo sprintf(
 					'<a href="%1$s" rel="bookmark" class="%2$s">%3$s</a>',
-					esc_url(get_permalink()),
+					$link,
 					'my-4 btn btn-' . $btn,
 					$btn_text
 				);

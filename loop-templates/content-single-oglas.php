@@ -54,8 +54,9 @@ switch ($company) {
 			<div class="elixir-spacer" style="--minh-xs:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;">
 			</div>
 			<h1 class="has-white-color has-text-color"><?php echo get_the_title(); ?></h1>
-			<p class="text-white fs-large"><strong>Elixir Group</strong> je poslovni sistem koji se kontinuirano razvija u oblasti hemijske industrije i agrobiznisa, kroz brojne projekte posvećene održivom razvoju, primeni modela cirkularne ekonomije i unapređenju resursne efikasnosti. <strong>Elixir Group</strong> je lider u hemijskoj industriji Jugoistočne Evrope sa ukupnom proizvodnjom od preko 1 milion tona u dva proizvodna kompleksa u &Scaron;apcu i Prahovu, od čega 70% izvozimo u preko 80 država na svim kontinentima. </p>
-			<p class="text-white">Na&scaron; investicioni portfolio čini preko 50 aktuelnih projekata ukupne vrednosti preko 300M eur, na čijem razvoju radi tim iskusnih eksperata različitih profila koji čine <strong>Tehnički centar Elixir Group</strong> koji ostvaruje saradnju sa brojnim renomiranim partnerima u zemlji i inostranstvu.</p>
+			<div class="text-white">
+				<?php echo apply_filters('the_content', carbon_get_theme_option('zaposlenje_general')); ?>
+			</div>
 			<div class="elixir-spacer" style="--minh-xs:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;">
 			</div>
 		</div>

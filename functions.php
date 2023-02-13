@@ -192,7 +192,7 @@ function elixir_custom_login_css()
 }
 add_action('login_head', 'elixir_custom_login_css');
 
-//add_filter( 'lzb/show_admin_menu', '__return_false' );
+add_filter( 'lzb/show_admin_menu', '__return_false' );
 
 add_filter('wpcf7_autop_or_not', '__return_false');
 
@@ -470,3 +470,5 @@ function add_additional_class_on_a($classes, $item, $args)
 }
 
 add_filter('nav_menu_link_attributes', 'add_additional_class_on_a', 1, 3);
+
+add_filter( 'carbon_fields_theme_options_container_admin_only_access', '__return_false' );

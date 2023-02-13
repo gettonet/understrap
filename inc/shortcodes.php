@@ -79,22 +79,27 @@ function elixir_oglasi_za_posao()
 <?php
     // The Loop
     if ($the_query->have_posts()) {
+        /*$kompanije = array();
         $oglasi = $the_query->get_posts();
             foreach( $oglasi as $oglas ) { 
-                $
+                $kompanije[] = carbon_get_post_meta($oglas->ID, 'clanica');
             }
+        if(current_user_can('administrator')) {
+            print_rr(array_unique($kompanije));
+        }*/
         ?>
         <div class="row mb-5 justify-content-center" >
         <div class="col-md-4 col-lg-3">
         <label for="jobs-company" class="form-label">Kompanija članica</label>
             <select class="form-select" id="jobs-company" autocomplete="off">
                 <option selected value="">Prikaži sve</option>
-                <option value="ElixirPrahovo">Elixir Prahovo</option>
+
+                <option value="ElixirGroup">Elixir Group</option>
                 <option value="ElixirZorka">Elixir Zorka</option>
+                <option value="ElixirPrahovo">Elixir Prahovo</option>
                 <option value="ElixirAgrar">Elixir Agrar</option>
-                <option value="ElixirFeed">Elixir Feed</option>
                 <option value="ElixirCraft">Elixir Craft</option>
-                <option value="ElixirFondacija">Elixir Fondacija</option>
+                <option value="ElixirFeed">Elixir Feed</option>
             </select>
         </div>
         <div class="col-md-4 col-lg-3">

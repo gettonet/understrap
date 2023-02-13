@@ -52,6 +52,7 @@ Container::make('theme_options', __('Theme Options', 'elixir'))
     ->add_tab('Oglasi', array(
         Field::make('html', 'egroup_oglasi')
             ->set_html('<h3>Opisi kod oglasa za posao</h3>'),
+        Field::make( 'rich_text', 'zaposlenje_general', __( 'Generalno (hero sekcija)' ) ),
         Field::make( 'rich_text', 'egroup_zaposlenje', __( 'Elixir Group' ) ),
         Field::make( 'rich_text', 'ezorka_zaposlenje', __( 'Elixir Zorka' ) ),
         Field::make( 'rich_text', 'eprahovo_zaposlenje', __( 'Elixir Prahovo' ) ),
