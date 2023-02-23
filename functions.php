@@ -70,7 +70,7 @@ function lzb_block_disable_frontend_wrapper($allow_wrapper, $attributes, $contex
     return $allow_wrapper;
 }
 add_filter('lzb/block_render/allow_wrapper', 'lzb_block_disable_frontend_wrapper', 10, 3);
-
+add_filter( 'lzb/show_admin_menu', '__return_false' );
 
 // Remove html comments from frontend.
 function callback($buffer)
@@ -191,8 +191,6 @@ function elixir_custom_login_css()
       } body {color: #fff; background: url(\'' . get_template_directory_uri() . '/img/loginbg.jpg\'); background-position:center; background-size: cover} .login #backtoblog a, .login #nav a { color: #cecece } .login form { background: rgba(255,255,255,0.25) } .login #login_error, .login .message, .login .success { background-color: #0E41BF }</style>';
 }
 add_action('login_head', 'elixir_custom_login_css');
-
-add_filter( 'lzb/show_admin_menu', '__return_false' );
 
 add_filter('wpcf7_autop_or_not', '__return_false');
 

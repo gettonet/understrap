@@ -4,6 +4,13 @@ $img_classes = array(
   $attributes['img-class'],
   $attributes['border-radius']
 );
+$style = false;
+if($attributes['img-style']) {
+    $img_styles = array();
+  foreach($attributes['img-style'] as $style) {
+    $img_styles[] = $style['property'] . ':' . $style['value'];
+  }
+}
 
 $animation = isset($attributes['aos_animation']) ? elixir_generate_data_aos($attributes) : NULL;
 
@@ -68,6 +75,10 @@ if ($attributes['open-in-lightbox']) {
 
 if($attributes['title-attribute']) {
   $img_atts['title'] = $attributes['title-attribute'];
+}
+
+if($img_styles) {
+  $img_atts['style'] = implode(';', $img_styles);
 }
 
 echo $w_class || $w_style || $animation || $caption ? '<div' . $w_class . $w_style . $animation . '>' : '';
