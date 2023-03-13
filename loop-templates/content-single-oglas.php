@@ -39,9 +39,11 @@ switch ($company) {
 	case 'ElixirGroup':
 		$c = 'Elixir Group';
 		$desc = carbon_get_theme_option('egroup_zaposlenje');
+		break;
 	case 'ElixirEngineering':
 		$c = 'Elixir Engineering';
 		$desc = carbon_get_theme_option('eengineering_zaposlenje');
+		break;
 }
 
 

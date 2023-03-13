@@ -29,6 +29,10 @@ if ( ! function_exists( 'elixir_scripts' ) ) {
 
 		$css_version = $theme_version . '.' . filemtime( get_template_directory() . $theme_styles );
 		wp_enqueue_style( 'elixir-styles', get_template_directory_uri() . $theme_styles, array(), $css_version );
+		// Load  Dashicons only if logged in.
+	    /*if ( ! is_user_logged_in() ) {
+			wp_dequeue_style('dashicons');
+		  }*/
 
 		wp_enqueue_script( 'jquery' );
 
@@ -51,6 +55,7 @@ if ( ! function_exists( 'elixir_scripts' ) ) {
 				wp_enqueue_script( 'raphaeljs', get_template_directory_uri() . '/js/raphael.min.js');
 			}
 		}
+		
 
 	}
 } // End of if function_exists( 'elixir_scripts' ).

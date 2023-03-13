@@ -25,27 +25,14 @@ if (!$attributes['hide-from-website']) {
     $bgclasses[] = $bgh_md ?: '';
     $bgclasses[] = $bgh_lg ?: '';
     $classes[] = 'position-relative';
-    if ($attributes['bg-color']) {
-      $color_class = false;
-      if (is_array($colors)) {
-        foreach (array_column($colors, 'color') as $k => $v) {
-          if ($v === $attributes['bg-color']) {
-            $bgclasses[] = 'bg-' . $colors[$k]['slug'];
-            continue;
-          }
-        }
-      }
-      if (!$color_class) {
-        $bgstyles[] = 'background-color:' . $attributes['bg-color'];
-      }
-    }
-    if (isset($attributes['bg-image']['url'])) {
-      $bgclasses[] = 'bg-cover';
-      $bgclasses[] = 'bg-center';
-      $bgclasses[] = $attributes['fixed-bg'] ? 'bg-fixed' : '';
-      $bgstyles[] = 'background-image:url(\'' . $attributes['bg-image']['url'] . '\')';
-      $bgstyles[] = 'background-position: ' . $attributes['image-pos-x'] . '% ' . $attributes['image-pos-y'] . '%';
-    }
+
+    /*if (isset($attributes['bg-image']['url'])) {
+      //$bgclasses[] = 'bg-cover';
+      //$bgclasses[] = 'bg-center';
+      //$bgclasses[] = $attributes['fixed-bg'] ? 'bg-fixed' : '';
+      //$bgstyles[] = 'background-image:url(\'' . $attributes['bg-image']['url'] . '\')';
+      //$bgstyles[] = 'background-position: ' . $attributes['image-pos-x'] . '% ' . $attributes['image-pos-y'] . '%';
+    }*/
   }
 
   $classes[] = $attributes['className'] ?: '';
@@ -67,8 +54,28 @@ if (!$attributes['hide-from-website']) {
 ?>
 
   <section<?php echo $id . $class . $style . $animation; ?>>
-    <?php echo $bgclasses ? ' <div' . $bgclass . $bgstyle . '></div>' : ''; ?>
-    <?php
+    <?php if ($bgclasses) {
+      echo '<div' . $bgclass . $bgstyle . '>';
+      if ($attributes['bg-color']) {
+        $color_class = false;
+        if (is_array($colors)) {
+          foreach (array_column($colors, 'color') as $k => $v) {
+            if ($v === $attributes['bg-color']) {
+              $color_class = 'bg-' . $colors[$k]['slug'];
+              continue;
+            }
+          }
+        }
+        echo $color_class ? '<div class="w-100 h-100 position-absolute ' . $color_class . '"></div>' : '<div class="w-100 h-100 position-absolute" style="background-color: ' . $attributes['bg-color'] . '"></div>';
+      }
+      if (isset($attributes['bg-image']['id'])) {
+        echo wp_get_attachment_image($attributes['bg-image']['id'], 'full', '', array(
+          'class' => 'w-100 h-100 fit-cover',
+          'style' => 'object-position: ' . $attributes['image-pos-x'] . '% ' . $attributes['image-pos-y'] . '%'
+        ));
+      }
+      echo '</div>';
+    }
     if ($attributes['add-container']) {
       $inner_classes[] = $attributes['additional-container-class'] ?: '';
       $inner_classes[] = 'container';
