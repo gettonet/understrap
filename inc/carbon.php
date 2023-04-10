@@ -43,24 +43,62 @@ Container::make('theme_options', __('Theme Options', 'elixir'))
             ->set_html('<p>Izveštaji o poslovanju, društvenom uticaju i očuvanju okruženja.<br>Pozivaju se uz pomoć shortcode [elixir-reports]</p>'),
         Field::make('complex', 'elixir_reports', __('Izveštaji'))
             ->add_fields(array(
-                Field::make('file', 'report')
+                Field::make('html', 'sr_desc')
+            ->set_html('<h3>SR</h3>'),
+                Field::make('file', 'report_sr')
                     ->set_type('application/pdf'),
-                Field::make('text', 'title', __('Title')),
+                Field::make('text', 'title_sr', __('Title (SR)')),
+                Field::make('html', 'eng_desc')
+            ->set_html('<h3>EN</h3>'),
+                Field::make('file', 'report_en')
+                    ->set_type('application/pdf'),
+                Field::make('text', 'title_en', __('Title (EN)')),
             ))
 
     ))
     ->add_tab('Oglasi', array(
         Field::make('html', 'egroup_oglasi')
             ->set_html('<h3>Opisi kod oglasa za posao</h3>'),
-        Field::make( 'rich_text', 'zaposlenje_general', __( 'Generalno (hero sekcija)' ) ),
-        Field::make( 'rich_text', 'egroup_zaposlenje', __( 'Elixir Group' ) ),
-        Field::make( 'rich_text', 'ezorka_zaposlenje', __( 'Elixir Zorka' ) ),
-        Field::make( 'rich_text', 'eprahovo_zaposlenje', __( 'Elixir Prahovo' ) ),
-        Field::make( 'rich_text', 'eagrar_zaposlenje', __( 'Elixir Agrar' ) ),
-        Field::make( 'rich_text', 'ecraft_zaposlenje', __( 'Elixir Craft' ) ),
-        Field::make( 'rich_text', 'efeed_zaposlenje', __( 'Elixir Feed' ) ),
-        Field::make( 'rich_text', 'eengineering_zaposlenje', __( 'Elixir Engineering' ) ),
+        Field::make( 'rich_text', 'zaposlenje_general_sr', __( 'Generalno (hero sekcija) (SR)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'zaposlenje_general_en', __( 'Generalno (hero sekcija) (EN)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'egroup_zaposlenje_sr', __( 'Elixir Group (SR)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'egroup_zaposlenje_en', __( 'Elixir Group (EN)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'ezorka_zaposlenje_sr', __( 'Elixir Zorka (SR)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'ezorka_zaposlenje_en', __( 'Elixir Zorka (EN)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'eprahovo_zaposlenje_sr', __( 'Elixir Prahovo (SR)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'eprahovo_zaposlenje_en', __( 'Elixir Prahovo (EN)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'eagrar_zaposlenje_sr', __( 'Elixir Agrar (SR)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'eagrar_zaposlenje_en', __( 'Elixir Agrar (EN)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'ecraft_zaposlenje_sr', __( 'Elixir Craft (SR)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'ecraft_zaposlenje_en', __( 'Elixir Craft (EN)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'efeed_zaposlenje_sr', __( 'Elixir Feed (SR)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'efeed_zaposlenje_en', __( 'Elixir Feed (EN)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'eengineering_zaposlenje_sr', __( 'Elixir Engineering (SR)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'eengineering_zaposlenje_en', __( 'Elixir Engineering (EN)' ) )
+        ->set_width(50),
+    ))
+    ->add_tab('Misc', array(
+        Field::make( 'rich_text', 'company_slogan_sr', __( 'Slogan kompanije (SR)' ) )
+        ->set_width(50),
+        Field::make( 'rich_text', 'company_slogan_en', __( 'Slogan kompanije (EN)' ) )
+        ->set_width(50),
     ));
+
 
 Container::make('post_meta', 'Povezani proizvodi')
     ->where('post_type', '=', 'preporuka_djubrenja')

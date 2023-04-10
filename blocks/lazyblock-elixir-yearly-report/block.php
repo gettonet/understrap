@@ -24,7 +24,7 @@ foreach ($attributes['tab'] as $inner){
     $content .= '</div>';
   }
   $content .= '</div>';
-  if(isset($inner['grafik'])){
+  if(isset($inner['grafik']) && is_array($inner['grafik'])){
     $content .= '<div class="graph-images">';
     foreach ($inner['grafik'] as $image) {
       $content .= '<a href="'. esc_url( $image['url'] ) . '" data-fancybox="'.$inner['title'].'" class="mb-4">';

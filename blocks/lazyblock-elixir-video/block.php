@@ -8,10 +8,10 @@ preg_match('%(?:youtube(?:-nocookie)?.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v
             <span class="elixir-video-icon"><img src="/wp-content/themes/elixir/img/v.svg" data-aos="zoom-in" data-aos-once="false" data-aos-mirror="true" class="aos-init aos-animate"></span>
             <?php if (isset($attributes['poster-image']['id'])){
                 echo wp_get_attachment_image($attributes['poster-image']['id'], $attributes['poster-size'], '', array(
-                    'class' => 'img-fluid rounded-top rounded-start fit-cover'
+                    'class' => 'img-fluid rounded-top rounded-start w-100 h-100 fit-cover'
                 ));
                 } else { ?>
-            <img src="https://img.youtube.com/vi/<?php echo $match[1].'/'.$attributes['youtube-poster-quality']; ?>default.jpg" class="img-fluid rounded-top rounded-start fit-cover">
+            <img src="https://img.youtube.com/vi/<?php echo $match[1].'/'.$attributes['youtube-poster-quality']; ?>default.jpg" class="img-fluid rounded-top rounded-start w-100 h-100 fit-cover">
         </span>
             <?php } ?>
     </div>
@@ -23,10 +23,10 @@ preg_match('%(?:youtube(?:-nocookie)?.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v
             <span class="elixir-video-icon"><img src="/wp-content/themes/elixir/img/v.svg" data-aos="zoom-in" data-aos-once="false" data-aos-mirror="true" class="aos-init aos-animate"></span>
             <?php if (isset($attributes['poster-image']['id'])){
                 echo wp_get_attachment_image($attributes['poster-image']['id'], $attributes['poster-size'], '', array(
-                    'class' => 'img-fluid rounded-top rounded-start fit-cover'
+                    'class' => 'img-fluid rounded-top rounded-start w-100 h-100 fit-cover'
                 ));
                 } else { ?>
-            <div class="bg-lgrey rounded-top rounded-start fit-cover"></div>
+            <div class="bg-lgrey rounded-top rounded-start w-100 h-100 fit-cover"></div>
         </span>
             <?php } ?>
     </div>

@@ -470,3 +470,8 @@ function add_additional_class_on_a($classes, $item, $args)
 add_filter('nav_menu_link_attributes', 'add_additional_class_on_a', 1, 3);
 
 add_filter( 'carbon_fields_theme_options_container_admin_only_access', '__return_false' );
+
+
+function elixir_get_current_language() {
+    return apply_filters( 'wpml_current_language', null );
+}

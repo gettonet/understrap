@@ -12,37 +12,38 @@ $location = (array)carbon_get_post_meta(get_the_id(), 'lokacija');
 $company = carbon_get_post_meta(get_the_id(), 'clanica');
 $c = $desc = '';
 $l = array();
+$lang = elixir_get_current_language();
 foreach ($location as $loc) {
 	$l[] = elixir_lokacija($loc);
 }
 switch ($company) {
 	case 'ElixirPrahovo':
 		$c = 'Elixir Prahovo';
-		$desc = carbon_get_theme_option('eprahovo_zaposlenje');
+		$desc = carbon_get_theme_option('eprahovo_zaposlenje_'.$lang);
 		break;
 	case 'ElixirZorka':
 		$c = 'Elixir Zorka';
-		$desc = carbon_get_theme_option('ezorka_zaposlenje');
+		$desc = carbon_get_theme_option('ezorka_zaposlenje_'.$lang);
 		break;
 	case 'ElixirAgrar':
 		$c = 'Elixir Agrar';
-		$desc = carbon_get_theme_option('eagrar_zaposlenje');
+		$desc = carbon_get_theme_option('eagrar_zaposlenje_'.$lang);
 		break;
 	case 'ElixirFeed':
 		$c = 'Elixir Feed';
-		$desc = carbon_get_theme_option('efeed_zaposlenje');
+		$desc = carbon_get_theme_option('efeed_zaposlenje_'.$lang);
 		break;
 	case 'ElixirCraft':
 		$c = 'Elixir Craft';
-		$desc = carbon_get_theme_option('ecraft_zaposlenje');
+		$desc = carbon_get_theme_option('ecraft_zaposlenje_'.$lang);
 		break;
 	case 'ElixirGroup':
 		$c = 'Elixir Group';
-		$desc = carbon_get_theme_option('egroup_zaposlenje');
+		$desc = carbon_get_theme_option('egroup_zaposlenje_'.$lang);
 		break;
 	case 'ElixirEngineering':
 		$c = 'Elixir Engineering';
-		$desc = carbon_get_theme_option('eengineering_zaposlenje');
+		$desc = carbon_get_theme_option('eengineering_zaposlenje_'.$lang);
 		break;
 }
 

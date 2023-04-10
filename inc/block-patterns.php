@@ -29,7 +29,6 @@ function elixir_register_block_patterns() {
 		$pid     = $parts->ID;
 		$options = [
 			'title'      => $parts->post_title,
-            //'description'   => _x( 'Elixir block pattern', 'Block pattern description', 'elixir' ),
 			'content'    => $parts->post_content,
 			'categories' => [ 'elixir-cbp' ],
 		];

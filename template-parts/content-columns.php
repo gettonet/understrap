@@ -83,7 +83,7 @@ if(isset($args['custom-url'])) {
 							$l[] = elixir_lokacija($loc);
 						}
 						echo carbon_get_post_meta(get_the_id(), 'clanica') ? get_company_logo(carbon_get_post_meta(get_the_id(), 'clanica'), '150px', false, 'mb-2') : '';
-						echo carbon_get_post_meta(get_the_id(), 'lokacija') ? '<p class="mb-0">Lokacija: <span class="text-primary">'.implode(', ', $l).'</span></span></p>' : '';
+						echo carbon_get_post_meta(get_the_id(), 'lokacija') ? '<p class="mb-0">'.__('Location', 'elixir').': <span class="text-primary">'.implode(', ', $l).'</span></span></p>' : '';
 						echo '</div>';
 					}
 						if ($custom_excerpt) {

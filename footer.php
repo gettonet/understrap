@@ -12,6 +12,7 @@
 defined('ABSPATH') || exit;
 
 $container = get_theme_mod('elixir_container_type');
+$lang = elixir_get_current_language();
 ?>
 <?php get_template_part('sidebar-templates/sidebar', 'footerfull'); ?>
 <div class="pt-80 border-top" id="wrapper-footer">
@@ -24,7 +25,7 @@ $container = get_theme_mod('elixir_container_type');
 					$custom_logo_id = get_theme_mod('custom_logo');
 					echo '<a href="/">' . wp_get_attachment_image($custom_logo_id, 'full', '', array('class' => 'footer-logo mb-4')) . '</a>';
 					?>
-					<p class="small mb-5">Stvaramo nasleđe kroz održivi razvoj,<br>na dobrobit zajednice i uspeh svakog pojedinca.</p>
+					<div class="small mb-5"><?php echo apply_filters('the_content',carbon_get_theme_option('company_slogan_'.$lang)); ?></div>
 					<div class="mb-5">
 						<h6 class="small text-secondary font-body"><?php echo __('Društvene mreže', 'elixir'); ?></h6>
 						<?php

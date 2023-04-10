@@ -90,9 +90,9 @@ function elixir_oglasi_za_posao()
         ?>
         <div class="row mb-5 justify-content-center" >
         <div class="col-md-4 col-lg-3">
-        <label for="jobs-company" class="form-label">Kompanija članica</label>
+        <label for="jobs-company" class="form-label"><?php echo __('Company', 'elixir'); ?></label>
             <select class="form-select" id="jobs-company" autocomplete="off">
-                <option selected value="">Prikaži sve</option>
+                <option selected value=""><?php echo __('Show all', 'elixir'); ?></option>
 
                 <option value="ElixirGroup">Elixir Group</option>
                 <option value="ElixirZorka">Elixir Zorka</option>
@@ -103,9 +103,9 @@ function elixir_oglasi_za_posao()
             </select>
         </div>
         <div class="col-md-4 col-lg-3">
-        <label for="jobs-location" class="form-label">Lokacija</label>
+        <label for="jobs-location" class="form-label"><?php echo __('Location', 'elixir'); ?></label>
             <select class="form-select" id="jobs-location" autocomplete="off">
-                <option selected value="">Prikaži sve</option>
+                <option selected value=""><?php echo __('Show all', 'elixir'); ?></option>
                 <option value="ph">Prahovo</option>
                 <option value="sb">Šabac</option>
                 <option value="bg">Beograd</option>
@@ -150,8 +150,9 @@ function elixir_reports(){
     <ul class="list-group list-group-flush list-unstyled">
         
     <?php 
+    $lang = elixir_get_current_language();
     foreach ($reports as $r){
-        echo '<li class="list-group-item ps-0"><a href="'.wp_get_attachment_url( $r['report'] ).'" target="_blank" class="link-primary">'.$r['title'].'<i class="icon-right ms-3"></i></a></li>';
+        echo '<li class="list-group-item ps-0"><a href="'.wp_get_attachment_url( $r['report_'.$lang] ).'" target="_blank" class="link-primary">'.$r['title_'.$lang].'<i class="icon-right ms-3"></i></a></li>';
     }
     ?>
     </ul>

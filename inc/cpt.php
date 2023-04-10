@@ -4,8 +4,8 @@ defined('ABSPATH') || exit;
 function elixir_cpt_tabs()
 {
     $tabs_labels = array(
-        'name'                  => _x('Elixir Tabs', 'elixir-tabs', 'elixir'),
-        'singular_name'         => _x('Elixir Tab', 'elixir-tab', 'elixir'),
+        'name'                  => __('Elixir Tabs', 'elixir'),
+        'singular_name'         => __('Elixir Tab', 'elixir'),
     );
     $tabs_args = array(
         'labels'              => $tabs_labels,
@@ -36,8 +36,8 @@ function elixir_cpt_proizvodi()
 {
 
     $labels = array(
-        'name'                  => _x('Proizvodi', 'proizvodi', 'elixir'),
-        'singular_name'         => _x('Proizvod', 'proizvod', 'elixir'),
+        'name'                  => __('Proizvodi', 'elixir'),
+        'singular_name'         => __('Proizvod', 'elixir'),
     );
 
     $args = array(
@@ -72,9 +72,9 @@ function elixir_cpt_proizvodi()
 
     $el_labels = array(
 
-        'name'                       => 'Product elements',
-        'singular_name'              => 'product-elements',
-        'menu_name'                  => 'Elements',
+        'name'                       => __('Product elements', 'elixir'),
+        'singular_name'              => __('Product element', 'elixir'),
+        'menu_name'                  => __('Product element', 'elixir'),
 
     );
 
@@ -99,8 +99,8 @@ function elixir_cpt_preporuka_djubrenja()
 
     $labels = array(
 
-        'name'                  => _x('Preporuke đubrenja', 'Preporuke djubrenja', 'elixir'),
-        'singular_name'         => _x('Preporuke đubrenja', 'preporuka_djubrenja Singular Name', 'elixir'),
+        'name'                  => __('Preporuke đubrenja', 'elixir'),
+        'singular_name'         => __('Preporuka đubrenja', 'elixir'),
         'menu_name'             => __('Preporuke đubrenja', 'elixir'),
         'name_admin_bar'        => __('Preporuke đubrenja', 'elixir'),
         'archives'              => __('Preporuke đubrenja - arhiva', 'elixir'),
@@ -109,8 +109,6 @@ function elixir_cpt_preporuka_djubrenja()
 
     $args = array(
 
-        'label'                 => __('preporuke_djubrenja', 'elixir'),
-        'description'           => __('preporuke_djubrenja cpt', 'elixir'),
         'labels'                => $labels,
         'supports'              => array('page-attributes', 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
         'taxonomies'   => array('category'),
@@ -128,7 +126,7 @@ function elixir_cpt_preporuka_djubrenja()
         'publicly_queryable'    => true,
         'capability_type'       => 'post',
         'menu_icon'   => 'dashicons-groups',
-        'rewrite' => array('slug' => _x('preporuke-djubrenja', 'elixir'), 'with_front' => false),
+        'rewrite' => array('slug' => __('preporuke-djubrenja', 'elixir'), 'with_front' => false),
 
     );
 
@@ -141,8 +139,8 @@ function elixir_cpt_block_patterns()
         'elixir-cbp',
         [
             'labels'        => [
-                'name'                  => _x('Elixir Block Patterns', 'elixir'),
-                'singular_name'         => _x('Elixir Block Pattern', 'elixir'),
+                'name'                  => __('Elixir Block Patterns', 'elixir'),
+                'singular_name'         => __('Elixir Block Pattern', 'elixir'),
                 'menu_name'             => __('Block Patterns', 'elixir'),
             ],
             'public'        => false,
@@ -174,8 +172,8 @@ function elixir_cpt_posao()
 
     $labels = array(
 
-        'name'                  => _x('Oglasi za posao', 'Oglasi za posao', 'elixir'),
-        'singular_name'         => _x('Oglas za posao', 'Oglasi za posao Singular Name', 'elixir'),
+        'name'                  => __('Oglasi za posao', 'elixir'),
+        'singular_name'         => __('Oglas za posao', 'elixir'),
         'menu_name'             => __('Oglasi za posao', 'elixir'),
         'name_admin_bar'        => __('Oglasi za posao', 'elixir'),
         'archives'              => __('Oglasi za posao - arhiva', 'elixir'),
@@ -203,7 +201,7 @@ function elixir_cpt_posao()
         'publicly_queryable'    => true,
         'capability_type'       => 'post',
         'menu_icon'   => 'dashicons-portfolio',
-        'rewrite' => array('slug' => _x('oglasi-za-posao', 'elixir'), 'with_front' => false),
+        'rewrite' => array('slug' => __('oglasi-za-posao', 'elixir'), 'with_front' => false),
 
     );
 

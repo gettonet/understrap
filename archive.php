@@ -32,9 +32,18 @@ $layout = 'rows';
 				if (have_posts()) {
 				?>
 					<?php
-					$vesti = get_term_by('slug', 'vesti', 'category');
-					$video = get_term_by('slug', 'video', 'category');
-					if (is_category('vesti') || cat_is_ancestor_of($vesti->term_id, $cat)) : ?>
+					if (elixir_get_current_language() == 'sr') {
+						$vesti_slug = 'vesti';
+						$video_slug = 'video';
+					}
+					else if (elixir_get_current_language() == 'en') {
+						$vesti_slug = 'news';
+						$video_slug = 'videos';
+					}
+
+					$vesti = get_term_by('slug', $vesti_slug, 'category');
+					$video = get_term_by('slug', $video_slug, 'category');
+					if (is_category($vesti_slug) || cat_is_ancestor_of($vesti->term_id, $cat)) : ?>
 						<header class="page-header">
 							<?php the_archive_title('<h1 class="page-title">', '</h1>'); ?>
 						</header>
@@ -42,7 +51,7 @@ $layout = 'rows';
 							<?php echo elixir_latest_posts_slider(); ?>
 						</div>
 					<?php
-					elseif (is_category('video') || cat_is_ancestor_of($video->term_id, $cat)) :
+					elseif (is_category($video_slug) || cat_is_ancestor_of($video->term_id, $cat)) :
 						$layout = 'columns'; ?>
 						<section id="elixir-hero" class="position-relative alignfull mt-n4" data-aos="fade" style="min-height: 562px">
 							<div class="bg-elixir-gradient w-100 h-90 h-md-80 h-lg-75 position-absolute top-0 left-0 z-0" style="max-height: 552px;"></div>
@@ -82,7 +91,7 @@ $layout = 'rows';
 							if ($layout === 'columns') : ?>
 								</div>
 							<?php endif;
-							if (is_category('video') || cat_is_ancestor_of($video->term_id, $cat)) : ?>
+							if (is_category($video_slug) || cat_is_ancestor_of($video->term_id, $cat)) : ?>
 							</div>
 						</section>
 				<?php endif;

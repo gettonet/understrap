@@ -2,28 +2,36 @@
 	"version": 2,
 	"settings": {
 		"typography": {
-			"fontSizes": [
-				{
+			"fontSizes": [{
 					"slug": "small",
 					"size": ".825rem",
 					"name": "Small"
 				},
-                {
+				{
 					"slug": "medium",
 					"size": "1.125rem",
 					"name": "Medium"
 				},
-                {
-					"slug": "large", 
+				{
+					"slug": "large",
 					"size": "1.25rem",
 					"name": "Large"
 				},
-                {
-                    "slug": "larger",
-                    "size": "1.5rem",
-                    "name": "Larger"
-                }
+				{
+					"slug": "larger",
+					"size": "1.5rem",
+					"name": "Larger"
+				}
 			]
+		}
+	},
+	"styles": {
+		"elements": {
+			"link": {
+				"typography": {
+					"textDecoration": false
+				}
+			}
 		}
 	}
 }
