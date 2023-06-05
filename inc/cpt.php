@@ -201,7 +201,7 @@ function elixir_cpt_posao()
         'publicly_queryable'    => true,
         'capability_type'       => 'post',
         'menu_icon'   => 'dashicons-portfolio',
-        'rewrite' => array('slug' => __('oglasi-za-posao', 'elixir'), 'with_front' => false),
+        'rewrite' => array('slug' => __('karijera/zaposlenje', 'elixir'), 'with_front' => false),
 
     );
 
