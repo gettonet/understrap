@@ -91,4 +91,4 @@ if (isset($attributes['image']['id'])) {
   </svg>';
 }
 echo $caption ? '<span class="elixir-caption bg-primary text-white p-2 small position-absolute bottom-0 right-0 top-auto left-auto w-auto h-auto">'.$attributes['caption'].'</span>' : '';
-echo $w_class || $w_style ? '</div>' : '';
+echo $w_class || $w_style || $animation || $caption ? '</div>' : '';
