@@ -62,6 +62,7 @@ function elixir_register_custom_fields()
 
 
 // LZB.
+// LZB.
 function lzb_block_disable_frontend_wrapper($allow_wrapper, $attributes, $context)
 {
     if ('frontend' == $context) {
@@ -70,7 +71,8 @@ function lzb_block_disable_frontend_wrapper($allow_wrapper, $attributes, $contex
     return $allow_wrapper;
 }
 add_filter('lzb/block_render/allow_wrapper', 'lzb_block_disable_frontend_wrapper', 10, 3);
-add_filter( 'lzb/show_admin_menu', '__return_false' );
+add_filter('lzb/block_render/allow_inner_blocks_wrapper', '__return_false');
+//add_filter( 'lzb/show_admin_menu', '__return_false' );
 
 // Remove html comments from frontend.
 function callback($buffer)

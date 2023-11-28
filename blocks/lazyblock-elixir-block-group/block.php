@@ -30,5 +30,5 @@ if ($attributes['bg-color']) {
   $id = $attributes['anchor'] ? ' id="'.$attributes['anchor'].'"' : '';
 ?>
 <div<?php echo $id.$class.$style.$animation; ?>>
-<?php echo $attributes['content']; ?>
+<InnerBlocks />
 </div>

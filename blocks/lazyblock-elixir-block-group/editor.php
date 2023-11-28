@@ -28,4 +28,5 @@ if ($attributes['bg-color']) {
   $id = $attributes['anchor'] ? ' id="'.$attributes['anchor'].'"' : '';
 ?>
 <div<?php echo $id.$class.$style; ?>>
+<InnerBlocks />
 </div>

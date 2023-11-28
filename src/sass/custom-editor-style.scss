@@ -5,10 +5,16 @@
 @import "theme/blocks";
 
 
-.is-root-container {
-	max-width: 1320px;
-	margin-left: auto;
-	margin-right: auto;
+body {
+	--editor-width: 100vw;
+&.sidebar-opened {
+	--editor-width: calc(100vw - 280px);
+}	
+}
+
+
+.is-root-container > *, .edit-post-visual-editor__post-title-wrapper {
+	@extend .container;
 }
 
 .wp-block {
@@ -38,41 +44,19 @@
 	box-shadow: 0 0 0 1px #e6e6e6;
 	position: relative;
 
-	.lzb-content-title,
-	.lzb-content-controls .components-base-control__label {
-		display: none;
-	}
-
 	&.wp-block-lazyblock-elixir-section,
 	&.wp-block-lazyblock-elixir-block-group {
 
-		min-height: 100px;
+		//min-height: 100px;
 
 		>.lzb-content-controls {
-			position: relative;
-			z-index: 1;
-			margin: 0
+			display: none;
 		}
 
-		>.lzb-preview-server {
-			position: absolute;
-			z-index: 0;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			margin-top: 0;
-
-			>div {
-				width: 100%;
-				height: 100%;
-
-				>section {
-					width: 100%;
-					height: 100%;
-				}
-			}
-		}
+	}
+	&.wp-block-lazyblock-elixir-section {
+		max-width: 100%;
+		width: 100%;
 	}
 
 	&.wp-block-lazyblock-elixir-hero02 {

@@ -12,8 +12,6 @@ if($attributes['img-style']) {
   }
 }
 
-$animation = isset($attributes['aos_animation']) ? elixir_generate_data_aos($attributes) : NULL;
-
 $caption = $attributes['caption'] ?: false;
 $wrapper_classes = array();
 $wrapper_classes[] = $attributes['className'] ?: '';
@@ -81,7 +79,7 @@ if($img_styles) {
   $img_atts['style'] = implode(';', $img_styles);
 }
 
-echo $w_class || $w_style || $animation || $caption ? '<div' . $w_class . $w_style . $animation . '>' : '';
+echo $w_class || $w_style || $caption ? '<div' . $w_class . $w_style . '>' : '';
 
 if (isset($attributes['image']['id'])) {
   echo wp_get_attachment_image($attributes['image']['id'], $attributes['image-size'], '', $img_atts);
@@ -91,4 +89,4 @@ if (isset($attributes['image']['id'])) {
   </svg>';
 }
 echo $caption ? '<span class="elixir-caption bg-primary text-white p-2 small position-absolute bottom-0 right-0 top-auto left-auto w-auto h-auto">'.$attributes['caption'].'</span>' : '';
-echo $w_class || $w_style || $animation || $caption ? '</div>' : '';
+echo $w_class || $w_style || $caption ? '</div>' : '';

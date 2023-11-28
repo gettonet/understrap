@@ -84,7 +84,7 @@ if (!$attributes['hide-from-website']) {
     <?php if (array_filter($inner_classes)) : ?>
       <div class="<?php echo implode(" ", array_unique(array_filter($inner_classes))); ?>">
       <?php endif; ?>
-      <?php echo $attributes['section']; ?>
+      <InnerBlocks />
       <?php if (array_filter($inner_classes)) : ?>
       </div>
     <?php endif; ?>
