@@ -13,8 +13,15 @@ Container::make('theme_options', __('Theme Options', 'elixir'))
         Field::make('textarea', 'body_open', 'Body code'),
         Field::make('textarea', 'elixir_footer', 'Footer code')
     ))
-    ->add_tab('GTM', array(
-        Field::make('text', 'gtm_id', 'GTM ID')
+    ->add_tab('Integrations', array(
+        Field::make('html', 'gmaps_desc', __('Section Description'))
+            ->set_html(sprintf('<h3>%s</h3>', __('Set Google Maps API credentials:'))),
+        Field::make('text', 'gmap_api_key', __('API KEY'))
+            ->set_attribute('type', 'password'),
+        Field::make('image', 'gmap_marker_img', __('Marker image')),
+        Field::make('html', 'gtm_desc', __('Section Description'))
+            ->set_html(sprintf('<h3>%s</h3>', __('Set GTM ID:'))),
+        Field::make('text', 'gtm_id', 'GTM ID'),
     ))
     ->add_tab('Social Links', array(
         Field::make('html', 'egroup_social_desc')
@@ -44,12 +51,12 @@ Container::make('theme_options', __('Theme Options', 'elixir'))
         Field::make('complex', 'elixir_reports', __('Izveštaji'))
             ->add_fields(array(
                 Field::make('html', 'sr_desc')
-            ->set_html('<h3>SR</h3>'),
+                    ->set_html('<h3>SR</h3>'),
                 Field::make('file', 'report_sr')
                     ->set_type('application/pdf'),
                 Field::make('text', 'title_sr', __('Title (SR)')),
                 Field::make('html', 'eng_desc')
-            ->set_html('<h3>EN</h3>'),
+                    ->set_html('<h3>EN</h3>'),
                 Field::make('file', 'report_en')
                     ->set_type('application/pdf'),
                 Field::make('text', 'title_en', __('Title (EN)')),
@@ -59,44 +66,44 @@ Container::make('theme_options', __('Theme Options', 'elixir'))
     ->add_tab('Oglasi', array(
         Field::make('html', 'egroup_oglasi')
             ->set_html('<h3>Opisi kod oglasa za posao</h3>'),
-        Field::make( 'rich_text', 'zaposlenje_general_sr', __( 'Generalno (hero sekcija) (SR)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'zaposlenje_general_en', __( 'Generalno (hero sekcija) (EN)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'egroup_zaposlenje_sr', __( 'Elixir Group (SR)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'egroup_zaposlenje_en', __( 'Elixir Group (EN)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'ezorka_zaposlenje_sr', __( 'Elixir Zorka (SR)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'ezorka_zaposlenje_en', __( 'Elixir Zorka (EN)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'eprahovo_zaposlenje_sr', __( 'Elixir Prahovo (SR)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'eprahovo_zaposlenje_en', __( 'Elixir Prahovo (EN)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'eagrar_zaposlenje_sr', __( 'Elixir Agrar (SR)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'eagrar_zaposlenje_en', __( 'Elixir Agrar (EN)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'ecraft_zaposlenje_sr', __( 'Elixir Craft (SR)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'ecraft_zaposlenje_en', __( 'Elixir Craft (EN)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'efeed_zaposlenje_sr', __( 'Elixir Feed (SR)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'efeed_zaposlenje_en', __( 'Elixir Feed (EN)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'eengineering_zaposlenje_sr', __( 'Elixir Engineering (SR)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'eengineering_zaposlenje_en', __( 'Elixir Engineering (EN)' ) )
-        ->set_width(50),
+        Field::make('rich_text', 'zaposlenje_general_sr', __('Generalno (hero sekcija) (SR)'))
+            ->set_width(50),
+        Field::make('rich_text', 'zaposlenje_general_en', __('Generalno (hero sekcija) (EN)'))
+            ->set_width(50),
+        Field::make('rich_text', 'egroup_zaposlenje_sr', __('Elixir Group (SR)'))
+            ->set_width(50),
+        Field::make('rich_text', 'egroup_zaposlenje_en', __('Elixir Group (EN)'))
+            ->set_width(50),
+        Field::make('rich_text', 'ezorka_zaposlenje_sr', __('Elixir Zorka (SR)'))
+            ->set_width(50),
+        Field::make('rich_text', 'ezorka_zaposlenje_en', __('Elixir Zorka (EN)'))
+            ->set_width(50),
+        Field::make('rich_text', 'eprahovo_zaposlenje_sr', __('Elixir Prahovo (SR)'))
+            ->set_width(50),
+        Field::make('rich_text', 'eprahovo_zaposlenje_en', __('Elixir Prahovo (EN)'))
+            ->set_width(50),
+        Field::make('rich_text', 'eagrar_zaposlenje_sr', __('Elixir Agrar (SR)'))
+            ->set_width(50),
+        Field::make('rich_text', 'eagrar_zaposlenje_en', __('Elixir Agrar (EN)'))
+            ->set_width(50),
+        Field::make('rich_text', 'ecraft_zaposlenje_sr', __('Elixir Craft (SR)'))
+            ->set_width(50),
+        Field::make('rich_text', 'ecraft_zaposlenje_en', __('Elixir Craft (EN)'))
+            ->set_width(50),
+        Field::make('rich_text', 'efeed_zaposlenje_sr', __('Elixir Feed (SR)'))
+            ->set_width(50),
+        Field::make('rich_text', 'efeed_zaposlenje_en', __('Elixir Feed (EN)'))
+            ->set_width(50),
+        Field::make('rich_text', 'eengineering_zaposlenje_sr', __('Elixir Engineering (SR)'))
+            ->set_width(50),
+        Field::make('rich_text', 'eengineering_zaposlenje_en', __('Elixir Engineering (EN)'))
+            ->set_width(50),
     ))
     ->add_tab('Misc', array(
-        Field::make( 'rich_text', 'company_slogan_sr', __( 'Slogan kompanije (SR)' ) )
-        ->set_width(50),
-        Field::make( 'rich_text', 'company_slogan_en', __( 'Slogan kompanije (EN)' ) )
-        ->set_width(50),
+        Field::make('rich_text', 'company_slogan_sr', __('Slogan kompanije (SR)'))
+            ->set_width(50),
+        Field::make('rich_text', 'company_slogan_en', __('Slogan kompanije (EN)'))
+            ->set_width(50),
     ));
 
 
@@ -159,23 +166,24 @@ Container::make('post_meta', __('Job data'))
                 'ElixirCraft' => 'Elixir Craft',
                 'ElixirFondacija' => 'Elixir Fondacija',
                 'ElixirEngineering' => 'Elixir Engineering',
-                'ElixirGroup' => 'Elixir Group'            ))
+                'ElixirGroup' => 'Elixir Group'
+            ))
     ));
 
-    Container::make('post_meta', __('More options'))
+Container::make('post_meta', __('More options'))
     ->where('post_type', '=', 'page')
     ->set_context('side')
     ->add_fields(array(
-        Field::make( 'select', 'color_palette', __( 'Color Palette' ) )
-	->set_options( array(
-		'' => 'Default',
-        'dark-green' => 'Dark Green',
-		'light-green' => 'Light Green',
-		'deep-blue' => 'Deep Blue',
-		'blue' => 'Blue',
-		'light-blue' => 'Light Blue',
-        'dark-blue' => 'Dark Blue',
-        'purple' => 'Purple'
+        Field::make('select', 'color_palette', __('Color Palette'))
+            ->set_options(array(
+                '' => 'Default',
+                'dark-green' => 'Dark Green',
+                'light-green' => 'Light Green',
+                'deep-blue' => 'Deep Blue',
+                'blue' => 'Blue',
+                'light-blue' => 'Light Blue',
+                'dark-blue' => 'Dark Blue',
+                'purple' => 'Purple'
 
-	) )
-    ));    
+            ))
+    ));

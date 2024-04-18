@@ -93,7 +93,7 @@ switch ($company) {
 			<div class="elixir-spacer" style="--minh-xs:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;"></div>
 			<h2 class="text-center">Prijavite se</h2>
 			<p class="text-center mb-5">Biće kontaktirani kandidati koji uđu u uži izbor selekcije.</p>
-			<?php echo do_shortcode('[contact-form-7 id="7009" title="Prijava za poziciju"]'); ?>
+			<?php echo do_shortcode('[contact-form-7 id="063fe31" title="Prijava za poziciju"]'); ?>
 			<div class="elixir-spacer" style="--minh-xs:40px; --minh-sm:60px; --minh-md:80px; --minh-lg:80px; --minh-xl:80px; --minh-xxl:80px;"></div>
 		</div>
 	</section>

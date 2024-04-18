@@ -27,7 +27,7 @@ $lang = elixir_get_current_language();
 					?>
 					<div class="small mb-5"><?php echo apply_filters('the_content',carbon_get_theme_option('company_slogan_'.$lang)); ?></div>
 					<div class="mb-5">
-						<h6 class="small text-secondary font-body"><?php echo __('Društvene mreže', 'elixir'); ?></h6>
+						<p class="small text-secondary fw-700"><?php echo __('Društvene mreže', 'elixir'); ?></p>
 						<?php
 						$fb_url = carbon_get_theme_option('fb_url');
 						$yt_url = carbon_get_theme_option('yt_url');
@@ -66,7 +66,7 @@ $lang = elixir_get_current_language();
 				<div class="col-md-8">
 					<div class="row">
 						<div class="col-sm-6 col-md-4 mb-5">
-							<h6 class="small text-secondary"><?php echo __('O nama', 'elixir'); ?></h6>
+							<p class="small text-secondary fw-700"><?php echo __('O nama', 'elixir'); ?></p>
 							<?php
 							if (has_nav_menu('footer-1')) {
 								wp_nav_menu(
@@ -81,8 +81,7 @@ $lang = elixir_get_current_language();
 							?>
 						</div>
 						<div class="col-sm-6 col-md-4 mb-5">
-							<h6 class="small text-secondary font-body"><?php echo __('Članice', 'elixir'); ?>
-							</h6>
+							<p class="small text-secondary fw-700"><?php echo __('Članice', 'elixir'); ?></p>
 							<?php
 							if (has_nav_menu('footer-2')) {
 								wp_nav_menu(
@@ -96,8 +95,7 @@ $lang = elixir_get_current_language();
 							?>
 						</div>
 						<div class="col-sm-6 col-md-4 mb-5">
-							<h6 class="small text-secondary font-body"><?php echo __('Proizvodi', 'elixir'); ?>
-							</h6>
+							<p class="small text-secondary fw-700"><?php echo __('Proizvodi', 'elixir'); ?></p>
 							<?php
 							if (has_nav_menu('footer-2')) {
 								wp_nav_menu(
@@ -111,7 +109,7 @@ $lang = elixir_get_current_language();
 							?>
 						</div>
 						<div class="col-sm-6 col-md-4 mb-5">
-							<h6 class="small text-secondary font-body"><?php echo __('Usluge', 'elixir'); ?></h6>
+							<p class="small text-secondary fw-700"><?php echo __('Usluge', 'elixir'); ?></p>
 							<?php
 							if (has_nav_menu('footer-3')) {
 								wp_nav_menu(
@@ -125,7 +123,7 @@ $lang = elixir_get_current_language();
 							?>
 						</div>
 						<div class="col-sm-6 col-md-4 mb-5">
-							<h6 class="small text-secondary font-body"><?php echo __('Održivi razvoj', 'elixir'); ?></h6>
+							<p class="small text-secondary fw-700"><?php echo __('Održivi razvoj', 'elixir'); ?></p>
 							<?php
 							if (has_nav_menu('footer-4')) {
 								wp_nav_menu(
@@ -139,7 +137,7 @@ $lang = elixir_get_current_language();
 							?>
 						</div>
 						<div class="col-sm-6 col-md-4 mb-5">
-							<h6 class="small text-secondary font-body"><?php echo __('Karijera', 'elixir'); ?></h6>
+							<p class="small text-secondary fw-700"><?php echo __('Karijera', 'elixir'); ?></p>
 							<?php
 							if (has_nav_menu('footer-5')) {
 								wp_nav_menu(
@@ -176,8 +174,8 @@ $lang = elixir_get_current_language();
 </div>
 </footer>
 </div>
-</div><!-- #page we need this extra closing tag here -->
+</div><!-- #page -->
+<button class="btn btn-floating rounded-1 btn-outline-primary border-2 fs-5 lh-1-25 p-2 bg-opacity-50 z-1" id="scrollToTopBtn" style="background-color: rgba(255,255,255,0.85)"><i class="icon-up-open"></i></button>
 <?php wp_footer(); ?>
 </body>
-
 </html>

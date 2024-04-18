@@ -18,6 +18,21 @@ AOS.init({
 
 
 jQuery(function ($) {
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 0 && !($('body').hasClass('footer-visible'))) {
+			$('#scrollToTopBtn').fadeIn();
+		} else {
+			$('#scrollToTopBtn').fadeOut();
+		}
+	});
+
+	$(document).on('click', '#scrollToTopBtn', scrollToTop);
+
+	function scrollToTop() {
+		$('html, body').animate({ scrollTop: 0 }, 800);
+	}
+
+	
 	document.addEventListener('aos:in:elixir-countup', ({
 		detail
 	}) => {
@@ -109,5 +124,30 @@ jQuery(function ($) {
 		});		
 	}
 
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+function handleIntersection(entries) {
+	let isInViewport = false;
+
+	entries.forEach((entry) => {
+		if (entry.isIntersecting) {
+			isInViewport = true;
+		}
+	});
+
+	if (isInViewport) {
+		document.body.classList.add('footer-visible');
+	} else {
+		document.body.classList.remove('footer-visible');
+	}
+}
+
+if (document.querySelector('#scrollToTopBtn')) {
+	const targetElement = document.querySelector('#wrapper-footer');
+	const observer = new IntersectionObserver(handleIntersection);
+	observer.observe(targetElement);
+}
 
 });

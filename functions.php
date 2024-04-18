@@ -31,6 +31,7 @@ $elixir_includes = array(
     '/deprecated.php',                      // Load deprecated functions.
     '/cpt.php',                             // Custom Post Types.
     '/shortcodes.php',                      // Shortcodes.    
+    '/simple_html_dom.php'
 );
 
 
@@ -155,8 +156,9 @@ function elixir_footer()
 add_action('wp_head', 'elixir_header');
 add_action('wp_footer', 'elixir_footer');
 
-function elixir_body_open(){
-        echo carbon_get_theme_option('body_open') ?: '';
+function elixir_body_open()
+{
+    echo carbon_get_theme_option('body_open') ?: '';
 }
 add_action('wp_body_open', 'elixir_body_open', 5);
 
@@ -410,9 +412,9 @@ add_filter('wpcf7_form_tag', 'elixir_form_tag');
 function elixir_form_tag($tag)
 {
     if (is_admin()) return $tag;
-    
+
     global $post;
-    if ($tag['name'] === 'lokacija') {       
+    if ($tag['name'] === 'lokacija') {
         $location = (array)carbon_get_post_meta($post->ID, 'lokacija');
         if (!$location) return $tag;
         $l = array();
@@ -424,12 +426,11 @@ function elixir_form_tag($tag)
             $tag['raw_values'][] = $loc;
             $tag['labels'][] = $loc;
         }
-        if(count($l) === 1) {
+        if (count($l) === 1) {
             $tag['options'][] = 'default:1';
             $tag['options'][] = 'class:d-none';
         }
-    }
-    else if ($tag['name'] === 'pozicija'){
+    } else if ($tag['name'] === 'pozicija') {
         $tag['values'][0] = get_the_title($post->ID);
         $tag['raw_values'][0] = get_the_title($post->ID);
     }
@@ -438,8 +439,9 @@ function elixir_form_tag($tag)
 
 add_filter('wpcf7_form_elements', 'form_elements');
 
-function form_elements($form) {
-    if(is_admin() || str_contains($form, '[lokacija-label]') === false) return $form;
+function form_elements($form)
+{
+    if (is_admin() || str_contains($form, '[lokacija-label]') === false) return $form;
 
     global $post;
     $location = (array)carbon_get_post_meta($post->ID, 'lokacija');
@@ -451,15 +453,17 @@ function form_elements($form) {
             $l[] = elixir_lokacija($loc);
         }
         if (count($location) === 1) {
-        $lokacija_label = '<p class="mb-2">Prijavljujem se za poziciju <span class="text-primary fw-600">'.get_the_title($post->ID).'</span> na lokaciji <span class="text-primary fw-600">'.reset($l).'</span>:</p>';
+            $lokacija_label = '<p class="mb-2">Prijavljujem se za poziciju <span class="text-primary fw-600">' . get_the_title($post->ID) . '</span> na lokaciji <span class="text-primary fw-600">' . reset($l) . '</span>:</p>';
         } else {
-        $lokacija_label = '<p class="mb-2">Prijavljujem se za poziciju <span class="text-primary fw-600">'.get_the_title($post->ID).'</span> na lokaciji:</p>';
+            $lokacija_label = '<p class="mb-2">Prijavljujem se za poziciju <span class="text-primary fw-600">' . get_the_title($post->ID) . '</span> na lokaciji:</p>';
         }
     }
     $form = str_replace('[lokacija-label]', $lokacija_label, $form);
     return $form;
-
 }
+
+remove_action('wpcf7_swv_create_schema', 'wpcf7_swv_add_select_enum_rules', 20, 2);
+remove_action('wpcf7_swv_create_schema', 'wpcf7_swv_add_checkbox_enum_rules', 20, 2);
 
 function add_additional_class_on_a($classes, $item, $args)
 {
@@ -471,9 +475,27 @@ function add_additional_class_on_a($classes, $item, $args)
 
 add_filter('nav_menu_link_attributes', 'add_additional_class_on_a', 1, 3);
 
-add_filter( 'carbon_fields_theme_options_container_admin_only_access', '__return_false' );
+add_filter('carbon_fields_theme_options_container_admin_only_access', '__return_false');
 
 
-function elixir_get_current_language() {
-    return apply_filters( 'wpml_current_language', null );
+function elixir_get_current_language()
+{
+    return apply_filters('wpml_current_language', null);
+}
+
+function CyrillicToLatin($cyrillicString)
+{
+    $cyrillicToLatin = array(
+        'А' => 'A', 'Б' => 'B', 'В' => 'V', 'Г' => 'G', 'Д' => 'D', 'Ђ' => 'Đ', 'Е' => 'E',
+        'Ж' => 'Ž', 'З' => 'Z', 'И' => 'I', 'Ј' => 'J', 'К' => 'K', 'Л' => 'L', 'Љ' => 'Lj',
+        'М' => 'M', 'Н' => 'N', 'Њ' => 'Nj', 'О' => 'O', 'П' => 'P', 'Р' => 'R', 'С' => 'S',
+        'Т' => 'T', 'Ћ' => 'Ć', 'У' => 'U', 'Ф' => 'F', 'Х' => 'H', 'Ц' => 'C', 'Ч' => 'Č',
+        'Џ' => 'Dž', 'Ш' => 'Š', 'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd',
+        'ђ' => 'đ', 'е' => 'e', 'ж' => 'ž', 'з' => 'z', 'и' => 'i', 'ј' => 'j', 'к' => 'k',
+        'л' => 'l', 'љ' => 'lj', 'м' => 'm', 'н' => 'n', 'њ' => 'nj', 'о' => 'o', 'п' => 'p',
+        'р' => 'r', 'с' => 's', 'т' => 't', 'ћ' => 'ć', 'у' => 'u', 'ф' => 'f', 'х' => 'h',
+        'ц' => 'c', 'ч' => 'č', 'џ' => 'dž', 'ш' => 'š'
+    );
+
+    return strtr($cyrillicString, $cyrillicToLatin);
 }

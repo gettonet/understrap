@@ -50,8 +50,8 @@ foreach ($blocks as $block) {
                                 ));
                             } else { ?>
                                 <img src="https://img.youtube.com/vi/<?php echo $match[1] . '/' . $poster_quality; ?>default.jpg" class="w-100 h-100 fit-cover">
+                            <?php } ?>
                         </div>
-                    <?php } ?>
                     </div>
                 </div>
             <?php else : ?>
@@ -65,8 +65,8 @@ foreach ($blocks as $block) {
                                 ));
                             } else { ?>
                                 <div class="bg-lgrey rounded-top rounded-start fit-cover"></div>
+                            <?php } ?>
                         </span>
-                    <?php } ?>
                     </div>
                 </div>
             <?php endif; ?>

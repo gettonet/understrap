@@ -55,6 +55,7 @@ if ( ! function_exists( 'elixir_scripts' ) ) {
 				wp_enqueue_script( 'raphaeljs', get_template_directory_uri() . '/js/raphael.min.js');
 			}
 		}
+
 		
 
 	}

@@ -15,6 +15,12 @@ body {
 	--elixir-gutter-x: 1.25rem;
 }
 
+html,
+body{
+width:100%;
+overflow-x:hidden;
+}
+
 
 .font-body {
 	font-family: $font-family-sans-serif;
@@ -134,7 +140,7 @@ h6,
 	&:focus,
 	&.mixitup-control-active {
 		color: #fff;
-		background-color: $primary;
+		background-color: $primary !important;
 	}
 }
 
@@ -483,4 +489,12 @@ table.elixir.inner-centered tr td:first-child {
 
 .grecaptcha-badge {
 	visibility: hidden;
+}
+
+
+#scrollToTopBtn {
+	display: none;
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
 }

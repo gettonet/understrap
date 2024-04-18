@@ -31,7 +31,8 @@ if ('rows' === $attributes['layout']) {
     $params['image'] = $attributes['image'];
     $params['class'] = $attributes['show-as-slider'] ? 'p-2' : 'col-md-6 col-lg-4 mb-4';
 }
-
+$params['title_tag'] = $attributes['title-tag'];
+$params['title_class'] = $attributes['title-class'];
 
 $slider_args = array(
     "cellAlign" => "left",

@@ -31,6 +31,12 @@ $params = array(
     'custom-title' => $attributes['custom-title'] ?: false,
     'custom-url' => '#'
 );
+if (isset($attributes['title-tag'])) {
+    $params['title_tag'] = $attributes['title-tag'];
+}
+if (isset($attributes['title-class']) && $attributes['title-class']) {
+    $params['title_class'] = $attributes['title-class'];
+}
 
 $the_query = new WP_Query( $args );
 

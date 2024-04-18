@@ -20794,6 +20794,12 @@ body {
   --elixir-gutter-x: 1.25rem;
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .font-body {
   font-family: "Open Sans";
 }
@@ -20904,7 +20910,7 @@ h6,
 }
 .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary.mixitup-control-active {
   color: #fff;
-  background-color: #819825;
+  background-color: #819825 !important;
 }
 
 .btn-secondary {
@@ -21771,6 +21777,13 @@ table.elixir.inner-centered tr td:first-child {
 
 .grecaptcha-badge {
   visibility: hidden;
+}
+
+#scrollToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
 }
 
 .w-10 {
