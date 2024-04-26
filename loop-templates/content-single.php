@@ -26,19 +26,12 @@ else {
 
 ?>
 
-	<section class="entry-cover position-relative rounded-bottom alignfull mb-5 overflow-hidden"<?php echo !$image_id ? ' style="background: #929292"' : ''; ?> data-aos="fade">
-		<?php if($image_id){
-			echo wp_get_attachment_image($image_id, 'full', '' , array(
-				'class' => 'position-absolute w-100 h-100 top-0 left-0 fit-cover',
-				'style' => 'object-position:'.$pos_x.'% '.$pos_y.'%'
-			));
-		} ?>
-	</section>
-	<header class="entry-header">
+	
+	<header class="entry-header py-5 py-lg-70">
 
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-		<div class="entry-meta mb-4">
+		<div class="entry-meta">
 		<div class="d-flex align-items-center justify-content-between">
 				<?php elixir_posted_by(); ?>
 				<div><?php elixir_posted_in(); ?> / <?php elixir_posted_on(); ?></div>
@@ -47,7 +40,14 @@ else {
 		</div><!-- .entry-meta -->
 
 	</header><!-- .entry-header -->	
-
+	<section class="entry-cover position-relative rounded-bottom alignfull mb-5 overflow-hidden"<?php echo !$image_id ? ' style="background: #929292"' : ''; ?> data-aos="fade">
+		<?php if($image_id){
+			echo wp_get_attachment_image($image_id, 'full', '' , array(
+				'class' => 'position-absolute w-100 h-100 top-0 left-0 fit-cover',
+				'style' => 'object-position:'.$pos_x.'% '.$pos_y.'%'
+			));
+		} ?>
+	</section>
 	<div class="entry-content">
 
 		<?php
