@@ -498,3 +498,53 @@ table.elixir.inner-centered tr td:first-child {
 	bottom: 1rem;
 	right: 1rem;
 }
+
+.elixir-scrollspy-navbar {
+	width: 500px;
+	max-width: 100%;
+.nav-link {
+	display: flex;
+	align-items: center;
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+	border-bottom: 1px solid;
+	transition: all .6s ease;
+
+	&::after {
+		content: '\e801';
+		font-family: 'elixir';
+		font-size: 1rem;
+		display: block;
+		margin-left: auto;
+		transition: all .6s ease;
+		line-height: 0;
+	}
+
+	&.active {
+		color: #{$primary};
+		//--#{$variable-prefix}nav-link-font-size: 1.75rem;
+
+		&::after {
+			font-size: 1.75rem;
+			//transform: rotate(180deg);
+		}
+	}
+}
+}
+
+.collapse-lg-down {
+@include media-breakpoint-up(lg) {
+	.collapse {
+		display: block !important;
+	}
+	a[data-bs-toggle="collapse"] {
+		pointer-events: none !important;
+	}
+}
+}
+
+#hero.prahovo2027 {
+	.bg-layer {
+		background: linear-gradient(180deg, rgba(129,152,37,0) 0%, rgba(129,152,37,0) 50%, rgb(0, 0, 0) 100%);
+	}
+}

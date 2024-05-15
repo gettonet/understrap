@@ -1,8 +1,12 @@
-
 <?php 
 $classes = $styles = array();
 $animation = isset($attributes['aos_animation']) ? elixir_generate_data_aos($attributes) : NULL;
-
+$data = '';
+if($attributes['data-attributes']){
+  foreach ($attributes['data-attributes'] as $att) {
+    $data .= ' data-'.$att['title'].'="'.$att['value'].'"';
+  }
+}
 if ($attributes['bg-color']) {
     $colors = elixir_generate_color_palette();
     $color_class = false;
@@ -20,6 +24,8 @@ if ($attributes['bg-color']) {
     }
   }
 
+  $styles[] = preg_match('~[0-9]+~',$attributes['custom-width']) ? 'width: '.$attributes['custom-width']: ''; 
+  $styles[] = preg_match('~[0-9]+~',$attributes['custom-width']) ? 'max-width: 100%' : ''; 
   $styles[] = $attributes['inline-wrapper-style'] ?: '';
   $classes[] = $attributes['className'] ?: '';
   
@@ -29,6 +35,6 @@ if ($attributes['bg-color']) {
   $style = $styles ? ' style="'.implode(';', $styles).'"' : '';
   $id = $attributes['anchor'] ? ' id="'.$attributes['anchor'].'"' : '';
 ?>
-<div<?php echo $id.$class.$style.$animation; ?>>
+<div<?php echo $id.$class.$style.$animation.$data; ?>>
 <InnerBlocks />
 </div>

@@ -19,7 +19,7 @@ if (!$attributes['hide-from-website']) {
 
   if ($attributes['bg-color'] || isset($attributes['bg-image']['url'])) {
     $inner_classes[] = 'position-relative z-1';
-    $bgclasses[] = 'position-absolute z-0 w-100 left-0';
+    $bgclasses[] = 'bg-layer position-absolute z-0 w-100 left-0';
     $bgclasses[] = $attributes['bg-position'];
     $bgclasses[] = $bgh;
     $bgclasses[] = $bgh_md ?: '';
