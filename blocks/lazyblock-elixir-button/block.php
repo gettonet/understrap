@@ -53,7 +53,11 @@ if(str_contains($attributes['link-style'], 'icon')) {
 }
 $txt = $attributes['text'] ? $icon ? '<span style="flex: 1;">' . $attributes['text'] . '</span>' : $attributes['text'] : 'No text specified';
 
-
+if($attributes['modal-trigger']){
+    $link_atts[] = 'data-bs-toggle="modal"';
+    $link_atts[] = 'data-bs-target="'.$url.'"';
+    $element = 'button';
+} else {
 switch ($attributes['target']) {
     case '_parent':
     case '_blank':    
@@ -73,6 +77,8 @@ switch ($attributes['target']) {
         $output .= '<span class="d-flex align-items-center">' . $content . '</span></button>';
         $element = 'button';*/
         break;
+}
+
 }
 
 switch ($attributes['link-style']){

@@ -28142,9 +28142,9 @@
 	    update();
 	    $(window).on('resize', update);
 	    /*$(window).on('load', function(){
-	    if (location.hash) {
-	     scrollTo(location.hash);
-	    }
+	      if (location.hash) {
+	    	scrollTo(location.hash);
+	      }
 	    });*/
 
 	    return this.each(function () {
@@ -28260,9 +28260,9 @@
 	    });
 	  }
 	  /*$('.main-carousel').flickity({
-	      // options
-	      cellAlign: 'left',
-	      contain: true
+	  	// options
+	  	cellAlign: 'left',
+	  	contain: true
 	    });*/
 
 
@@ -28349,6 +28349,40 @@
 	    const observer = new IntersectionObserver(handleIntersection);
 	    observer.observe(targetElement);
 	  }
+
+	  let isContentBoxVisible = false;
+
+	  function setContentBoxMargin() {
+	    // Select the .content-col element
+	    const contentCol = document.querySelector('.content-col');
+	    if (!contentCol) return; // Calculate the total height of the inner elements
+
+	    let innerHeight = 0;
+	    contentCol.childNodes.forEach(child => {
+	      if (child.nodeType === Node.ELEMENT_NODE) {
+	        innerHeight += child.offsetHeight;
+	      }
+	    }); // Calculate the empty vertical space
+
+	    const emptySpace = contentCol.offsetHeight - innerHeight - 60; // Select the .content-box element
+
+	    const contentBox = document.querySelector('.content-box');
+	    if (!contentBox) return; // Set the CSS variable --content-box-margin
+
+	    contentBox.style.setProperty('--content-box-margin', `-${emptySpace}px`); // Apply the margin-top to .content-box using the CSS variable
+
+	    contentBox.style.marginTop = `var(--content-box-margin)`;
+
+	    if (!isContentBoxVisible) {
+	      contentBox.style.opacity = 1;
+	      isContentBoxVisible = true;
+	    }
+	  } // Call the function initially to set the margin
+
+
+	  setContentBoxMargin(); // Optionally, you can call this function again if the layout changes (e.g., on window resize)
+
+	  window.addEventListener('resize', setContentBoxMargin);
 	});
 
 	exports.Alert = alert;

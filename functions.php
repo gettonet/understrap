@@ -499,3 +499,18 @@ function CyrillicToLatin($cyrillicString)
 
     return strtr($cyrillicString, $cyrillicToLatin);
 }
+
+function add_tinymce_code_button() {
+    // Add the 'code' button to the first row of TinyMCE editor buttons
+    add_filter('mce_buttons', function($buttons) {
+        array_push($buttons, 'code');
+        return $buttons;
+    });
+
+    // Load the TinyMCE Code plugin
+    add_filter('mce_external_plugins', function($plugins) {
+        $plugins['code'] = 'https://cdn.tiny.cloud/1/no-api-key/tinymce/5/plugins.min.js';
+        return $plugins;
+    });
+}
+add_action('init', 'add_tinymce_code_button');

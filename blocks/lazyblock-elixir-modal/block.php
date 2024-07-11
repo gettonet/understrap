@@ -3,7 +3,7 @@
         <div class="modal-content">
             <?php if ($attributes['modal-title']) : ?>
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5"><?php echo $attributes['modal-title']; ?></h1>
+                    <p class="modal-title h5"><?php echo $attributes['modal-title']; ?></p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
             <?php endif; ?>

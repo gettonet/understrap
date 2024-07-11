@@ -78,7 +78,7 @@ if ($bgstyles) {
     
     if (isset($attributes['bg-image']['id'])) {
       echo wp_get_attachment_image($attributes['bg-image']['id'], 'full', '', array(
-        'class' => 'w-100 h-100 fit-cover',
+        'class' => 'bg-image w-100 h-100 fit-cover',
         'style' => 'object-position: ' . $attributes['image-pos-x'] . '% ' . $attributes['image-pos-y'] . '%'
       ));
     }
@@ -90,7 +90,7 @@ if ($bgstyles) {
     echo '</div>';
   }
   if($attributes['color-overlay']) {
-    echo '<div class="position-absolute top-0 start-0 w-100 h-100" style="background: '.$attributes['color-overlay'].'"></div>';
+    echo '<div class="bg-overlay  position-absolute top-0 start-0 w-100 h-100" style="background: '.$attributes['color-overlay'].'"></div>';
   }
   if ($attributes['add-container']) {
     $container = 'container';
