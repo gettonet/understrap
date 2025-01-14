@@ -486,31 +486,165 @@ function elixir_get_current_language()
 function CyrillicToLatin($cyrillicString)
 {
     $cyrillicToLatin = array(
-        'А' => 'A', 'Б' => 'B', 'В' => 'V', 'Г' => 'G', 'Д' => 'D', 'Ђ' => 'Đ', 'Е' => 'E',
-        'Ж' => 'Ž', 'З' => 'Z', 'И' => 'I', 'Ј' => 'J', 'К' => 'K', 'Л' => 'L', 'Љ' => 'Lj',
-        'М' => 'M', 'Н' => 'N', 'Њ' => 'Nj', 'О' => 'O', 'П' => 'P', 'Р' => 'R', 'С' => 'S',
-        'Т' => 'T', 'Ћ' => 'Ć', 'У' => 'U', 'Ф' => 'F', 'Х' => 'H', 'Ц' => 'C', 'Ч' => 'Č',
-        'Џ' => 'Dž', 'Ш' => 'Š', 'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd',
-        'ђ' => 'đ', 'е' => 'e', 'ж' => 'ž', 'з' => 'z', 'и' => 'i', 'ј' => 'j', 'к' => 'k',
-        'л' => 'l', 'љ' => 'lj', 'м' => 'm', 'н' => 'n', 'њ' => 'nj', 'о' => 'o', 'п' => 'p',
-        'р' => 'r', 'с' => 's', 'т' => 't', 'ћ' => 'ć', 'у' => 'u', 'ф' => 'f', 'х' => 'h',
-        'ц' => 'c', 'ч' => 'č', 'џ' => 'dž', 'ш' => 'š'
+        'А' => 'A',
+        'Б' => 'B',
+        'В' => 'V',
+        'Г' => 'G',
+        'Д' => 'D',
+        'Ђ' => 'Đ',
+        'Е' => 'E',
+        'Ж' => 'Ž',
+        'З' => 'Z',
+        'И' => 'I',
+        'Ј' => 'J',
+        'К' => 'K',
+        'Л' => 'L',
+        'Љ' => 'Lj',
+        'М' => 'M',
+        'Н' => 'N',
+        'Њ' => 'Nj',
+        'О' => 'O',
+        'П' => 'P',
+        'Р' => 'R',
+        'С' => 'S',
+        'Т' => 'T',
+        'Ћ' => 'Ć',
+        'У' => 'U',
+        'Ф' => 'F',
+        'Х' => 'H',
+        'Ц' => 'C',
+        'Ч' => 'Č',
+        'Џ' => 'Dž',
+        'Ш' => 'Š',
+        'а' => 'a',
+        'б' => 'b',
+        'в' => 'v',
+        'г' => 'g',
+        'д' => 'd',
+        'ђ' => 'đ',
+        'е' => 'e',
+        'ж' => 'ž',
+        'з' => 'z',
+        'и' => 'i',
+        'ј' => 'j',
+        'к' => 'k',
+        'л' => 'l',
+        'љ' => 'lj',
+        'м' => 'm',
+        'н' => 'n',
+        'њ' => 'nj',
+        'о' => 'o',
+        'п' => 'p',
+        'р' => 'r',
+        'с' => 's',
+        'т' => 't',
+        'ћ' => 'ć',
+        'у' => 'u',
+        'ф' => 'f',
+        'х' => 'h',
+        'ц' => 'c',
+        'ч' => 'č',
+        'џ' => 'dž',
+        'ш' => 'š'
     );
 
     return strtr($cyrillicString, $cyrillicToLatin);
 }
 
-function add_tinymce_code_button() {
+function add_tinymce_code_button()
+{
     // Add the 'code' button to the first row of TinyMCE editor buttons
-    add_filter('mce_buttons', function($buttons) {
+    add_filter('mce_buttons', function ($buttons) {
         array_push($buttons, 'code');
         return $buttons;
     });
 
     // Load the TinyMCE Code plugin
-    add_filter('mce_external_plugins', function($plugins) {
+    add_filter('mce_external_plugins', function ($plugins) {
         $plugins['code'] = 'https://cdn.tiny.cloud/1/no-api-key/tinymce/5/plugins.min.js';
         return $plugins;
     });
 }
 add_action('init', 'add_tinymce_code_button');
+
+function elixir_table_block_output($block_content, $block)
+{
+    if (!is_admin()) {
+        $className = isset($block['attrs']['className']) ? $block['attrs']['className'] : '';
+
+        $block_content = str_replace(' class="wp-block-table' . ($className ? ' ' . $className : '') . '"', '', $block_content);
+
+        if (!preg_match('/(^|\s)table(\s|$)/', $className)) {
+            $block['attrs']['className'] .= $className ? ' table' : 'table';
+        }
+
+        if (!isset($block['attrs']['hasFixedLayout'])) {
+            $block_content = str_replace('has-fixed-layout', 'has-fixed-layout ' . $block['attrs']['className'], $block_content);
+        }
+
+        $block_content = str_replace('<table>', '<div class="table-responsive"><table class="' . $block['attrs']['className'] . '">', $block_content);
+        $block_content = str_replace('</table>', '</table></div>', $block_content);
+    }
+
+    return $block_content;
+}
+
+add_filter('render_block_core/table', 'elixir_table_block_output', 99, 2);
+
+/**
+ * Register a custom form tag [datetimepicker].
+ */
+function custom_wpcf7_datetimepicker_init()
+{
+    wpcf7_add_form_tag('datetimepicker', 'custom_wpcf7_datetimepicker_form_tag_handler', ['name-attr' => true]);
+}
+add_action('wpcf7_init', 'custom_wpcf7_datetimepicker_init');
+
+/**
+ * Handler for the [datetimepicker] form tag.
+ *
+ * @param array $tag The form tag.
+ * @return string HTML for the datetime picker input.
+ */
+function custom_wpcf7_datetimepicker_form_tag_handler($tag)
+{
+    // Ensure the tag has a name attribute
+    $tag = new WPCF7_FormTag($tag);
+
+    if (empty($tag->name)) {
+        return '';
+    }
+
+    // Generate the HTML for the datetime picker input with the max attribute
+    $output = sprintf(
+        '<input type="datetime-local" name="%s" id="%s" class="wpcf7-form-control wpcf7-datetimepicker" placeholder="%s"/>',
+        esc_attr($tag->name),
+        esc_attr($tag->name),
+        __('Odaberite datum i vreme', 'elixir')
+    );
+
+    return $output;
+}
+function send_file_url_instead_attachment($replaced, $submitted, $html, $mail_tag) {
+    $submission = WPCF7_Submission::get_instance();
+    $uploaded_files = $submission->uploaded_files();
+    $name = $mail_tag->field_name();
+    $upload_dir = wp_upload_dir();
+    $upload_baseurl = $upload_dir['baseurl'] . '/cf7-submissions/';
+    if (! empty($uploaded_files[$name])) {
+        $paths = (array) $uploaded_files[$name];
+        foreach ($paths as $key => $value) {
+            $baseValue = wp_basename($value);
+
+            $paths[$key] = '<a href="' . $upload_baseurl . $baseValue . '">' . $baseValue . '</a>';
+        }
+
+        $replaced = wpcf7_flat_join($paths, array(
+            'separator' => ', ',
+        ));
+    }
+    return $replaced;
+}
+
+add_filter('wpcf7_mail_tag_replaced_file', 'send_file_url_instead_attachment', 11, 4);
+add_filter('wpcf7_mail_tag_replaced_file*', 'send_file_url_instead_attachment', 11, 4);

@@ -25,7 +25,7 @@ $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg");
 @import "assets/aos/aos";
 @import "assets/flickity";    
 @import "assets/fancybox";
-
+@import "assets/flatpickr";
 
 // Any additional imported files //
 @import "theme/theme"; // <-------- That's where you can add your own design. Thats your part!
@@ -36,7 +36,6 @@ $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg");
 
 		@each $prop,
 		$abbrev in (width: w, height: h) {
-
 			@each $size,
 			$length in $sizes {
 				.#{$abbrev}#{$infix}-#{$size} {
@@ -47,16 +46,12 @@ $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg");
 	}
 }
 
-
-
-
 $s: 1;
 @each $breakpoint,
 $container-max-width in $container-max-widths {
 	$width: calc((100vw - $container-max-width)/2);
 	$bp: ('sm', 'md', 'lg', 'xl', 'xxl');
 	@include media-breakpoint-up($breakpoint) {
-
 		.vw-col-right {
 			margin-right: calc($width*(-1));
 		}
@@ -83,6 +78,7 @@ $container-max-width in $container-max-widths {
 				}
 			}
 		}
+
 		@for $n from 1 through 5 {
 			@if($n <=$s) {
 				@for $i from 1 through $grid-columns {					
@@ -94,10 +90,10 @@ $container-max-width in $container-max-widths {
 							max-width: calc($percentage + $width);
 						}
 					}
-					
 				}
 			}
 		}
 	}
+
 	$s: $s+1;
 }

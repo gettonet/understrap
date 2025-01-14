@@ -9,6 +9,7 @@ import Flickity from "flickity";
 import "flickity-fade";
 import Masonry from "masonry-layout";
 import mixitup from 'mixitup';
+import flatpickr from "flatpickr";
 
 import Sticky from 'sticky-js';
 var sticky = new Sticky('[data-sticky]', {});
@@ -64,6 +65,7 @@ AOS.init({
 				});
 			}
 		}
+
 		update();
 		$(window).on('resize', update);
 
@@ -108,6 +110,7 @@ AOS.init({
 				})
 				scrollMap.reverse();
 			}
+
 			updateScrollMap();
 			$(window).on('resize', updateScrollMap);
 
@@ -158,7 +161,6 @@ jQuery(function ($) {
 		$('html, body').animate({ scrollTop: 0 }, 800);
 	}
 
-
 	document.addEventListener('aos:in:elixir-countup', ({
 		detail
 	}) => {
@@ -172,7 +174,6 @@ jQuery(function ($) {
 			}
 		})
 	}
-
 
 	function elixirCountup(element) {
 		$(element).prop('Counter', 0).animate({
@@ -208,9 +209,7 @@ jQuery(function ($) {
 			flkty.resize();
 			$('.preporuke-djubrenja-slider article').addClass('h-100');
 			console.log('Resized');
-
 		});
-
 	}
 
 	if ($('#preporuke-djubrenja-mix').length) {
@@ -234,9 +233,11 @@ jQuery(function ($) {
 			if ($('#jobs-company').val()) {
 				c = '.company-' + $('#jobs-company').val();
 			}
+
 			if ($('#jobs-location').val()) {
 				l = '.location-' + $('#jobs-location').val();
 			}
+
 			if ((c + l).length) {
 				op_mixer.filter(c + l);
 			} else {
@@ -249,12 +250,10 @@ jQuery(function ($) {
 			op_mixer.show();
 		});
 	}
+
 	$('#navbar-koraci').scrollSpy({
 		offsetElement: '#wrapper-navbar',
 	});
-
-
-
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -308,9 +307,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		contentBox.style.marginTop = `var(--content-box-margin)`;
 
 		if (!isContentBoxVisible) {
-            contentBox.style.opacity = 1;
-            isContentBoxVisible = true;
-        }
+			contentBox.style.opacity = 1;
+			isContentBoxVisible = true;
+		}
 	}
 
 	// Call the function initially to set the margin
@@ -319,4 +318,49 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Optionally, you can call this function again if the layout changes (e.g., on window resize)
 	window.addEventListener('resize', setContentBoxMargin);
 
+	// Listen for the form's submit event to disable the button immediately
+	document.querySelectorAll('.wpcf7 form').forEach(function (form) {
+		form.addEventListener('submit', function () {
+			const submitButton = form.querySelector('input[type="submit"], button[type="submit"]');
+
+			if (submitButton) {
+				// Store the current button text or input value in a data attribute
+				if (submitButton.tagName === 'BUTTON') {
+					submitButton.dataset.originalText = submitButton.textContent;
+					submitButton.textContent = 'Molimo sačekajte...';
+				} else if (submitButton.tagName === 'INPUT') {
+					submitButton.dataset.originalText = submitButton.value;
+					submitButton.value = 'Molimo sačekajte...';
+				}
+
+				submitButton.disabled = true;
+			}
+		});
+	});
+
+	// Re-enable the button when the form submission is complete
+	document.addEventListener('wpcf7submit', function (event) {
+		const form = event.target;
+		const submitButton = form.querySelector('input[type="submit"], button[type="submit"]');
+
+		if (submitButton) {
+			submitButton.disabled = false;
+
+			// Restore the original button text or input value
+			if (submitButton.tagName === 'BUTTON') {
+				submitButton.textContent = submitButton.dataset.originalText || 'Submit';
+			} else if (submitButton.tagName === 'INPUT') {
+				submitButton.value = submitButton.dataset.originalText || 'Submit';
+			}
+		}
+	});
+
+	document.querySelectorAll('.wpcf7-datetimepicker').forEach(function (input) {
+		flatpickr(input, {
+			enableTime: true,
+			time_24hr: true,
+			dateFormat: "d.m.Y H:i",
+			maxDate: "today"
+		});
+	});
 });

@@ -208,11 +208,48 @@ function elixir_cpt_posao()
     register_post_type('oglas_za_posao', $args);
 }
 
+function elixir_cpt_publikacije()
+{
+
+    $labels = array(
+
+        'name'                  => __('Publikacije', 'elixir'),
+        'singular_name'         => __('Publikacija', 'elixir'),
+        'menu_name'             => __('Publikacije', 'elixir'),
+        'name_admin_bar'        => __('Publikacije', 'elixir'),
+    );
+
+    $args = array(
+
+        'label'                 => __('Publikacije', 'elixir'),
+        'description'           => __('Publikacije CPT', 'elixir'),
+        'labels'                => $labels,
+        'supports'              => array('title', 'editor', 'page-attributes', 'custom-fields', 'revisions'),
+        'show_in_rest' => true,
+        'hierarchical'          => true,
+        'public'                => false,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_position'         => 9,
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => false,
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'post',
+        'menu_icon'   => 'dashicons-book',
+    );
+
+    register_post_type('publikacija', $args);
+}
+
 add_action('init', 'elixir_cpt_tabs', 5);
 add_action('init', 'elixir_cpt_proizvodi', 10);
 add_action('init', 'elixir_cpt_preporuka_djubrenja', 10);
 add_action('init', 'elixir_cpt_posao', 10);
 add_action('init', 'elixir_cpt_block_patterns', 10);
+add_action('init', 'elixir_cpt_publikacije', 10);
 
 
 add_action('admin_init', 'cbp_admin_init');
