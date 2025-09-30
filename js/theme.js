@@ -1,6 +1,6 @@
 /*!
   * Elixir v1.1.0 (https://elixir.com)
-  * Copyright 2013-2024 The Elixir Authors (https://github.com/elixir/elixir/graphs/contributors)
+  * Copyright 2013-2025 The Elixir Authors (https://github.com/elixir/elixir/graphs/contributors)
   * Licensed under GPL (http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
   */
 (function (global, factory) {

@@ -3,10 +3,14 @@ if (!$attributes['hide-from-website']) {
   $id = $attributes['anchor'] ? ' id="' . $attributes['anchor'] . '"' : '';
   $style = $class = $bgstyle = $bgclass = $animation = NULL;
   $animation = isset($attributes['aos_animation']) ? elixir_generate_data_aos($attributes) : NULL;
-  $classes = $styles = $bgclasses = $bgstyles = array();
-  $inner_classes = array();
+  $classes = $styles = $bgclasses = $bgstyles = $inner_classes = [];
   $colors = elixir_generate_color_palette();
   $bg = false;
+
+  if($attributes['add-container']){
+    $inner_classes[] = 'container';
+  }
+  $inner_classes[] = $attributes['additional-container-class'] ?: '';
 
   $bgh = isset($attributes['bg-height']) ? $attributes['bg-height'] < 100 ? 'h-' . $attributes['bg-height'] : 'h-100' : 'h-100';
   $bgh_md = isset($attributes['bg-height-md']) ? $attributes['bg-height-md'] < 100 ? 'h-md-' . $attributes['bg-height-md'] : false : false;
@@ -26,13 +30,6 @@ if (!$attributes['hide-from-website']) {
     $bgclasses[] = $bgh_lg ?: '';
     $classes[] = 'position-relative';
 
-    /*if (isset($attributes['bg-image']['url'])) {
-      //$bgclasses[] = 'bg-cover';
-      //$bgclasses[] = 'bg-center';
-      //$bgclasses[] = $attributes['fixed-bg'] ? 'bg-fixed' : '';
-      //$bgstyles[] = 'background-image:url(\'' . $attributes['bg-image']['url'] . '\')';
-      //$bgstyles[] = 'background-position: ' . $attributes['image-pos-x'] . '% ' . $attributes['image-pos-y'] . '%';
-    }*/
   }
 
   $classes[] = $attributes['className'] ?: '';
@@ -79,10 +76,8 @@ if (!$attributes['hide-from-website']) {
     if($attributes['color-overlay']) {
       echo '<div class="bg-overlay position-absolute top-0 start-0 w-100 h-100" style="background: '.$attributes['color-overlay'].'"></div>';
     }
-    if ($attributes['add-container']) {
-      $inner_classes[] = $attributes['additional-container-class'] ?: '';
-      $inner_classes[] = 'container';
-    }
+    
+    
     ?>
     <?php if (array_filter($inner_classes)) : ?>
       <div class="<?php echo implode(" ", array_unique(array_filter($inner_classes))); ?>">

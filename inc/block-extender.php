@@ -36,7 +36,7 @@ if (!function_exists('elixir_blocks_assets')) {
 		wp_enqueue_script( 
 			'elixir-admin-scripts', 
 			get_template_directory_uri() . '/js/elixir.admin.js', 
-			array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'), // Dependencies, defined above.
+			array('wp-edit-post', 'wp-components', 'wp-data', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'), // Dependencies, defined above.
 			$js_version,
 			true );
 	}

@@ -38,9 +38,13 @@ if ( ! function_exists( 'elixir_scripts' ) ) {
 
 		$js_version = $theme_version . '.' . filemtime( get_template_directory() . $theme_scripts );
 		wp_enqueue_script( 'elixir-scripts', get_template_directory_uri() . $theme_scripts, array(), $js_version, true );
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_localize_script( 'elixir-scripts', 'elixirAjax', array( 
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'nonce' => wp_create_nonce('elixir1605982g2n')
+		));  
+		/*if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
-		}
+		}*/
 
 		if(is_page('indeksni-brojevi-otpada') || is_page('media-check')){
 			wp_enqueue_script('pdfmake', 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js');

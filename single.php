@@ -11,7 +11,8 @@ defined('ABSPATH') || exit;
 $fluid_container_post_types = array(
 	'proizvodi',
 	'preporuka_djubrenja',
-	'oglas_za_posao'
+	'oglas_za_posao',
+	'publikacija'
 );
 
 get_header();

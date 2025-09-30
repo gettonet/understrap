@@ -208,3 +208,45 @@ function elixir_menu_logo()
 }
 
 add_shortcode('elixir-menu-logo', 'elixir_menu_logo');
+
+
+function elixir_language_switcher(){
+    $languages = apply_filters('wpml_active_languages', NULL, array(
+        'skip_missing' => 0,
+        'orderby' => 'code'
+    ));
+
+    if (empty($languages)) {
+        return '';
+    }
+
+    $output = '';
+    $language_count = count($languages);
+    $current_index = 0;
+    
+    foreach ($languages as $code => $language) {
+        $current_index++;
+        $is_last = ($current_index === $language_count);
+        
+        if ($language['active']) {
+            // Current language (no link)
+            $output .= '<a class="mega-menu-link d-inline-block fw-700" tabindex="0">';
+            $output .= esc_html($language['native_name']);
+            $output .= '</a>';
+        } else {
+            // Other languages (with link)
+            $output .= '<a class="mega-menu-link d-inline-block" href="' . esc_url($language['url']) . '">';
+            $output .= esc_html($language['native_name']);
+            $output .= '</a>';
+        }
+        
+        // Add separator if not the last item
+        if (!$is_last) {
+            $output .= ' | ';
+        }
+    }
+    
+    return $output;
+}
+
+add_shortcode('elixir-language-switcher', 'elixir_language_switcher');
