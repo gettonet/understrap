@@ -35,7 +35,7 @@ foreach ($blocks as $block) {
         <?php if ($videoblock) :
             $attributes = $videoblock['attrs'];
             $poster_quality = isset($attributes['youtube-poster-quality']) ? $attributes['youtube-poster-quality'] : 'maxres';
-            $custom_poster = json_decode(urldecode($attributes['poster-image']), true);
+            $custom_poster = isset($attributes['poster-image']) ? json_decode(urldecode($attributes['poster-image']), true) : array();
             if ($v = $attributes['youtube-video-url']) :
                 preg_match('%(?:youtube(?:-nocookie)?.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu.be/)([^"&?/ ]{11})%i', $v, $match);
 

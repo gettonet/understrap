@@ -242,7 +242,7 @@ function elixir_language_switcher(){
         
         // Add separator if not the last item
         if (!$is_last) {
-            $output .= ' | ';
+            $output .= '<span class="vr"></span>';
         }
     }
     

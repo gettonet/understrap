@@ -50,8 +50,10 @@ if ( ! function_exists( 'elixir_body_classes' ) ) {
 			$classes[] = 'elixir-no-sidebar';
 		}
 		global $post;
-		if($color_palette = carbon_get_post_meta($post->ID, 'color_palette')){
-			$classes[] = 'theme-'.$color_palette;
+		if($post) {
+			if($color_palette = carbon_get_post_meta($post->ID, 'color_palette')){
+				$classes[] = 'theme-'.$color_palette;
+			}
 		}
 		return $classes;
 	}

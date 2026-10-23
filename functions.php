@@ -412,9 +412,9 @@ add_filter('wpcf7_form_tag', 'elixir_form_tag');
 
 function elixir_form_tag($tag)
 {
-    if (is_admin()) return $tag;
-
     global $post;
+    if (is_admin() || !$post) return $tag;
+
     if ($tag['name'] === 'lokacija') {
         $location = (array)carbon_get_post_meta($post->ID, 'lokacija');
         if (!$location) return $tag;
