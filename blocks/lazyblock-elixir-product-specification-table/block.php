@@ -6,7 +6,10 @@ $w_classes = array_filter($w_classes);
 <?php echo $w_classes ? '<div class="' . implode(' ', $w_classes) . '">' : '<div>'; ?>
 <table class="table table-hover">
     <?php if ($attributes['col1-header'] || $attributes['col2-header']) : ?>
-        <?php if ($attributes['header-color']) {
+        <?php
+        $header_classes = array();
+        $header_styles = array();
+        if ($attributes['header-color']) {
             $colors = elixir_generate_color_palette();
             $color_class = false;
             if (is_array($colors)) {
@@ -28,7 +31,7 @@ $w_classes = array_filter($w_classes);
             if (is_array($colors)) {
                 foreach (array_column($colors, 'color') as $k => $v) {
                     if ($v === $attributes['header-text-color']) {
-                        $classes[] = 'text-' . $colors[$k]['slug'];
+                        $header_classes[] = 'text-' . $colors[$k]['slug'];
                         $color_class = true;
                         continue;
                     }
@@ -53,10 +56,11 @@ $w_classes = array_filter($w_classes);
     <tbody>
         <?php
         foreach ($attributes['specification'] as $specification) :
-            switch ($specification['row-color']) {
+            $row_color = $specification['row-color'] ?? '';
+            switch ($row_color) {
                 case 'primary':
                 case 'secondary':
-                    $class = 'bg-' . $specification['row-color'] . ' text-white';
+                    $class = 'bg-' . $row_color . ' text-white';
                     break;
                 case 'gray':
                     $class = 'bg-light';
@@ -65,7 +69,7 @@ $w_classes = array_filter($w_classes);
                     $class = 'bg-primary text-white';
                     break;
                 default:
-                    $class = 'bg-' . $specification['row-color'];
+                    $class = $row_color ? 'bg-' . $row_color : '';
             } ?>
             <tr class="<?php echo $class; ?>">
                 <td><?php echo isset($specification['specification-title']) ? $specification['specification-title'] : ''; ?></td>

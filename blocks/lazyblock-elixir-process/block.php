@@ -5,8 +5,8 @@ $icon = $attributes['invert-direction'] ? 'icon-up-open' : 'icon-down-open';
 foreach($attributes['items'] as $item): ?>
 <div class="row no-gutters">
     <?php 
-    $title = '<h4>'.$item['title'].'</h4>';
-    $content = apply_filters('the_content', $item['content']);
+    $title = '<h4>'.($item['title'] ?? '').'</h4>';
+    $content = apply_filters('the_content', $item['content'] ?? '');
     if($i<$n){
         $col1 = !is_even($i) ? false : '<div class="mb-5">'.$title.$content.'</div>';
         $col2 = is_even($i) ? false : '<div class="mb-5">'.$title.$content.'</div>';
